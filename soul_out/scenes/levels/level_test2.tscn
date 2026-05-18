@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://xemp5twruot0"]
+
+[ext_resource type="Script" uid="uid://cyq5g3keh5fg0" path="res://scripts/leveltest2.cs" id="1_yuxx1"]
+
+[node name="LevelTest2" type="Node2D" unique_id=1396609900 node_paths=PackedStringArray("_currentTimer")]
+script = ExtResource("1_yuxx1")
+_currentTimer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="." unique_id=983714310]
