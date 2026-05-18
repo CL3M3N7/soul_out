@@ -1,0 +1,58 @@
+# CONFIGURATION GODOT & METADATA
+.godot/
+*.import
+export_presets.cfg
+
+# COMPILATION C# / NET / SCONS
+bin/
+build/
+dist/
+.sconsign.dblite
+
+# Artefacts de compilation générés
+obj/
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.o
+*.a
+*.lib
+*.so
+*.dylib
+*.out
+
+# Exécutables finaux (à ne pas push, sauf si désiré)
+*.exe
+*.app
+*.ipa
+*.apk
+
+# LOGS ET FICHIERS TEMPORAIRES
+*.log
+*.tmp
+*.tmp.*
+*.swp
+*.swo
+*.pyc
+*.pyo
+
+
+# IDES (RIDER, VS CODE, VISUAL STUDIO)
+.idea/
+.vscode/
+.vs/
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+*.user
+*.userprefs
+*.suo
+*.ncb
+*.sln.docstates
+
+# SYSTÈME D'EXPLOITATION (OS)
+.DS_Store
+Thumbs.db
+desktop.ini
