@@ -8,7 +8,7 @@ public partial class SOCharacter : CharacterBody2D
 	
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
-	private AnimatedSprite2D _animatedSprite2D = null;
+	protected AnimatedSprite2D _animatedSprite2D = null;
 
 	public override void _Ready()
 	{

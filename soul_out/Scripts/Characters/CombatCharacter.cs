@@ -1,12 +1,13 @@
 using Godot;
 using System;
 
-public partial class CombatCharacter : Character
+public partial class CombatCharacter : SOCharacter
 {
 	public int Health {get ; private set;}
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		_animatedSprite2D = GetNode<CharacterSprite>("Sprite");
 		Health = 3;
 	}
 
@@ -17,7 +18,7 @@ public partial class CombatCharacter : Character
 	
 	public override void _Input(InputEvent @event)
 	{
-		//if (@event.IsActionPressed(/*"Attack"*/))
+		if (@event.IsActionPressed("SOActionButton0_{PlayerController}"))
 		{
 			Attack();
 		}
@@ -26,6 +27,14 @@ public partial class CombatCharacter : Character
 	public void Attack()
 	{
 		//put attack logic
+		if (_animatedSprite2D != null)
+		{
+			_animatedSprite2D.Play("attack");
+		}
+		else
+		{
+			GD.PrintErr("[Character] No animated sprite attached!");
+		}
 	}
 	
 	public void TakeDamage()

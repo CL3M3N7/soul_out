@@ -1,7 +1,24 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://qbh75gu1cjhl"]
 
+[ext_resource type="Texture2D" uid="uid://orc37vsoa77" path="res://assets/Tiny Swords (Free Pack)/Units/Purple Units/Warrior/Warrior_Attack1.png" id="1_kv7ud"]
 [ext_resource type="Texture2D" uid="uid://dsehsvxryi6jq" path="res://assets/Tiny Swords (Free Pack)/Units/Purple Units/Warrior/Warrior_Idle.png" id="1_y3nrw"]
 [ext_resource type="Texture2D" uid="uid://b2bjupumwpn6s" path="res://assets/Tiny Swords (Free Pack)/Units/Purple Units/Warrior/Warrior_Run.png" id="2_kv7ud"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q213q"]
+atlas = ExtResource("1_kv7ud")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up8iv"]
+atlas = ExtResource("1_kv7ud")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr75v"]
+atlas = ExtResource("1_kv7ud")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wmgu"]
+atlas = ExtResource("1_kv7ud")
+region = Rect2(576, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hyix8"]
 atlas = ExtResource("1_y3nrw")
@@ -61,6 +78,23 @@ region = Rect2(960, 0, 192, 192)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q213q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up8iv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rr75v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wmgu")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hyix8")
