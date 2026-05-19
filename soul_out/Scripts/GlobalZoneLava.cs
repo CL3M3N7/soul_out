@@ -3,25 +3,14 @@ using System;
 
 public partial class GlobalZoneLava : Area2D
 {
-	public override void _Ready()
+	private void _on_area_entered(Area2D area)
 	{
-		BodyEntered += OnPlayerFall;
-	}
-	
-	private void OnPlayerFall(Node2D body)
-	{
-		// Check if it's a player who collides with the lavaZone
-		if (body is SOCharacter joueur)
+		// On vérifie si l'Area qui touche la lave s'appelle bien "FeetArea"
+		// et on récupère le parent (le Character) pour lui appliquer la chute
+		if (area.Name == "FeetArea" && area.GetParent() is CombatCharacter joueur)
 		{
-			GD.Print($"Le joueur {joueur.Name} est tombé dans la lave !");
-			
-			// TODO: Implement death or hp lost by falling in lava
-			
-			CombatScene combatScene = GetParent().GetParentOrNull<CombatScene>();
-			if(combatScene != null)
-			{
-				combatScene.LastPlayerReamin();//combatScene.OnPlayerDeath();
-			}
+			GD.Print($"Les pieds du joueur {joueur.PlayerController} ont touché la lave !");
+			joueur.TomberDansLaLave(); // On appellera cette fonction juste après
 		}
 	}
 }

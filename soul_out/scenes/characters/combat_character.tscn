@@ -1,11 +1,15 @@
-[gd_scene format=3 uid="uid://fge48r7b0buh"]
+[gd_scene format=3 uid="uid://bod411rbkxvq6"]
 
 [ext_resource type="PackedScene" uid="uid://dgeqox0yuf4ef" path="res://scenes/characters/character.tscn" id="1_0vinn"]
 [ext_resource type="Script" uid="uid://dv2idwhf3a2qd" path="res://Scripts/Characters/CombatCharacter.cs" id="2_kkqiv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkqiv"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkqiv"]
+size = Vector2(20, 11)
+
 [node name="Character" unique_id=251562452 instance=ExtResource("1_0vinn")]
+z_index = 1
 script = ExtResource("2_kkqiv")
 
 [node name="Area2D" type="Area2D" parent="." index="2" unique_id=793582141]
@@ -15,3 +19,9 @@ position = Vector2(20, 0)
 scale = Vector2(1.5, 4)
 shape = SubResource("CircleShape2D_kkqiv")
 debug_color = Color(0.989847, 0, 0.29110956, 0.41960785)
+
+[node name="FeetArea" type="Area2D" parent="." index="3" unique_id=1986827116]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FeetArea" index="0" unique_id=1015500497]
+position = Vector2(0, 33.5)
+shape = SubResource("RectangleShape2D_kkqiv")

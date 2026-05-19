@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dgeqox0yuf4ef"]
 
-[ext_resource type="Script" uid="uid://dts2wq1iugdym" path="res://Scripts/Characters/Character.cs" id="1_e22cc"]
+[ext_resource type="Script" uid="uid://dts2wq1iugdym" path="res://Scripts/Characters/SOCharacter.cs" id="1_e22cc"]
 [ext_resource type="Script" uid="uid://onvgfkgpbcyw" path="res://Scripts/Characters/CharacterSprite.cs" id="2_1bdar"]
 [ext_resource type="SpriteFrames" uid="uid://cxxiw47qj82rk" path="res://ressources/sprite_frames/player/blue/blue_warrior.tres" id="3_2qjml"]
 [ext_resource type="SpriteFrames" uid="uid://dnohfyoa6imls" path="res://ressources/sprite_frames/player/red/red_warrior.tres" id="4_ma1fs"]
