@@ -451,9 +451,10 @@ sources/0 = SubResource("TileSetAtlasSource_kb1bf")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frnjg"]
 size = Vector2(314, 133)
 
-[node name="CombatScene" type="Node2D" unique_id=413430074]
+[node name="CombatScene" type="Node2D" unique_id=413430074 node_paths=PackedStringArray("_currentTimer")]
 script = ExtResource("10_eoq2n")
 PlayerScene = ExtResource("11_yf80m")
+_currentTimer = NodePath("Timer")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2127423228]
 zoom = Vector2(0.75, 0.75)

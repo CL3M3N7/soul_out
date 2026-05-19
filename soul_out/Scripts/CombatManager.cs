@@ -4,13 +4,33 @@ using System;
 public partial class CombatManager : Node2D
 {
 	[Export] public PackedScene PlayerScene;
+	[Export] private Timer _currentTimer;
 
 	public override void _Ready()
 	{
 		GD.Print("=== DÉBUT DU CHARGEMENT DE LA MAP ===");
 		SpawnPlayers();
 		GD.Print("=== FIN DU CHARGEMENT DE LA MAP ===");
+	
+		if (_currentTimer == null)
+		{
+			_currentTimer = GetNode<Timer>("Timer");
+		}
+		_currentTimer.WaitTime = 90.0f;
+		_currentTimer.OneShot = true;
+		
+		GameManager gameManager = GetNode<GameManager>("/root/GameManager");
+		
+		if(gameManager != null)
+		{
+			Callable myCallable = Callable.From(() => gameManager.EndPhase(999));
+			_currentTimer.Connect(Timer.SignalName.Timeout, myCallable);
+			_currentTimer.Start();
+			RemainingTime label = GetNode<RemainingTime>("RemainingTime");
+			label.Start();
+		}
 	}
+	
 
 	private void SpawnPlayers()
 	{
@@ -80,6 +100,21 @@ public partial class CombatManager : Node2D
 			AddChild(newPlayer);
 			
 			GD.Print($"+++ Joueur {i} créé avec succès ! +++");
+		}
+	}
+	
+	public void OnPlayerDeath()
+	{
+		
+	}
+	
+	public void LastPlayerReamin()
+	{
+		GameManager gameManager = GetNode<GameManager>("/root/GameManager");
+		
+		if(gameManager != null)
+		{
+			gameManager.EndPhase(999);
 		}
 	}
 }
