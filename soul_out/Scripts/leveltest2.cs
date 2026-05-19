@@ -17,7 +17,7 @@ public partial class leveltest2 : Node
 		{
 			_currentTimer = GetNode<Timer>("Timer");
 		}
-		_currentTimer.WaitTime = 10.0f;
+		_currentTimer.WaitTime = 15.0f;
 		_currentTimer.OneShot = true;
 		
 		GameManager gameManager = GetNode<GameManager>("/root/GameManager");
