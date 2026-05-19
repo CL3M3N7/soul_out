@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b0gbxj3js3ixk" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_11.png" id="8_wixxb"]
 [ext_resource type="Texture2D" uid="uid://bophi13uqkooc" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_16.png" id="9_x47hi"]
 [ext_resource type="PackedScene" uid="uid://dgeqox0yuf4ef" path="res://scenes/characters/character.tscn" id="10_rtbfh"]
+[ext_resource type="PackedScene" uid="uid://dq74vvvp5jq" path="res://scenes/remaining_time.tscn" id="11_xslkd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rngq0"]
 texture = ExtResource("2_rjdwh")
@@ -542,6 +543,14 @@ PlayerController = 2
 [node name="Character_3" parent="." unique_id=178086653 instance=ExtResource("10_rtbfh")]
 position = Vector2(300, 200)
 PlayerController = 3
+
+[node name="RemainingTime" parent="." unique_id=1887735079 node_paths=PackedStringArray("_mainTime") instance=ExtResource("11_xslkd")]
+offset_left = -37.0
+offset_top = -423.0
+offset_right = 39.0
+offset_bottom = -378.0
+text = "Time"
+_mainTime = NodePath("../Timer")
 
 [editable path="Character_0"]
 [editable path="Character_1"]

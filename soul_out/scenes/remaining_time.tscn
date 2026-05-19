@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dq74vvvp5jq"]
+
+[ext_resource type="Script" uid="uid://6e3l848kxs8e" path="res://Scripts/RemainingTime.cs" id="1_tvuc0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tvuc0"]
+font_size = 32
+
+[node name="RemainingTime" type="Label" unique_id=1887735079]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_tvuc0")
+script = ExtResource("1_tvuc0")
+
+[node name="OneSecond" type="Timer" parent="." unique_id=1763953799]

@@ -27,7 +27,10 @@ public partial class leveltest2 : Node
 			Callable myCallable = Callable.From(() => gameManager.EndPhase(999));
 			_currentTimer.Connect(Timer.SignalName.Timeout, myCallable);
 			_currentTimer.Start();
+			RemainingTime label = GetNode<RemainingTime>("RemainingTime");
+			label.Start();
 		}
+		
 	}
 	
 	public void OnEnteredExitArea(Node2D body)
