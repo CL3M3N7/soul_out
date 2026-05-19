@@ -1,9 +1,23 @@
 [gd_scene format=3 uid="uid://xemp5twruot0"]
 
-[ext_resource type="Script" uid="uid://cyq5g3keh5fg0" path="res://scripts/leveltest2.cs" id="1_yuxx1"]
+[ext_resource type="Script" uid="uid://cyq5g3keh5fg0" path="res://Scripts/leveltest2.cs" id="1_yuxx1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuxx1"]
 
 [node name="LevelTest2" type="Node2D" unique_id=1396609900 node_paths=PackedStringArray("_currentTimer")]
 script = ExtResource("1_yuxx1")
 _currentTimer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="." unique_id=983714310]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1953507040]
+position = Vector2(577, 295)
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1363541271]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_yuxx1")
+
+[node name="Polygon2D" type="Polygon2D" parent="Area2D" unique_id=871897239]
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(-10, -10, -10, 10, 10, 10, 10, -10)
