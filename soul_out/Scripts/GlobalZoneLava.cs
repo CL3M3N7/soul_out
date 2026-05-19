@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class ZoneLaveGlobale : Area2D
+public partial class GlobalZoneLava : Area2D
 {
 	private void _on_body_entered(Node2D body)
 	{
