@@ -27,7 +27,7 @@ public partial class CharacterSprite : AnimatedSprite2D
 	
 	public override void _Ready()
 	{
-		int playerController = this.GetParent<Character>().PlayerController;
+		int playerController = GetParent<SOCharacter>().PlayerController;
 		ChangeSprite(playerController,TypeCharacter.Warrior);
 	}
 	

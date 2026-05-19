@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Character : CharacterBody2D
+public partial class SOCharacter : CharacterBody2D
 {
 	[ExportGroup("Character Parameter")]
 	[Export]
