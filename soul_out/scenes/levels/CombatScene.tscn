@@ -498,22 +498,26 @@ tile_map_data = PackedByteArray("AADy//7/AAABAAEAAADz/wMAAAABAAEAAAAIAAQAAAABAAE
 tile_set = SubResource("TileSet_hah48")
 
 [node name="Avatars01" type="Sprite2D" parent="Background" unique_id=1006754420]
+z_index = 4
 position = Vector2(-577, -358)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("7_5hu0i")
 
 [node name="Avatars06" type="Sprite2D" parent="Background" unique_id=75088232]
+z_index = 4
 position = Vector2(577, -358)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("8_frnjg")
 flip_h = true
 
 [node name="Avatars11" type="Sprite2D" parent="Background" unique_id=383083166]
+z_index = 4
 position = Vector2(-577, 358)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("9_ked3q")
 
 [node name="Avatars16" type="Sprite2D" parent="Background" unique_id=145946536]
+z_index = 4
 position = Vector2(577, 358)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("10_kb1bf")
