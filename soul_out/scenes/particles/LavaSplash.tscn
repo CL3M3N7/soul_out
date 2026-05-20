@@ -1,50 +1,47 @@
 [gd_scene format=3 uid="uid://8p2gb238bww5"]
 
-[ext_resource type="Texture2D" uid="uid://b1vpdvaw3v2tr" path="res://assets/Tiny Swords (Free Pack)/Particle FX/Lava Splash.png" id="1_axp4e"]
+[ext_resource type="Texture2D" uid="uid://de0irsr20fce" path="res://assets/Tiny Swords (Free Pack)/Particle FX/Lava Splash new.png" id="1_w0jem"]
 [ext_resource type="Script" uid="uid://rdpgln56rswq" path="res://Scripts/Particles/LavaSplash.cs" id="2_w0jem"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w0jem"]
-atlas = ExtResource("1_axp4e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o416"]
+atlas = ExtResource("1_w0jem")
 region = Rect2(0, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1o416"]
-atlas = ExtResource("1_axp4e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0slxg"]
+atlas = ExtResource("1_w0jem")
 region = Rect2(192, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0slxg"]
-atlas = ExtResource("1_axp4e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrwnj"]
+atlas = ExtResource("1_w0jem")
 region = Rect2(384, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xrwnj"]
-atlas = ExtResource("1_axp4e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtomu"]
+atlas = ExtResource("1_w0jem")
 region = Rect2(576, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mtomu"]
-atlas = ExtResource("1_axp4e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0y5y"]
+atlas = ExtResource("1_w0jem")
 region = Rect2(768, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x0y5y"]
-atlas = ExtResource("1_axp4e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_50e4u"]
+atlas = ExtResource("1_w0jem")
 region = Rect2(960, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_50e4u"]
-atlas = ExtResource("1_axp4e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgdwt"]
+atlas = ExtResource("1_w0jem")
 region = Rect2(1152, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qgdwt"]
-atlas = ExtResource("1_axp4e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nps3m"]
+atlas = ExtResource("1_w0jem")
 region = Rect2(1344, 0, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nps3m"]
-atlas = ExtResource("1_axp4e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yifn"]
+atlas = ExtResource("1_w0jem")
 region = Rect2(1536, 0, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3yifn"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w0jem")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1o416")
 }, {
@@ -68,6 +65,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nps3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yifn")
 }],
 "loop": false,
 "name": &"default",
