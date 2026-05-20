@@ -5,6 +5,8 @@ public partial class CombatManager : Node2D
 {
 	[Export] public PackedScene PlayerScene;
 	[Export] private Timer _currentTimer;
+	
+	private int _remainingPlayer;
 
 	public override void _Ready()
 	{
@@ -57,11 +59,11 @@ public partial class CombatManager : Node2D
 			return;
 		}
 		
-		int playersInGame = GameManager.Instance.NumberOfPlayers;
-		GD.Print($"-> Succès : GameManager trouvé. Nombre de joueurs attendus : {playersInGame}");
+		_remainingPlayer = GameManager.Instance.NumberOfPlayers;
+		GD.Print($"-> Succès : GameManager trouvé. Nombre de joueurs attendus : {_remainingPlayer}");
 
 		GD.Print("4. Lancement de la boucle d'apparition...");
-		for (int i = 0; i < playersInGame; i++)
+		for (int i = 0; i < _remainingPlayer; i++)
 		{
 			GD.Print($"--- Tentative de création du Joueur {i} ---");
 			
@@ -96,6 +98,8 @@ public partial class CombatManager : Node2D
 			newPlayer.GlobalPosition = spawnPoint.GlobalPosition;
 			newPlayer.SpawnPosition = spawnPoint.GlobalPosition; 
 			
+			newPlayer.PlayerDied += OnPlayerDeath;
+			
 			GD.Print($"-> Ajout du joueur {i} à la scène (Position: {newPlayer.GlobalPosition}).");
 			AddChild(newPlayer);
 			
@@ -103,12 +107,16 @@ public partial class CombatManager : Node2D
 		}
 	}
 	
-	public void OnPlayerDeath()
+	public void OnPlayerDeath(int tmp)
 	{
-		
+		_remainingPlayer --;
+		if(_remainingPlayer == 1)/*possible cas particulier si mort simultanée*/
+		{
+			LastPlayerRemain();
+		}
 	}
 	
-	public void LastPlayerReamin()
+	public void LastPlayerRemain()
 	{
 		GameManager gameManager = GetNode<GameManager>("/root/GameManager");
 		

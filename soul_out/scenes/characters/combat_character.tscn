@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dgeqox0yuf4ef" path="res://scenes/characters/character.tscn" id="1_0vinn"]
 [ext_resource type="Script" uid="uid://dv2idwhf3a2qd" path="res://Scripts/Characters/CombatCharacter.cs" id="2_kkqiv"]
+[ext_resource type="PackedScene" uid="uid://8p2gb238bww5" path="res://scenes/particles/LavaSplash.tscn" id="3_fgi0f"]
 [ext_resource type="Script" uid="uid://ckhjsca5y507k" path="res://Scripts/BladeArea.cs" id="3_v25p3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkqiv"]
@@ -15,7 +16,7 @@ size = Vector2(39, 66)
 [node name="Character" unique_id=251562452 instance=ExtResource("1_0vinn")]
 z_index = 4
 script = ExtResource("2_kkqiv")
-LavaSplashScene = null
+LavaSplashScene = ExtResource("3_fgi0f")
 
 [node name="AttackArea" type="Area2D" parent="." index="2" unique_id=793582141]
 position = Vector2(40, 0)
