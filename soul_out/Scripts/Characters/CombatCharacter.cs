@@ -7,9 +7,11 @@ public partial class CombatCharacter : SOCharacter
 	[Signal] public delegate void HealthChangedEventHandler(int newHealth);
 	[Signal] public delegate void PlayerDiedEventHandler(int playerIndex);
 
-	// --- VARIABLES DE COMBAT ---
+	// --- VARIABLES DE COMBAT ---	
 	public int Health { get; private set; }
 	public int MaxHealth { get; private set; } = 3;
+	
+	[Export] public PackedScene LavaSplashScene;
 	
 	public Vector2 SpawnPosition; // Rempli par le MapManager
 
@@ -98,6 +100,22 @@ public partial class CombatCharacter : SOCharacter
 		// On fige temporairement le joueur pendant sa chute
 		IsDead = true; 
 		
+		if (LavaSplashScene != null)
+		{
+	   		// On crée l'instance de l'effet
+			LavaSplash splash = LavaSplashScene.Instantiate<LavaSplash>();
+		
+			// On place l'effet EXACTEMENT là où se trouve le joueur à cet instant
+			splash.GlobalPosition = this.GlobalPosition;
+		
+			// On l'ajoute à la map (le parent du joueur) pour qu'il reste sur place si le joueur bouge
+			GetParent().AddChild(splash);
+		}
+		else
+		{
+			GD.PrintErr("[CombatCharacter] Oubli : Glisse LavaSplash.tscn dans l'inspecteur du joueur !");
+		}
+		
 		// Animation de chute
 		Tween tween = CreateTween();
 		tween.TweenProperty(this, "scale", Vector2.Zero, 0.5f);
@@ -106,6 +124,7 @@ public partial class CombatCharacter : SOCharacter
 
 		// La lave fait perdre 1 PV
 		TakeDamage(1); 
+		
 
 		// S'il n'est pas mort de sa chute, il respawn
 		if (Health > 0)
