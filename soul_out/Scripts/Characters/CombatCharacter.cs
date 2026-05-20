@@ -12,22 +12,27 @@ public partial class CombatCharacter : SOCharacter
 	public int MaxHealth { get; private set; } = 3;
 	
 	public Vector2 SpawnPosition; // Rempli par le MapManager
-	public bool IsDead { get; private set; } = false;
 
-	private CharacterSprite _animatedSprite2D;
+	public bool IsStunned { get; private set; } = false;
+	public bool IsDead { get; private set; } = false;
 
 	public override void _Ready()
 	{
-		// On n'oublie pas d'appeler le _Ready() de SOCharacter si besoin avec base._Ready();
-		_animatedSprite2D = GetNode<CharacterSprite>("Sprite");
-		
+		base._Ready();
 		Health = MaxHealth;
 	}
 
-	public override void _Input(InputEvent @event)
+	public override void _PhysicsProcess(double delta)
 	{
-		if (IsDead) return; // On bloque les inputs si le joueur est mort/tombe
+		if (IsStunned || IsDead) return;
+		base._PhysicsProcess(delta);
+	}
 
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (IsDead || IsStunned) return; // On bloque les inputs si le joueur est mort/tombe
+		base._UnhandledInput(@event);
+		
 		// Ajout du '$' crucial pour l'interpolation de la variable PlayerController !
 		if (@event.IsActionPressed($"SOActionButton0_{PlayerController}"))
 		{
@@ -37,9 +42,11 @@ public partial class CombatCharacter : SOCharacter
 	
 	public void Attack()
 	{
-		if (_animatedSprite2D != null)
+		if (CharacterSprite != null)
 		{
-			_animatedSprite2D.Play("attack");
+			CharacterSprite.Play("attack");
+			CharacterSprite.AnimationFinished += WakeUpCharacter;
+			StunCharacter();
 			
 			// TODO : Activer le mask de l'Area2D de ton épée ici 
 			// (ex: EpeeArea.SetDeferred("monitoring", true); )
@@ -48,6 +55,18 @@ public partial class CombatCharacter : SOCharacter
 		{
 			GD.PrintErr("[CombatCharacter] No animated sprite attached!");
 		}
+	}
+
+	public void StunCharacter()
+	{
+		IsStunned = true;
+		Velocity = Vector2.Zero;
+	}
+	
+	public void WakeUpCharacter()
+	{
+		IsStunned = false;
+		CharacterSprite.AnimationFinished -= WakeUpCharacter;
 	}
 	
 	public void TakeDamage(int amount = 1)
