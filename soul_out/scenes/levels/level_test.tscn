@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cwlpecpia6yjm"]
 
 [ext_resource type="PackedScene" uid="uid://dgeqox0yuf4ef" path="res://scenes/characters/character.tscn" id="1_h0hot"]
-[ext_resource type="PackedScene" uid="uid://fge48r7b0buh" path="res://scenes/characters/combat_character.tscn" id="2_jp5fc"]
+[ext_resource type="PackedScene" uid="uid://bod411rbkxvq6" path="res://scenes/characters/combat_character.tscn" id="2_jp5fc"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_yluh8"]
 
 [node name="LevelTest" type="Node2D" unique_id=1238474275]
@@ -27,6 +27,10 @@ position = Vector2(37, 165)
 PlayerController = 3
 
 [node name="Character" parent="Characters" unique_id=1079736430 instance=ExtResource("2_jp5fc")]
+
+[node name="Character2" parent="Characters" unique_id=1766459829 instance=ExtResource("2_jp5fc")]
+position = Vector2(150, 100)
+PlayerController = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1214544231]
 top_level = true

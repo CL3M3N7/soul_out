@@ -2,23 +2,27 @@
 
 [ext_resource type="PackedScene" uid="uid://dgeqox0yuf4ef" path="res://scenes/characters/character.tscn" id="1_0vinn"]
 [ext_resource type="Script" uid="uid://dv2idwhf3a2qd" path="res://Scripts/Characters/CombatCharacter.cs" id="2_kkqiv"]
-[ext_resource type="PackedScene" uid="uid://8p2gb238bww5" path="res://scenes/particles/LavaSplash.tscn" id="3_v25p3"]
+[ext_resource type="Script" uid="uid://ckhjsca5y507k" path="res://Scripts/BladeArea.cs" id="3_v25p3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkqiv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkqiv"]
 size = Vector2(20, 11)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v25p3"]
+size = Vector2(39, 66)
+
 [node name="Character" unique_id=251562452 instance=ExtResource("1_0vinn")]
 z_index = 4
 script = ExtResource("2_kkqiv")
-LavaSplashScene = ExtResource("3_v25p3")
+LavaSplashScene = null
 
-[node name="Area2D" type="Area2D" parent="." index="2" unique_id=793582141]
-position = Vector2(20, 0)
+[node name="AttackArea" type="Area2D" parent="." index="2" unique_id=793582141]
+position = Vector2(40, 0)
+script = ExtResource("3_v25p3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0" unique_id=1750406133]
-scale = Vector2(1.5, 4)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0" unique_id=1750406133]
+scale = Vector2(2, 5)
 shape = SubResource("CircleShape2D_kkqiv")
 debug_color = Color(0.989847, 0, 0.29110956, 0.41960785)
 
@@ -27,3 +31,11 @@ debug_color = Color(0.989847, 0, 0.29110956, 0.41960785)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FeetArea" index="0" unique_id=1015500497]
 position = Vector2(0, 33.5)
 shape = SubResource("RectangleShape2D_kkqiv")
+
+[node name="DamageArea" type="Area2D" parent="." index="4" unique_id=2062699445]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" index="0" unique_id=1890072858]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_v25p3")
+
+[connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]

@@ -17,11 +17,15 @@ public partial class CombatCharacter : SOCharacter
 
 	public bool IsStunned { get; private set; } = false;
 	public bool IsDead { get; private set; } = false;
+	
+	private Area2D AttackArea;
 
 	public override void _Ready()
 	{
 		base._Ready();
 		Health = MaxHealth;
+		AttackArea = GetNode<Area2D>("AttackArea");
+		AttackArea.SetDeferred("monitoring", false);
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -51,12 +55,19 @@ public partial class CombatCharacter : SOCharacter
 			StunCharacter();
 			
 			// TODO : Activer le mask de l'Area2D de ton épée ici 
-			// (ex: EpeeArea.SetDeferred("monitoring", true); )
+			AttackArea.SetDeferred("monitoring", true);
+			CharacterSprite.AnimationFinished += EndAttack;
 		}
 		else
 		{
 			GD.PrintErr("[CombatCharacter] No animated sprite attached!");
 		}
+	}
+	
+	public void EndAttack()
+	{
+		AttackArea.SetDeferred("monitoring", false);
+		CharacterSprite.AnimationFinished -= EndAttack;
 	}
 
 	public void StunCharacter()
