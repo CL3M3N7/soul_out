@@ -552,6 +552,14 @@ offset_bottom = -378.0
 text = "Time"
 _mainTime = NodePath("../Timer")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1911961407]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=740697223]
+polygon = PackedVector2Array(-768, -448, -768, 447, -360, 448, -360, 319, -398, 318, -398, 286, -432, 288, -432, 253, -460, 255, -461, 224, -493, 224, -493, 193, -529, 191, -528, 160, -528, 160, -555, 160, -556, 129, -584, 131, -584, -99, -550, -102, -550, -132, -517, -134, -515, -168, -484, -168, -485, -199, -455, -200, -453, -234, -423, -234, -423, -267, -390, -267, -390, -291, -360, -292, -359, -323, 353, -323, 353, -448)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=220529107]
+polygon = PackedVector2Array(-361, 350, -360, 448, 768, 448, 768, -448, 353, -448, 356, -293, 390, -288, 392, -262, 422, -257, 423, -232, 452, -226, 456, -201, 484, -192, 488, -167, 515, -161, 521, -136, 548, -129, 552, -102, 582, -97, 586, 128, 550, 129, 550, 162, 518, 161, 519, 191, 487, 191, 486, 224, 455, 224, 453, 254, 422, 255, 422, 288, 390, 288, 389, 320, 356, 320, 356, 351)
+
 [editable path="Character_0"]
 [editable path="Character_1"]
 [editable path="Character_2"]

@@ -30,7 +30,7 @@ public partial class GameManager : Node
 			//On passe sur un mini-jeu ajouter la logique de selection de mini-jeux
 			if(_currentRound < _maxRound)
 			{
-				GetTree().CallDeferred(SceneTree.MethodName.ChangeSceneToFile, "res://scenes/levels/level_test.tscn");
+				GetTree().CallDeferred(SceneTree.MethodName.ChangeSceneToFile, "res://scenes/levels/level_test2.tscn");
 			}
 			else
 			{
