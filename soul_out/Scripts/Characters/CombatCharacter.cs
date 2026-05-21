@@ -28,11 +28,15 @@ public partial class CombatCharacter : SOCharacter
 		AttackArea.SetDeferred("monitoring", false);
 	}
 
-	public override void _PhysicsProcess(double delta)
-	{
-		if (IsStunned || IsDead) return;
-		base._PhysicsProcess(delta);
-	}
+    public override void _PhysicsProcess(double delta)
+    {
+        if (IsStunned || IsDead) return;
+        base._PhysicsProcess(delta);
+
+        Vector2 temp = GetNode<Area2D>("AttackArea").GetPosition();
+        GetNode<Area2D>("AttackArea")
+            .SetPosition(new(CharacterSprite.IsFlippedH() ? -Math.Abs(temp.X) : Math.Abs(temp.X), 0));
+    }
 
 	public override void _UnhandledInput(InputEvent @event)
 	{

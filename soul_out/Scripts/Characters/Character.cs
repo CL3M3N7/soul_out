@@ -1,4 +1,7 @@
 using Godot;
+using System;
+using SoulOut.scripts;
+using static SoulOut.scripts.SOTools.TypeCharacter;
 
 public partial class Character : CharacterBody2D
 {
@@ -11,6 +14,7 @@ public partial class Character : CharacterBody2D
 
 	public override void _Ready()
 	{
+		
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -19,14 +23,14 @@ public partial class Character : CharacterBody2D
 
 		// Handle Jump.
 		/*if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-	{
-		velocity.Y = JumpVelocity;
-	}*/
+		{
+			velocity.Y = JumpVelocity;
+		}*/
 		
 		Vector2 direction = Input.GetVector(
 			$"SOMoveLeft_{PlayerController}", $"SOMoveRight_{PlayerController}",
 			$"SOMoveUp_{PlayerController}", $"SOMoveDown_{PlayerController}"
-		);
+			);
 		if (direction != Vector2.Zero)
 		{
 			velocity = direction * Speed;
