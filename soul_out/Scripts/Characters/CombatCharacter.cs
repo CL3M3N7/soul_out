@@ -114,16 +114,16 @@ public partial class CombatCharacter : SOCharacter
 		
 		// On fige temporairement le joueur pendant sa chute
 		IsDead = true; 
-		
+		Velocity = Vector2.Zero; // On force l'arrêt des mouvements résiduels
+
+		// Par sécurité : si le joueur tombait en attaquant, on nettoie l'événement
+		CharacterSprite.AnimationFinished -= WakeUpCharacter;
+		CharacterSprite.AnimationFinished -= EndAttack;
+
 		if (LavaSplashScene != null)
 		{
-	   		// On crée l'instance de l'effet
 			LavaSplash splash = LavaSplashScene.Instantiate<LavaSplash>();
-		
-			// On place l'effet EXACTEMENT là où se trouve le joueur à cet instant
 			splash.GlobalPosition = this.GlobalPosition;
-		
-			// On l'ajoute à la map (le parent du joueur) pour qu'il reste sur place si le joueur bouge
 			GetParent().AddChild(splash);
 		}
 		else
@@ -137,9 +137,8 @@ public partial class CombatCharacter : SOCharacter
 		tween.Parallel().TweenProperty(this, "rotation", Mathf.Pi * 2, 0.5f);
 		await ToSignal(tween, Tween.SignalName.Finished);
 
-		// La lave fait perdre 1 PV
-		TakeDamage(1); 
-		
+		// --- IMPORTANT : On applique les dégâts APRÈS l'animation ---
+		TakeDamage(); 
 
 		// S'il n'est pas mort de sa chute, il respawn
 		if (Health > 0)
@@ -151,18 +150,22 @@ public partial class CombatCharacter : SOCharacter
 		}
 	}
 
-	private void Die()
+	private async void Die()
 	{
 		IsDead = true;
 		GD.Print($"Le joueur {PlayerController} est éliminé !");
 		
-		// _animatedSprite2D.Play("death");
-		
-		// On prévient le GameManager que ce joueur a perdu
+		// On émet le signal de mort pour le CombatManager
 		EmitSignal(SignalName.PlayerDied, PlayerController);
 		
-		// On cache le joueur ou on le supprime (à voir selon ton gameplay)
+		// FIX : On attend une toute petite frame pour laisser l'interface (HeartHUD) 
+		// s'actualiser et vider le dernier cœur avant de faire disparaître le joueur.
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		
+		// On cache le joueur proprement
 		Hide();
-		// QueueFree(); 
+		
+		// Désactiver ses collisions pour qu'il ne bloque pas les autres joueurs sur la map en étant invisible
+		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
 	}
 }
