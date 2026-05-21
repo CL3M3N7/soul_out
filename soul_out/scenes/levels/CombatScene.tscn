@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bqgkbyvhgm3vf" path="res://Scripts/GameManager.cs" id="11_8trcf"]
 [ext_resource type="PackedScene" uid="uid://bod411rbkxvq6" path="res://scenes/characters/combat_character.tscn" id="11_yf80m"]
 [ext_resource type="PackedScene" uid="uid://dq74vvvp5jq" path="res://scenes/remaining_time.tscn" id="12_yf80m"]
+[ext_resource type="PackedScene" uid="uid://cq78egfeukra8" path="res://scenes/ui/HeartHUD.tscn" id="14_tai2j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5hu0i"]
 texture = ExtResource("1_xn2nv")
@@ -456,6 +457,7 @@ size = Vector2(272, 134)
 [node name="CombatScene" type="Node2D" unique_id=413430074 node_paths=PackedStringArray("_currentTimer")]
 script = ExtResource("10_eoq2n")
 PlayerScene = ExtResource("11_yf80m")
+HeartHUDScene = ExtResource("14_tai2j")
 _currentTimer = NodePath("Timer")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2127423228]
@@ -585,5 +587,24 @@ _mainTime = NodePath("../Timer")
 
 [node name="GameManager" type="Node" parent="." unique_id=2078511264]
 script = ExtResource("11_8trcf")
+
+[node name="Interface" type="CanvasLayer" parent="." unique_id=1684167844]
+offset = Vector2(-580, -280)
+transform = Transform2D(1, 0, 0, 1, -580, -280)
+follow_viewport_enabled = true
+
+[node name="GamerHUDs" type="GridContainer" parent="Interface" unique_id=1829134148]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -2.0
+offset_right = 101.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 950
+theme_override_constants/v_separation = 440
+columns = 2
 
 [connection signal="area_entered" from="DangerZones/GlobalZoneLava" to="DangerZones/GlobalZoneLava" method="_on_area_entered"]

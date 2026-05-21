@@ -4,6 +4,7 @@ using System;
 public partial class CombatManager : Node2D
 {
 	[Export] public PackedScene PlayerScene;
+	[Export] public PackedScene HeartHUDScene;
 	[Export] private Timer _currentTimer;
 	
 	private int _remainingPlayer;
@@ -62,6 +63,8 @@ public partial class CombatManager : Node2D
 		_remainingPlayer = GameManager.Instance.NumberOfPlayers;
 		GD.Print($"-> Succès : GameManager trouvé. Nombre de joueurs attendus : {_remainingPlayer}");
 
+		Node hudContainer = GetNode<Node>("Interface/GamerHUDs");
+		
 		GD.Print("4. Lancement de la boucle d'apparition...");
 		for (int i = 0; i < _remainingPlayer; i++)
 		{
@@ -104,6 +107,16 @@ public partial class CombatManager : Node2D
 			AddChild(newPlayer);
 			
 			GD.Print($"+++ Joueur {i} créé avec succès ! +++");
+			
+			HeartHUD playerHUD = HeartHUDScene.Instantiate<HeartHUD>();
+			hudContainer.AddChild(playerHUD);
+			
+			if (i == 0) playerHUD.Modulate = Colors.Blue;
+			if (i == 1) playerHUD.Modulate = Colors.Red;
+			if (i == 2) playerHUD.Modulate = Colors.Gold;
+			if (i == 3) playerHUD.Modulate = Colors.Purple;
+			
+			newPlayer.HealthChanged += playerHUD.OnPlayerHealthChanged;
 		}
 	}
 	
