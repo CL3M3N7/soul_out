@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Soul-Out"
-run/main_scene="uid://cwlpecpia6yjm"
+run/main_scene="uid://druak7actgnsv"
 config/features=PackedStringArray("4.6", "C#")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PhantomCameraManager="*uid://duq6jhf6unyis"
 GameManager="*uid://bqgkbyvhgm3vf"
+SceneManager="*uid://bly86x7kj4fes"
 
 [debug]
 
@@ -26,7 +27,6 @@ gdscript/warnings/enable=false
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="viewport"
 
 [dotnet]

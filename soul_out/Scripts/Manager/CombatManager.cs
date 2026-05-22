@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using SoulOut.Scripts.Manager;
 
 public partial class CombatManager : Node2D
 {
@@ -22,12 +22,9 @@ public partial class CombatManager : Node2D
 		_currentTimer.WaitTime = 90.0f;
 		_currentTimer.OneShot = true;
 		
-		GameManager gameManager = GetNode<GameManager>("/root/GameManager");
-		
-		if(gameManager != null)
+		if(SceneManager.Instance != null)
 		{
-			Callable myCallable = Callable.From(() => gameManager.EndPhase(999));
-			_currentTimer.Connect(Timer.SignalName.Timeout, myCallable);
+			_currentTimer.Timeout += SceneManager.Instance.ChangeScene;
 			_currentTimer.Start();
 			RemainingTime label = GetNode<RemainingTime>("RemainingTime");
 			label.Start();
@@ -131,11 +128,9 @@ public partial class CombatManager : Node2D
 	
 	public void LastPlayerRemain()
 	{
-		GameManager gameManager = GetNode<GameManager>("/root/GameManager");
-		
-		if(gameManager != null)
+		if(SceneManager.Instance != null)
 		{
-			gameManager.EndPhase(999);
+			SceneManager.Instance.ChangeScene();
 		}
 	}
 }

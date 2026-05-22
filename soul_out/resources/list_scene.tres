@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ListScene" format=3 uid="uid://btwnmon1nmrqm"]
+
+[ext_resource type="PackedScene" uid="uid://ba3no4eidu26r" path="res://scenes/levels/CombatScene.tscn" id="1_g07n4"]
+[ext_resource type="Script" uid="uid://dunrrd878khlx" path="res://Scripts/Resource/ListScene.cs" id="1_trhq7"]
+[ext_resource type="PackedScene" uid="uid://xemp5twruot0" path="res://scenes/levels/level_test2.tscn" id="2_0gfkp"]
+
+[resource]
+script = ExtResource("1_trhq7")
+BattleScenes = Array[PackedScene]([ExtResource("1_g07n4")])
+TrialScenes = Array[PackedScene]([ExtResource("2_0gfkp")])
+metadata/_custom_type_script = "uid://dunrrd878khlx"
