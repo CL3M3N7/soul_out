@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dv2idwhf3a2qd" path="res://Scripts/Characters/CombatCharacter.cs" id="2_kkqiv"]
 [ext_resource type="PackedScene" uid="uid://8p2gb238bww5" path="res://scenes/particles/LavaSplash.tscn" id="3_fgi0f"]
 [ext_resource type="Script" uid="uid://ckhjsca5y507k" path="res://Scripts/BladeArea.cs" id="3_v25p3"]
+[ext_resource type="SpriteFrames" uid="uid://cxxiw47qj82rk" path="res://resources/sprite_frames/player/blue/blue_warrior.tres" id="4_ca2us"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkqiv"]
 
@@ -17,6 +18,10 @@ size = Vector2(39, 66)
 z_index = 4
 script = ExtResource("2_kkqiv")
 LavaSplashScene = ExtResource("3_fgi0f")
+
+[node name="Sprite" parent="." index="1" unique_id=903840401]
+sprite_frames = ExtResource("4_ca2us")
+animation = &"attack"
 
 [node name="AttackArea" type="Area2D" parent="." index="2" unique_id=793582141]
 position = Vector2(40, 0)

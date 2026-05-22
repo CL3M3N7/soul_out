@@ -1,7 +1,9 @@
 using Godot;
-using SoulOut.Scripts.Manager;
 
-public partial class CombatManager : Node2D
+namespace SoulOut.Scripts.Manager;
+
+[GlobalClass]
+public partial class BattleManager : Node
 {
 	[Export] public PackedScene PlayerScene;
 	[Export] public PackedScene HeartHUDScene;
@@ -11,6 +13,7 @@ public partial class CombatManager : Node2D
 
 	public override void _Ready()
 	{
+		return;
 		GD.Print("=== DÉBUT DU CHARGEMENT DE LA MAP ===");
 		SpawnPlayers();
 		GD.Print("=== FIN DU CHARGEMENT DE LA MAP ===");
@@ -19,8 +22,6 @@ public partial class CombatManager : Node2D
 		{
 			_currentTimer = GetNode<Timer>("Timer");
 		}
-		_currentTimer.WaitTime = 90.0f;
-		_currentTimer.OneShot = true;
 		
 		if(SceneManager.Instance != null)
 		{
