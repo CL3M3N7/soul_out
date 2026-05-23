@@ -1,7 +1,7 @@
 using Godot;
 using System;
-using SoulOut.scripts;
-using static SoulOut.scripts.SOTools.TypeCharacter;
+//using SoulOut.scripts;
+//using static SoulOut.scripts.SOTools.TypeCharacter;
 
 public partial class Character : CharacterBody2D
 {
