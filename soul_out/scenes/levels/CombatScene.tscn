@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dv0loen2sshrt" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 1/spritesheet-lavarock1.png" id="1_p24lb"]
 [ext_resource type="Texture2D" uid="uid://eha6vvif87pu" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/freelavatileset-Sheet.png" id="1_xn2nv"]
+[ext_resource type="Script" uid="uid://ct5tfn7rjhbc7" path="res://Scripts/GameCamera.cs" id="4_cdsv5"]
 [ext_resource type="Texture2D" uid="uid://d26t5vcylurhx" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Land on Lava Tile/spritesheet-lavaland.png" id="5_xn2nv"]
 [ext_resource type="Texture2D" uid="uid://df7fix6o0hcjp" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 2/spritesheet-lavarock2.png" id="6_a6rgl"]
 [ext_resource type="Texture2D" uid="uid://bgoa1dp5mnpew" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_01.png" id="7_5hu0i"]
@@ -454,14 +455,16 @@ sources/0 = SubResource("TileSetAtlasSource_kb1bf")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frnjg"]
 size = Vector2(272, 134)
 
-[node name="CombatScene" type="Node2D" unique_id=413430074 node_paths=PackedStringArray("_currentTimer")]
+[node name="CombatScene" type="Node2D" unique_id=413430074 node_paths=PackedStringArray("_currentTimer", "_mainCamera")]
 script = ExtResource("10_eoq2n")
 PlayerScene = ExtResource("11_yf80m")
 HeartHUDScene = ExtResource("14_tai2j")
 _currentTimer = NodePath("Timer")
+_mainCamera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2127423228]
 zoom = Vector2(0.75, 0.75)
+script = ExtResource("4_cdsv5")
 
 [node name="Background" type="Node" parent="." unique_id=1236250203]
 

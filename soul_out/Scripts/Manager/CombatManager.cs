@@ -6,6 +6,7 @@ public partial class CombatManager : Node2D
 	[Export] public PackedScene PlayerScene;
 	[Export] public PackedScene HeartHUDScene;
 	[Export] private Timer _currentTimer;
+	[Export] private GameCamera _mainCamera;
 	
 	private int _remainingPlayer;
 
@@ -100,6 +101,13 @@ public partial class CombatManager : Node2D
 			
 			newPlayer.PlayerDied += OnPlayerDeath;
 			
+			if (_mainCamera != null)
+			{
+				// Ici, on utilise un Callable Lambda pour ne pas avoir à changer la signature de Shake()
+				// ou de PlayerDied. On dit : "Quand le signal est émis, ignore l'index du joueur, et appelle Shake()"
+				newPlayer.PlayerDied += OnCharacterDiedTriggerShake;
+			}
+			
 			GD.Print($"-> Ajout du joueur {i} à la scène (Position: {newPlayer.GlobalPosition}).");
 			AddChild(newPlayer);
 			
@@ -133,4 +141,17 @@ public partial class CombatManager : Node2D
 			SceneManager.Instance.ChangeScene();
 		}
 	}
+	// Cette méthode va intercepter la mort du personnage et ordonner à la caméra de trembler
+	private void OnCharacterDiedTriggerShake(int playerIndex)
+	{
+		if (_mainCamera != null)
+		{
+			_mainCamera.Shake(6.0f, 0.25f);
+		}
+		else
+		{
+			GD.PrintErr("[CombatManager] Erreur : La caméra n'est pas assignée ou est introuvable !");
+		}
+	}
+	
 }
