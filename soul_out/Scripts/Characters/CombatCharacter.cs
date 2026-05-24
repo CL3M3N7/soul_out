@@ -138,6 +138,8 @@ public partial class CombatCharacter : SOCharacter
 		tween.TweenProperty(this, "scale", Vector2.Zero, 0.5f);
 		tween.Parallel().TweenProperty(this, "rotation", Mathf.Pi * 2, 0.5f);
 		await ToSignal(tween, Tween.SignalName.Finished);
+		
+		IsDead = false;
 
 		// --- IMPORTANT : On applique les dégâts APRÈS l'animation ---
 		TakeDamage(); 
