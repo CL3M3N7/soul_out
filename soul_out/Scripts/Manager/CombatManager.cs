@@ -116,7 +116,7 @@ public partial class CombatManager : Node2D
 			HeartHUD playerHUD = HeartHUDScene.Instantiate<HeartHUD>();
 			hudContainer.AddChild(playerHUD);
 			
-			if (i == 0) playerHUD.Modulate = Colors.Blue;
+			if (i == 0) playerHUD.Modulate = Colors.Aqua;
 			if (i == 1) playerHUD.Modulate = Colors.Red;
 			if (i == 2) playerHUD.Modulate = Colors.Gold;
 			if (i == 3) playerHUD.Modulate = Colors.Purple;
