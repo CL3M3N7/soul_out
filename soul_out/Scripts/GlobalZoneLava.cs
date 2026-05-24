@@ -7,7 +7,7 @@ public partial class GlobalZoneLava : Area2D
 	{
 		// On vérifie si l'Area qui touche la lave s'appelle bien "FeetArea"
 		// et on récupère le parent (le Character) pour lui appliquer la chute
-		if (area.Name == "FeetArea" && area.GetParent() is CombatCharacter joueur)
+		if (area.Name == "FeetArea" && area.GetParent() is SOFightingCharacter joueur)
 		{
 			GD.Print($"Les pieds du joueur {joueur.PlayerController} ont touché la lave !");
 			joueur.TomberDansLaLave(); // On appellera cette fonction juste après

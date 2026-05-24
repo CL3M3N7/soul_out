@@ -1,137 +1,87 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Godot;
+using Godot.Collections;
 
 namespace SoulOut.Scripts.Manager;
 
 [GlobalClass]
 public partial class BattleManager : Node
 {
-	[Export] public PackedScene PlayerScene;
-	[Export] public PackedScene HeartHUDScene;
-	[Export] private Timer _currentTimer;
-	
+	[Signal] public delegate void OnEndBattleEventHandler(Array<int> leaderboard);
+
+	public List<int> Leaderboard = new();
+	private System.Collections.Generic.Dictionary<int,SOFightingCharacter> _characters = new();
 	private int _remainingPlayer;
 
 	public override void _Ready()
 	{
-		return;
-		GD.Print("=== DÉBUT DU CHARGEMENT DE LA MAP ===");
-		SpawnPlayers();
-		GD.Print("=== FIN DU CHARGEMENT DE LA MAP ===");
-	
-		if (_currentTimer == null)
-		{
-			_currentTimer = GetNode<Timer>("Timer");
-		}
-		
-		if(SceneManager.Instance != null)
-		{
-			_currentTimer.Timeout += SceneManager.Instance.ChangeScene;
-			_currentTimer.Start();
-			RemainingTime label = GetNode<RemainingTime>("RemainingTime");
-			label.Start();
-		}
-	}
-	
-
-	private void SpawnPlayers()
-	{
-		GD.Print("1. Vérification de la PlayerScene...");
-		if (PlayerScene == null)
-		{
-			GD.PrintErr("ERREUR FATALE : PlayerScene est vide ! Tu as oublié de glisser la scène dans l'inspecteur.");
-			return; // On arrête tout ici
-		}
-
-		GD.Print("2. Recherche du nœud 'SpawnPoints'...");
-		Node spawnPointsNode = GetNodeOrNull<Node>("SpawnPoints");
-		if (spawnPointsNode == null)
-		{
-			GD.PrintErr("ERREUR FATALE : Impossible de trouver le nœud 'SpawnPoints'. Vérifie l'orthographe exacte !");
-			return;
-		}
-		GD.Print($"-> Succès : 'SpawnPoints' trouvé avec {spawnPointsNode.GetChildCount()} enfants.");
-
-		GD.Print("3. Vérification du GameManager...");
-		if (GameManager.Instance == null)
-		{
-			GD.PrintErr("ERREUR FATALE : GameManager.Instance est introuvable. L'Autoload est-il bien configuré ?");
-			return;
-		}
-		
 		_remainingPlayer = GameManager.Instance.NumberOfPlayers;
-		GD.Print($"-> Succès : GameManager trouvé. Nombre de joueurs attendus : {_remainingPlayer}");
+	}
 
-		Node hudContainer = GetNode<Node>("Interface/GamerHUDs");
+	public void SubscribeToPlayer(SOCharacter character)
+	{
+		if (character is SOFightingCharacter fighter)
+		{
+			fighter.OnPlayerDeath += RegisterDeadPlayerToLeaderboard;
+			_characters.Add(character.PlayerController,fighter);
+		}
+		else
+		{
+			GD.Print($"[BattleManager] Character {character} is not a Fighter.");
+			throw new ArgumentException($"Character {character} is not a Fighter.");
+		}
 		
-		GD.Print("4. Lancement de la boucle d'apparition...");
-		for (int i = 0; i < _remainingPlayer; i++)
+	}
+
+	private void RegisterDeadPlayerToLeaderboard(int playerSlot)
+	{
+		RegisterPlayerToLeaderboard(playerSlot);
+		_remainingPlayer--;
+		
+		if (_remainingPlayer <= 1)
 		{
-			GD.Print($"--- Tentative de création du Joueur {i} ---");
-			
-			if (i >= spawnPointsNode.GetChildCount())
-			{
-				GD.PrintErr($"ERREUR : Il manque des Marker2D ! Pas de point d'apparition pour le joueur {i}.");
-				break; 
-			}
-
-			// On utilise "as Marker2D" pour ne pas faire crasher le jeu si c'est un autre type de nœud
-			Node childNode = spawnPointsNode.GetChild(i);
-			Marker2D spawnPoint = childNode as Marker2D;
-			
-			if (spawnPoint == null)
-			{
-				GD.PrintErr($"ERREUR FATALE : L'enfant numéro {i} de SpawnPoints n'est pas un Marker2D ! C'est un {childNode.GetType()}.");
-				continue; // On passe au joueur suivant
-			}
-
-			GD.Print($"-> Instanciation du joueur {i}...");
-			Node rawPlayer = PlayerScene.Instantiate();
-			CombatCharacter newPlayer = rawPlayer as CombatCharacter;
-			
-			if (newPlayer == null)
-			{
-				GD.PrintErr($"ERREUR FATALE : La scène instanciée n'a pas de script 'CombatCharacter' à sa racine ! Elle a un script {rawPlayer.GetType()}.");
-				continue;
-			}
-			
-			// Si on arrive ici, tout va bien !
-			newPlayer.PlayerController = i; 
-			newPlayer.GlobalPosition = spawnPoint.GlobalPosition;
-			newPlayer.SpawnPosition = spawnPoint.GlobalPosition; 
-			
-			newPlayer.PlayerDied += OnPlayerDeath;
-			
-			GD.Print($"-> Ajout du joueur {i} à la scène (Position: {newPlayer.GlobalPosition}).");
-			AddChild(newPlayer);
-			
-			GD.Print($"+++ Joueur {i} créé avec succès ! +++");
-			
-			HeartHUD playerHUD = HeartHUDScene.Instantiate<HeartHUD>();
-			hudContainer.AddChild(playerHUD);
-			
-			if (i == 0) playerHUD.Modulate = Colors.Blue;
-			if (i == 1) playerHUD.Modulate = Colors.Red;
-			if (i == 2) playerHUD.Modulate = Colors.Gold;
-			if (i == 3) playerHUD.Modulate = Colors.Purple;
-			
-			newPlayer.HealthChanged += playerHUD.OnPlayerHealthChanged;
+			RegisterLastSurvivor();
 		}
 	}
 	
-	public void OnPlayerDeath(int tmp)
+	private void RegisterPlayerToLeaderboard(int playerSlot)
 	{
-		_remainingPlayer --;
-		if(_remainingPlayer == 1)/*possible cas particulier si mort simultanée*/
-		{
-			LastPlayerRemain();
-		}
+		Leaderboard.Add(playerSlot);
+		_characters.Remove(playerSlot);
 	}
-	
-	public void LastPlayerRemain()
+
+	private void RegisterLastSurvivor()
 	{
-		if(SceneManager.Instance != null)
+		if (_remainingPlayer > 1)
+			return;
+
+		if (_characters.Count != 1)
 		{
-			SceneManager.Instance.ChangeScene();
+			GD.Print($"[BattleManager] _characters should contain 1 element instead of {_characters.Count}.");
+			throw new ArgumentException($"_characters should contain 1 element instead of {_characters.Count}.");
 		}
+
+		int playerSlot = _characters.First().Key;
+		RegisterPlayerToLeaderboard(playerSlot);
+		
+		SubmitEndBattle();
+	}
+
+	public void RegisterRemainingSurvivors()
+	{
+		var charactersSorted =
+			_characters.Values.OrderBy(c => c.Health);
+
+		foreach (var character in charactersSorted)
+				RegisterPlayerToLeaderboard(character.PlayerController);
+		
+		SubmitEndBattle();
+	}
+
+	public void SubmitEndBattle()
+	{
+		EmitSignal(SignalName.OnEndBattle,new Array<int>(Leaderboard));
 	}
 }

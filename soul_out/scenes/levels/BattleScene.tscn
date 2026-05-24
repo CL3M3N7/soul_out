@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://omtvlccj01j0" path="res://Scripts/BattleScene.cs" id="1_ktcge"]
 [ext_resource type="Texture2D" uid="uid://eha6vvif87pu" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/freelavatileset-Sheet.png" id="2_c721m"]
-[ext_resource type="PackedScene" uid="uid://bod411rbkxvq6" path="res://scenes/characters/combat_character.tscn" id="2_hvjjw"]
+[ext_resource type="PackedScene" uid="uid://bod411rbkxvq6" path="res://scenes/characters/fighting_character.tscn" id="2_hvjjw"]
 [ext_resource type="Texture2D" uid="uid://d26t5vcylurhx" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Land on Lava Tile/spritesheet-lavaland.png" id="3_hvjjw"]
 [ext_resource type="Texture2D" uid="uid://dv0loen2sshrt" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 1/spritesheet-lavarock1.png" id="4_s2tmk"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_hvjjw"]
 [ext_resource type="Texture2D" uid="uid://df7fix6o0hcjp" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 2/spritesheet-lavarock2.png" id="5_v4l4a"]
 [ext_resource type="Texture2D" uid="uid://bgoa1dp5mnpew" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_01.png" id="6_dqdw3"]
 [ext_resource type="Texture2D" uid="uid://c2xai165v7p3g" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_06.png" id="7_g2ils"]
@@ -454,10 +455,29 @@ sources/0 = SubResource("TileSetAtlasSource_kb1bf")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frnjg"]
 size = Vector2(272, 134)
 
-[node name="BattleScene" type="Node2D" unique_id=413430074 node_paths=PackedStringArray("PlayerSpawner", "BattleManager")]
+[node name="BattleScene" type="Node2D" unique_id=413430074 node_paths=PackedStringArray("PlayerSpawner", "BattleManager", "Timer")]
 script = ExtResource("1_ktcge")
 PlayerSpawner = NodePath("PlayerSpawner")
 BattleManager = NodePath("BattleManager")
+Timer = NodePath("Timer")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2127423228]
+zoom = Vector2(0.75, 0.75)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1849415969]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("5_hvjjw")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="RemainingTime" parent="Camera2D" unique_id=1887735079 node_paths=PackedStringArray("_mainTime") instance=ExtResource("11_tq3q8")]
+z_index = 10
+offset_left = -38.0
+offset_top = -432.0
+offset_right = 38.0
+offset_bottom = -387.0
+text = "Time"
+_mainTime = NodePath("../../Timer")
 
 [node name="PlayerSpawner" type="Node" parent="." unique_id=1623535846 node_paths=PackedStringArray("SpawnPoints", "PlayersNode")]
 script = ExtResource("12_8xc7j")
@@ -468,13 +488,11 @@ metadata/_custom_type_script = "uid://cakmxy6fqlmck"
 
 [node name="PlayersNode" type="Node" parent="." unique_id=583617227]
 
-[node name="BattleManager" type="Node" parent="." unique_id=895927683 node_paths=PackedStringArray("_currentTimer")]
+[node name="BattleManager" type="Node" parent="." unique_id=895927683]
 script = ExtResource("13_y6e0l")
-_currentTimer = NodePath("../Timer")
 metadata/_custom_type_script = "uid://c4u8h3sj5dl3b"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2127423228]
-zoom = Vector2(0.75, 0.75)
+[node name="TimerManager" type="Node" parent="." unique_id=1363982616]
 
 [node name="Background" type="Node2D" parent="." unique_id=243216734]
 z_index = -10
@@ -589,20 +607,12 @@ shape = SubResource("RectangleShape2D_frnjg")
 polygon = PackedVector2Array(357, -325, 361, -299, 390, -296, 393, -266, 423, -263, 428, -236, 457, -228, 458, -202, 491, -196, 491, -167, 516, -166, 524, -138, 553, -135, 556, -106, 583, -105, 594, 111, 561, 127, 563, 149, 537, 150, 530, 179, 504, 182, 492, 211, 473, 224, 467, 242, 442, 251, 438, 269, 409, 285, 405, 305, 372, 314, 366, 352, -367, 352, -366, 316, -390, 311, -398, 290, -425, 287, -430, 257, -464, 255, -464, 222, -489, 221, -501, 188, -529, 186, -528, 157, -560, 151, -564, 122, -591, 124, -589, -108, -556, -105, -554, -139, -523, -137, -521, -172, -492, -172, -489, -203, -458, -203, -459, -230, -425, -236, -423, -267, -393, -266, -393, -296, -363, -298, -362, -326, 346, -327, 445, -384, -449, -381, -454, -447, -480, -445, -470, -281, -503, -278, -502, -246, -643, -248, -652, -273, -682, -278, -684, -443, -731, -444, -726, 442, -686, 442, -682, 277, -648, 278, -643, 247, -510, 248, -502, 272, -471, 285, -471, 446, -452, 447, -454, 411, 441, 408, 451, 444, 469, 444, 469, 280, 505, 283, 509, 249, 644, 248, 649, 282, 685, 285, 683, 444, 721, 445, 727, -446, 679, -446, 682, -278, 649, -278, 650, -246, 507, -248, 503, -276, 469, -281, 480, -445, 454, -447, 454, -376)
 
 [node name="Timer" type="Timer" parent="." unique_id=1958090928]
-wait_time = 45.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="RemainingTime" parent="." unique_id=1887735079 node_paths=PackedStringArray("_mainTime") instance=ExtResource("11_tq3q8")]
-z_index = 10
-offset_left = -38.0
-offset_top = -432.0
-offset_right = 38.0
-offset_bottom = -387.0
-text = "Time"
-_mainTime = NodePath("../Timer")
-
 [node name="Interface" type="CanvasLayer" parent="." unique_id=1684167844]
+visible = false
 offset = Vector2(-580, -280)
 transform = Transform2D(1, 0, 0, 1, -580, -280)
 follow_viewport_enabled = true

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bod411rbkxvq6"]
 
 [ext_resource type="PackedScene" uid="uid://dgeqox0yuf4ef" path="res://scenes/characters/character.tscn" id="1_0vinn"]
-[ext_resource type="Script" uid="uid://dv2idwhf3a2qd" path="res://Scripts/Characters/CombatCharacter.cs" id="2_kkqiv"]
+[ext_resource type="Script" uid="uid://dv2idwhf3a2qd" path="res://Scripts/Characters/SOFightingCharacter.cs" id="2_ca2us"]
 [ext_resource type="PackedScene" uid="uid://8p2gb238bww5" path="res://scenes/particles/LavaSplash.tscn" id="3_fgi0f"]
 [ext_resource type="Script" uid="uid://ckhjsca5y507k" path="res://Scripts/BladeArea.cs" id="3_v25p3"]
 [ext_resource type="SpriteFrames" uid="uid://cxxiw47qj82rk" path="res://resources/sprite_frames/player/blue/blue_warrior.tres" id="4_ca2us"]
@@ -14,17 +14,17 @@ size = Vector2(20, 11)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v25p3"]
 size = Vector2(39, 66)
 
-[node name="Character" unique_id=251562452 instance=ExtResource("1_0vinn")]
+[node name="FightingCharacter" unique_id=251562452 instance=ExtResource("1_0vinn")]
 z_index = 4
-script = ExtResource("2_kkqiv")
+script = ExtResource("2_ca2us")
 LavaSplashScene = ExtResource("3_fgi0f")
 
 [node name="Sprite" parent="." index="1" unique_id=903840401]
 sprite_frames = ExtResource("4_ca2us")
-animation = &"attack"
+animation = &"idle"
 
 [node name="AttackArea" type="Area2D" parent="." index="2" unique_id=793582141]
-position = Vector2(40, 0)
+position = Vector2(42, 0)
 script = ExtResource("3_v25p3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0" unique_id=1750406133]

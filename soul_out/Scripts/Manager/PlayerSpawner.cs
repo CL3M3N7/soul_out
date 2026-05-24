@@ -9,6 +9,8 @@ public partial class PlayerSpawner : Node
 	[Export] public PackedScene PlayerScene;
 	[Export] public Node SpawnPoints;
 	[Export] public Node PlayersNode;
+	
+	[Signal] public delegate void OnSpawnPlayerEventHandler(SOCharacter character);
 
 	public void SpawnPlayers()
 	{
@@ -37,6 +39,7 @@ public partial class PlayerSpawner : Node
 			character.PlayerController = i;
 			
 			PlayersNode.AddChild(character);
+			EmitSignal(SignalName.OnSpawnPlayer,character);
 		}
 	}
 	

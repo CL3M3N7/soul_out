@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dts2wq1iugdym" path="res://Scripts/Characters/SOCharacter.cs" id="1_e22cc"]
 [ext_resource type="Script" uid="uid://onvgfkgpbcyw" path="res://Scripts/Characters/CharacterSprite.cs" id="2_1bdar"]
-[ext_resource type="SpriteFrames" uid="uid://cxxiw47qj82rk" path="res://ressources/sprite_frames/player/blue/blue_warrior.tres" id="3_2qjml"]
-[ext_resource type="SpriteFrames" uid="uid://dnohfyoa6imls" path="res://ressources/sprite_frames/player/red/red_warrior.tres" id="4_ma1fs"]
-[ext_resource type="SpriteFrames" uid="uid://587yms8wvxsb" path="res://ressources/sprite_frames/player/yellow/yellow_warrior.tres" id="5_yscb1"]
-[ext_resource type="SpriteFrames" uid="uid://qbh75gu1cjhl" path="res://ressources/sprite_frames/player/purple/purple_warrior.tres" id="6_ysl2u"]
+[ext_resource type="SpriteFrames" uid="uid://cxxiw47qj82rk" path="res://resources/sprite_frames/player/blue/blue_warrior.tres" id="3_2qjml"]
+[ext_resource type="SpriteFrames" uid="uid://dnohfyoa6imls" path="res://resources/sprite_frames/player/red/red_warrior.tres" id="4_ma1fs"]
+[ext_resource type="SpriteFrames" uid="uid://587yms8wvxsb" path="res://resources/sprite_frames/player/yellow/yellow_warrior.tres" id="5_yscb1"]
+[ext_resource type="SpriteFrames" uid="uid://qbh75gu1cjhl" path="res://resources/sprite_frames/player/purple/purple_warrior.tres" id="6_ysl2u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x31xa"]
 size = Vector2(40, 66)
@@ -18,7 +18,8 @@ script = ExtResource("1_e22cc")
 shape = SubResource("RectangleShape2D_x31xa")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=903840401]
-animation = &""
+sprite_frames = ExtResource("3_2qjml")
+animation = &"idle"
 autoplay = "idle"
 script = ExtResource("2_1bdar")
 BlueWarrior = ExtResource("3_2qjml")

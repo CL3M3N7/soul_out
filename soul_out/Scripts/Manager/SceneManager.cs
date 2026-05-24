@@ -9,11 +9,6 @@ public partial class SceneManager : Node
 {
     public static SceneManager Instance { get; private set; }
 
-    private Node _gameNode;
-
-    public Array<PackedScene> BattleScenes;
-    public Array<PackedScene> TrialScenes;
-
     public enum SceneType
     {
         MainScene,
@@ -23,15 +18,20 @@ public partial class SceneManager : Node
         ScoringScene,
         ResultScene
     }
-
+    
+    private Node _gameNode;
+    
+    public Array<PackedScene> BattleScenes;
+    public Array<PackedScene> TrialScenes;
+    
     private SceneType _currentScene = SceneType.BattleScene;
 
     public override void _Ready()
     {
         if (Instance != null)
         {
-            QueueFree();
-            return;
+            GD.PrintErr("[SceneManger] Multiple instances of SceneManger.");
+            throw new ArgumentException("Multiple instances of SceneManger.");
         }
 
         Instance = this;

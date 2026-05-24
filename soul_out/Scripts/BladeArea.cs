@@ -7,7 +7,7 @@ public partial class BladeArea : Area2D
 	{
 		// On vérifie si l'Area qui touche la lave s'appelle bien "FeetArea"
 		// et on récupère le parent (le Character) pour lui appliquer la chute
-		if (area.Name == "DamageArea" && area.GetParent() is CombatCharacter joueur)
+		if (area.Name == "DamageArea" && area.GetParent() is SOFightingCharacter joueur)
 		{
 			GD.Print($"Le joueur {joueur.PlayerController} a été touché !");
 			joueur.TakeDamage(); // On appellera cette fonction juste après

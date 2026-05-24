@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 namespace SoulOut.Scripts.Manager;
@@ -5,26 +6,22 @@ namespace SoulOut.Scripts.Manager;
 public partial class GameManager : Node
 {
     public static GameManager Instance { get; private set; }
+    
+    [Signal] public delegate void ScoreUpdateEventHandler(int playerSlot, int newScore);
+    [Signal] public delegate void ChangeRoundEventHandler(int round);
 
     public int NumberOfPlayers { get; private set; } = 4; // On peut le changer depuis le menu principal
     private int[] _playerScore;
 
-    [Signal]
-    public delegate void ScoreUpdateEventHandler(int playerSlot, int newScore);
-
     private int _currentRound = 0;
     private int _totalRounds = 10;
     
-    [Signal]
-    public delegate void ChangeRoundEventHandler(int round);
-
-
     public override void _Ready()
     {
         if (Instance != null)
         {
-            QueueFree();
-            return;
+            GD.PrintErr("[GameManager] Multiple instances of GameManager.");
+            throw new ArgumentException("Multiple instances of GameManager.");
         }
 
         Instance = this;
