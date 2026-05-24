@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c40fuiqqheims"]
+
+[ext_resource type="Script" uid="uid://b3ots5gidvopq" path="res://Scripts/GoldSpot.cs" id="1_v3sxr"]
+[ext_resource type="Texture2D" uid="uid://c86f4llebc3hx" path="res://assets/Tiny Swords (Free Pack)/Terrain/Resources/Gold/Gold Stones/Gold Stone 1.png" id="2_d3de6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r7r3j"]
+radius = 44.72136
+
+[node name="GoldSpot" type="Node2D" unique_id=1664520806]
+script = ExtResource("1_v3sxr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=249104266]
+texture = ExtResource("2_d3de6")
+
+[node name="GoldArea" type="Area2D" parent="." unique_id=70818824]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoldArea" unique_id=1652118571]
+shape = SubResource("CircleShape2D_r7r3j")
