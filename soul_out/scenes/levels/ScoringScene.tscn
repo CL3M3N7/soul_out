@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d4fxks3pqk07v"]
+
+[node name="ScoringScene" type="Node2D" unique_id=401253247]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1713922566]
+offset_right = 40.0
+offset_bottom = 40.0

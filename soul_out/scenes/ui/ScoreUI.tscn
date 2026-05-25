@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://pxchev8or7h8"]
+
+[node name="ScoreUi" type="Control" unique_id=1570707165]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1685280792]
+layout_mode = 0
+offset_right = 309.0
+offset_bottom = 229.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=686514425]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1643526437]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
