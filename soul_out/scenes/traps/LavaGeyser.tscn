@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://duk02yhu1m4r"]
+
+[ext_resource type="Script" uid="uid://buce0g4f6444u" path="res://Scripts/Traps/LavaGeyser.cs" id="1_h5rac"]
+[ext_resource type="Texture2D" uid="uid://bu84nsjyxer4d" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/GeyserTilesheet.png" id="1_sl0r1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl0r1"]
+size = Vector2(98.33333, 91.666664)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5rac"]
+atlas = ExtResource("1_sl0r1")
+region = Rect2(0, 0, 137, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf78k"]
+atlas = ExtResource("1_sl0r1")
+region = Rect2(185, 0, 137, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qd7s"]
+atlas = ExtResource("1_sl0r1")
+region = Rect2(370, 0, 137, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgmn7"]
+atlas = ExtResource("1_sl0r1")
+region = Rect2(555, 0, 137, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqdoi"]
+atlas = ExtResource("1_sl0r1")
+region = Rect2(740, 0, 137, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3e6o"]
+atlas = ExtResource("1_sl0r1")
+region = Rect2(925, 0, 137, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lyw1"]
+atlas = ExtResource("1_sl0r1")
+region = Rect2(1110, 0, 137, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl0r1"]
+atlas = ExtResource("1_sl0r1")
+region = Rect2(0, 0, 137, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvyg4"]
+atlas = ExtResource("1_sl0r1")
+region = Rect2(185, 0, 137, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmjnn"]
+atlas = ExtResource("1_sl0r1")
+region = Rect2(370, 0, 137, 177)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k0d6"]
+atlas = ExtResource("1_sl0r1")
+region = Rect2(1110, 0, 137, 177)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6lyw1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5rac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf78k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qd7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgmn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqdoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3e6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqdoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3e6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqdoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3e6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqdoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3e6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqdoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgmn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qd7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lyw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5rac")
+}],
+"loop": true,
+"name": &"Active",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl0r1")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvyg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmjnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k0d6")
+}],
+"loop": true,
+"name": &"Warning",
+"speed": 5.0
+}]
+
+[node name="LavaGeyser" type="Area2D" unique_id=195116667]
+z_index = 3
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_h5rac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1478190542]
+z_index = 1
+position = Vector2(-2.5000002, 27.5)
+shape = SubResource("RectangleShape2D_sl0r1")
+
+[node name="GeyserAnimation" type="AnimatedSprite2D" parent="." unique_id=1862634622]
+sprite_frames = SubResource("SpriteFrames_6lyw1")
+animation = &"Idle"
+
+[node name="StateTimer" type="Timer" parent="." unique_id=744847502]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

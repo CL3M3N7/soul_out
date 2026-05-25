@@ -12,14 +12,17 @@ public partial class CombatCharacter : SOCharacter
 	public int MaxHealth { get; private set; } = 3;
 	
 	[Export] public PackedScene LavaSplashScene;
+	[Export] public float InvincibilityDuration = 1.5f;
 	
 	public Vector2 SpawnPosition; // Rempli par le MapManager
 
 	public bool IsStunned { get; private set; } = false;
 	public bool IsDead { get; private set; } = false;
 	public bool IsKnockedBack { get; private set; } = false;
+	public bool IsInvincible { get; private set; } = false;
 	
 	private Area2D AttackArea;
+	private Tween _invincibilityTween; // Pour gérer le clignotement d'invincibilité
 
 	public override void _Ready()
 	{
@@ -100,7 +103,7 @@ public partial class CombatCharacter : SOCharacter
 	
 	public void TakeDamage(int amount = 1, Node2D attacker = null)
 	{
-		if (IsDead) return;
+		if (IsDead || IsInvincible) return;
 
 		Health -= amount;
 		Health = Mathf.Clamp(Health, 0, MaxHealth);
@@ -119,6 +122,7 @@ public partial class CombatCharacter : SOCharacter
 				ApplyKnockback(attacker.GlobalPosition);
 			}
 			
+			BecomeTemporarilyInvincible(InvincibilityDuration);
 			// Optionnel : Jouer une animation de dégâts
 			// _animatedSprite2D.Play("hurt");
 		}
@@ -168,6 +172,42 @@ public partial class CombatCharacter : SOCharacter
 			Scale = Vector2.One;
 			Rotation = 0;
 			IsDead = false; // Il peut rejouer
+			
+			BecomeTemporarilyInvincible(2.0f);
+		}
+	}
+	
+	public async void BecomeTemporarilyInvincible(float duration)
+	{
+		// Sécurité si déjà invincible
+		if (IsInvincible && _invincibilityTween != null && _invincibilityTween.IsValid()) return;
+
+		IsInvincible = true;
+
+		// Création d'un Tween pour faire clignoter l'opacité du Sprite
+		if (CharacterSprite != null)
+		{
+			_invincibilityTween = CreateTween().SetLoops(); // .SetLoops() fait tourner en boucle
+			// Descend à 30% d'opacité en 0.1s
+			_invincibilityTween.TweenProperty(CharacterSprite, "modulate:a", 0.3f, 0.1f);
+			// Remonte à 100% d'opacité en 0.1s
+			_invincibilityTween.TweenProperty(CharacterSprite, "modulate:a", 1.0f, 0.1f);
+		}
+
+		// On attend la fin du temps d'invincibilité
+		await ToSignal(GetTree().CreateTimer(duration), SceneTreeTimer.SignalName.Timeout);
+
+		// Fin de l'invincibilité
+		IsInvincible = false;
+
+		// On nettoie le Tween et on remet l'opacité d'origine à coup sûr
+		if (_invincibilityTween != null && _invincibilityTween.IsValid())
+		{
+			_invincibilityTween.Kill();
+		}
+		if (CharacterSprite != null)
+		{
+			CharacterSprite.Modulate = new Color(CharacterSprite.Modulate.R, CharacterSprite.Modulate.G, CharacterSprite.Modulate.B, 1.0f);
 		}
 	}
 

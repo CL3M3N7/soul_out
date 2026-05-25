@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bod411rbkxvq6" path="res://scenes/characters/combat_character.tscn" id="11_yf80m"]
 [ext_resource type="PackedScene" uid="uid://dq74vvvp5jq" path="res://scenes/remaining_time.tscn" id="12_yf80m"]
 [ext_resource type="PackedScene" uid="uid://cq78egfeukra8" path="res://scenes/ui/HeartHUD.tscn" id="14_tai2j"]
+[ext_resource type="PackedScene" uid="uid://duk02yhu1m4r" path="res://scenes/traps/LavaGeyser.tscn" id="16_8rtbp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5hu0i"]
 texture = ExtResource("1_xn2nv")
@@ -609,5 +610,35 @@ grow_vertical = 2
 theme_override_constants/h_separation = 950
 theme_override_constants/v_separation = 520
 columns = 2
+
+[node name="Traps" type="Node" parent="." unique_id=543063232]
+
+[node name="LavaGeyserL" parent="Traps" unique_id=195116667 instance=ExtResource("16_8rtbp")]
+position = Vector2(-540, -10)
+
+[node name="LavaGeyserL2" parent="Traps" unique_id=771636076 instance=ExtResource("16_8rtbp")]
+position = Vector2(-440, -10)
+
+[node name="LavaGeyserL3" parent="Traps" unique_id=1955903268 instance=ExtResource("16_8rtbp")]
+position = Vector2(-340, -10)
+
+[node name="LavaGeyserL4" parent="Traps" unique_id=649803376 instance=ExtResource("16_8rtbp")]
+position = Vector2(-240, -9)
+
+[node name="LavaGeyserR" parent="Traps" unique_id=1773141889 instance=ExtResource("16_8rtbp")]
+position = Vector2(240, -9)
+InitialDelay = 2.0
+
+[node name="LavaGeyserR2" parent="Traps" unique_id=842611041 instance=ExtResource("16_8rtbp")]
+position = Vector2(340, -9)
+InitialDelay = 2.0
+
+[node name="LavaGeyserR3" parent="Traps" unique_id=1768963838 instance=ExtResource("16_8rtbp")]
+position = Vector2(440, -9)
+InitialDelay = 2.0
+
+[node name="LavaGeyserR4" parent="Traps" unique_id=508545317 instance=ExtResource("16_8rtbp")]
+position = Vector2(540, -9)
+InitialDelay = 2.0
 
 [connection signal="area_entered" from="DangerZones/GlobalZoneLava" to="DangerZones/GlobalZoneLava" method="_on_area_entered"]
