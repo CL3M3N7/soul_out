@@ -17,6 +17,7 @@ public partial class CombatCharacter : SOCharacter
 
 	public bool IsStunned { get; private set; } = false;
 	public bool IsDead { get; private set; } = false;
+	public bool IsKnockedBack { get; private set; } = false;
 	
 	private Area2D AttackArea;
 
@@ -30,7 +31,18 @@ public partial class CombatCharacter : SOCharacter
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (IsStunned || IsDead) return;
+		if (IsDead) return;
+		
+		if (IsKnockedBack)
+		{
+			// On applique une grosse friction pour freiner le recul rapidement
+			Velocity = Velocity.MoveToward(Vector2.Zero, 3000 * (float)delta);
+			MoveAndSlide(); // Fait glisser le personnage avec le moteur physique
+			return; // On arrête la fonction ici pour bloquer les déplacements normaux du joueur !
+		}
+		
+		if (IsStunned) return;
+		
 		base._PhysicsProcess(delta);
 
 		Vector2 temp = GetNode<Area2D>("AttackArea").GetPosition();
@@ -86,7 +98,7 @@ public partial class CombatCharacter : SOCharacter
 		CharacterSprite.AnimationFinished -= WakeUpCharacter;
 	}
 	
-	public void TakeDamage(int amount = 1)
+	public void TakeDamage(int amount = 1, Node2D attacker = null)
 	{
 		if (IsDead) return;
 
@@ -102,6 +114,11 @@ public partial class CombatCharacter : SOCharacter
 		}
 		else
 		{
+			if (attacker != null)
+			{
+				ApplyKnockback(attacker.GlobalPosition);
+			}
+			
 			// Optionnel : Jouer une animation de dégâts
 			// _animatedSprite2D.Play("hurt");
 		}
@@ -171,5 +188,25 @@ public partial class CombatCharacter : SOCharacter
 		
 		// Désactiver ses collisions pour qu'il ne bloque pas les autres joueurs sur la map en étant invisible
 		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
+	}
+	
+	private async void ApplyKnockback(Vector2 attackerPos)
+	{
+		IsKnockedBack = true;
+
+		// 1. Calcul de la direction : de l'attaquant vers la victime
+		Vector2 direction = (GlobalPosition - attackerPos).Normalized();
+		
+		// 2. On applique une forte impulsion 
+		Velocity = direction * 800f; 
+
+		// 3. Petite vibration pour celui qui se prend le coup (moteur faible)
+		Input.StartJoyVibration(PlayerController, 0.6f, 0.0f, 0.15f);
+
+		// 4. On attend 0.2 secondes (le temps de glisser en arrière)
+		await ToSignal(GetTree().CreateTimer(0.2f), SceneTreeTimer.SignalName.Timeout);
+
+		// 5. On rend le contrôle au joueur
+		IsKnockedBack = false;
 	}
 }
