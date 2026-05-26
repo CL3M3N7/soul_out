@@ -14,12 +14,8 @@ public partial class ScoreHUD : HBoxContainer
 			playerScore.SetAvatarAndScore(i, 0);
 			AddChild(playerScore);
 		}
-		
+		GD.Print("Sort de la boucle");
 		Wait();
-		if(SceneManager.Instance != null)
-		{
-			SceneManager.Instance.ChangeScene();
-		}
 	}
 	
 	private async void Wait()
@@ -27,5 +23,9 @@ public partial class ScoreHUD : HBoxContainer
 		GD.Print("début");
 		await ToSignal(GetTree().CreateTimer(5.0f), SceneTreeTimer.SignalName.Timeout);
 		GD.Print("fin");
+		if(SceneManager.Instance != null)
+		{
+			SceneManager.Instance.ChangeScene();
+		}
 	}
 }

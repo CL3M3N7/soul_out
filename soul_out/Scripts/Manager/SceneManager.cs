@@ -125,8 +125,8 @@ public partial class SceneManager : Node
 			case SceneType.TrialScene:
 				// Inutile d'afficher le score s'il s'agit du dernier mini-jeu
 				// TODO: implémenter scène de transition
-				//return GameManager.Instance.IsLastGame() ? SceneType.ResultScene : SceneType.ScoringScene;
-				return GameManager.Instance.IsLastGame() ? SceneType.ResultScene : SceneType.BattleScene;
+				return GameManager.Instance.IsLastGame() ? SceneType.ResultScene : SceneType.ScoringScene;
+				//return GameManager.Instance.IsLastGame() ? SceneType.ResultScene : SceneType.BattleScene;
 			case SceneType.ScoringScene:
 				return SceneType.BattleScene;
 			default:

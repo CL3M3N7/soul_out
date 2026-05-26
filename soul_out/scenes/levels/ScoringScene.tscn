@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d4fxks3pqk07v"]
 
 [ext_resource type="Script" uid="uid://xmf24y436ui1" path="res://Scripts/ui/ScoreHUD.cs" id="1_jsilc"]
+[ext_resource type="PackedScene" uid="uid://pxchev8or7h8" path="res://scenes/ui/ScoreUI.tscn" id="2_t17pi"]
 
 [node name="ScoringScene" type="Node2D" unique_id=401253247]
 
@@ -8,3 +9,4 @@
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_jsilc")
+ScoreUiScene = ExtResource("2_t17pi")
