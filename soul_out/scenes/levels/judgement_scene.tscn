@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://tt773ogrei2k"]
+
+[ext_resource type="Script" uid="uid://dtc4ajg3v0sat" path="res://Scripts/Levels/JudgementScene.cs" id="1_hdtxl"]
+[ext_resource type="Texture2D" uid="uid://diiiy0sqe60r6" path="res://icon.svg" id="1_j6pvl"]
+
+[node name="JudgementScene" type="Node2D" unique_id=1324247037 node_paths=PackedStringArray("firstPlayerLabel", "secondPlayerLabel", "thirdPlayerLabel", "fourthPlayerLabel")]
+script = ExtResource("1_hdtxl")
+firstPlayerLabel = NodePath("HBoxContainer/VBoxContainer/Label")
+secondPlayerLabel = NodePath("HBoxContainer/VBoxContainer2/Label")
+thirdPlayerLabel = NodePath("HBoxContainer/VBoxContainer3/Label")
+fourthPlayerLabel = NodePath("HBoxContainer/VBoxContainer4/Label")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=552222807]
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=2140006207]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer" unique_id=1663713949]
+layout_mode = 2
+size_flags_vertical = 10
+texture = ExtResource("1_j6pvl")
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1271632602]
+layout_mode = 2
+size_flags_vertical = 2
+text = "1er"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1313404375]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer2" unique_id=261394758]
+layout_mode = 2
+size_flags_vertical = 10
+texture = ExtResource("1_j6pvl")
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=1872228936]
+layout_mode = 2
+size_flags_vertical = 2
+text = "1er"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer" unique_id=665798928]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer3" unique_id=331429853]
+layout_mode = 2
+size_flags_vertical = 10
+texture = ExtResource("1_j6pvl")
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer3" unique_id=959028510]
+layout_mode = 2
+size_flags_vertical = 2
+text = "1er"
+horizontal_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer" unique_id=842637368]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer4" unique_id=394556553]
+layout_mode = 2
+size_flags_vertical = 10
+texture = ExtResource("1_j6pvl")
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer4" unique_id=189847599]
+layout_mode = 2
+size_flags_vertical = 2
+text = "1er"
+horizontal_alignment = 1

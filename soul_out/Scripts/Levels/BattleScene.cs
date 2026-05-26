@@ -3,9 +3,9 @@ using Godot;
 using Godot.Collections;
 using SoulOut.Scripts.Manager;
 
-namespace SoulOut.Scripts;
+namespace SoulOut.Scripts.Levels;
 
-public partial class BattleScene : Node2D
+public partial class BattleScene : SONodeScene
 {
 	[Export] public PlayerSpawner PlayerSpawner;
 	[Export] public BattleManager BattleManager;
@@ -37,7 +37,7 @@ public partial class BattleScene : Node2D
 	public async Task EndScene(Array<int> leaderboard)
 	{
 		await ToSignal(CreateTween().TweenInterval(2.0), Tween.SignalName.Finished);
-		EmitSignal(SignalName.OnEndScene);
+		EmitSignal(SONodeScene.SignalName.OnEndScene);
 		GD.Print("end scene:" + leaderboard);
 	}
 }

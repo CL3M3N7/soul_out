@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://ba3no4eidu26r"]
 
-[ext_resource type="Script" uid="uid://omtvlccj01j0" path="res://Scripts/BattleScene.cs" id="1_ktcge"]
+[ext_resource type="Script" uid="uid://omtvlccj01j0" path="res://Scripts/Levels/BattleScene.cs" id="1_ktcge"]
 [ext_resource type="Texture2D" uid="uid://eha6vvif87pu" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/freelavatileset-Sheet.png" id="2_c721m"]
 [ext_resource type="PackedScene" uid="uid://bod411rbkxvq6" path="res://scenes/characters/fighting_character.tscn" id="2_hvjjw"]
 [ext_resource type="Texture2D" uid="uid://d26t5vcylurhx" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Land on Lava Tile/spritesheet-lavaland.png" id="3_hvjjw"]
