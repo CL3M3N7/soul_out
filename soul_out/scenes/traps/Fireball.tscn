@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dj4unrjoxdx8k" path="res://assets/Fireballs by Weentermakesgames/FireballPixelart/PixelartFireBall-11.png" id="5_8t2og"]
 [ext_resource type="Texture2D" uid="uid://cvaiori03byqr" path="res://assets/Fireballs by Weentermakesgames/FireballPixelart/PixelartFireBall-12.png" id="6_v8f3y"]
 [ext_resource type="Script" uid="uid://r8o7ojaogscc" path="res://Scripts/Traps/Fireball.cs" id="7_xc8o3"]
+[ext_resource type="AudioStream" uid="uid://c5u8numttvew2" path="res://Sounds/Traps/FireballExplosionSound.mp3" id="8_fws2c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cjtpo"]
 animations = [{
@@ -51,3 +52,8 @@ frame_progress = 0.17330843
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1944486785]
 position = Vector2(23, 0)
 shape = SubResource("CircleShape2D_38oc7")
+
+[node name="SfxExplosion" type="AudioStreamPlayer2D" parent="." unique_id=60719132]
+stream = ExtResource("8_fws2c")
+volume_db = -10.0
+bus = &"SFX"

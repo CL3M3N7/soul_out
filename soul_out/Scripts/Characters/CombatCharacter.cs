@@ -23,6 +23,11 @@ public partial class CombatCharacter : SOCharacter
 	
 	private Area2D AttackArea;
 	private Tween _invincibilityTween; // Pour gérer le clignotement d'invincibilité
+	
+	// Audio 
+	private AudioStreamPlayer2D _sfxAttack;
+	private AudioStreamPlayer2D _sfxHurt;
+	private AudioStreamPlayer2D _sfxLava;
 
 	public override void _Ready()
 	{
@@ -30,6 +35,10 @@ public partial class CombatCharacter : SOCharacter
 		Health = MaxHealth;
 		AttackArea = GetNode<Area2D>("AttackArea");
 		AttackArea.SetDeferred("monitoring", false);
+		
+		_sfxAttack = GetNode<AudioStreamPlayer2D>("SfxAttack");
+		_sfxHurt = GetNode<AudioStreamPlayer2D>("SfxHurt");
+		_sfxLava = GetNode<AudioStreamPlayer2D>("SfxLava");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -73,6 +82,8 @@ public partial class CombatCharacter : SOCharacter
 			CharacterSprite.AnimationFinished += WakeUpCharacter;
 			StunCharacter();
 			
+			_sfxAttack?.Play();
+			
 			// TODO : Activer le mask de l'Area2D de ton épée ici 
 			AttackArea.SetDeferred("monitoring", true);
 			CharacterSprite.AnimationFinished += EndAttack;
@@ -113,12 +124,14 @@ public partial class CombatCharacter : SOCharacter
 
 		if (Health <= 0)
 		{
+			_sfxHurt?.Play();
 			Die();
 		}
 		else
 		{
 			if (attacker != null)
 			{
+				_sfxHurt?.Play();
 				ApplyKnockback(attacker.GlobalPosition);
 			}
 			
@@ -153,6 +166,8 @@ public partial class CombatCharacter : SOCharacter
 		{
 			GD.PrintErr("[CombatCharacter] Oubli : Glisse LavaSplash.tscn dans l'inspecteur du joueur !");
 		}
+		
+		_sfxLava?.Play();
 		
 		// Animation de chute
 		Tween tween = CreateTween();
@@ -228,6 +243,12 @@ public partial class CombatCharacter : SOCharacter
 		
 		// Désactiver ses collisions pour qu'il ne bloque pas les autres joueurs sur la map en étant invisible
 		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
+		if (HasNode("FeetArea"))
+		{
+			// Si la FeetArea possède son propre CollisionShape2D enfant :
+			GetNode<CollisionShape2D>("FeetArea/CollisionShape2D").SetDeferred("disabled", true);
+		}
+	
 	}
 	
 	private async void ApplyKnockback(Vector2 attackerPos)

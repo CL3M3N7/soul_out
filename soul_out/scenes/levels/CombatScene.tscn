@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cq78egfeukra8" path="res://scenes/ui/HeartHUD.tscn" id="14_tai2j"]
 [ext_resource type="PackedScene" uid="uid://duk02yhu1m4r" path="res://scenes/traps/LavaGeyser.tscn" id="16_8rtbp"]
 [ext_resource type="PackedScene" uid="uid://ds77ss8ck1mlj" path="res://scenes/traps/FireballSpawner.tscn" id="17_1s501"]
+[ext_resource type="AudioStream" uid="uid://ojbdurg5v576" path="res://Sounds/Main/DarkSYnthWave.mp3" id="18_xaxp2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5hu0i"]
 texture = ExtResource("1_xn2nv")
@@ -642,9 +643,10 @@ InitialDelay = 2.0
 position = Vector2(540, -9)
 InitialDelay = 2.0
 
-[node name="FireballSpawner" parent="Traps" unique_id=114667432 instance=ExtResource("17_1s501")]
+[node name="FireballSpawner4" parent="Traps" unique_id=114667432 instance=ExtResource("17_1s501")]
 position = Vector2(-100, -500)
 SpawnInterval = 2.5
+InitialDelay = 1.0
 
 [node name="FireballSpawner2" parent="Traps" unique_id=1457487152 instance=ExtResource("17_1s501")]
 position = Vector2(0, -500)
@@ -654,5 +656,10 @@ InitialDelay = 2.0
 position = Vector2(100, -500)
 SpawnInterval = 2.0
 InitialDelay = 1.0
+
+[node name="ThemeCombat" type="AudioStreamPlayer2D" parent="." unique_id=1318495991]
+stream = ExtResource("18_xaxp2")
+autoplay = true
+bus = &"Musique"
 
 [connection signal="area_entered" from="DangerZones/GlobalZoneLava" to="DangerZones/GlobalZoneLava" method="_on_area_entered"]
