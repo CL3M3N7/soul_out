@@ -3,9 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://ba3no4eidu26r" path="res://scenes/levels/CombatScene.tscn" id="1_g07n4"]
 [ext_resource type="Script" uid="uid://dunrrd878khlx" path="res://Scripts/Resource/ListScene.cs" id="1_trhq7"]
 [ext_resource type="PackedScene" uid="uid://xemp5twruot0" path="res://scenes/levels/level_test2.tscn" id="2_0gfkp"]
+[ext_resource type="PackedScene" uid="uid://d4fxks3pqk07v" path="res://scenes/levels/ScoringScene.tscn" id="2_inaoh"]
 
 [resource]
 script = ExtResource("1_trhq7")
 BattleScenes = Array[PackedScene]([ExtResource("1_g07n4")])
 TrialScenes = Array[PackedScene]([ExtResource("2_0gfkp")])
+ScoringScenes = Array[PackedScene]([ExtResource("2_inaoh")])
 metadata/_custom_type_script = "uid://dunrrd878khlx"

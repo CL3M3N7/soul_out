@@ -1,23 +1,27 @@
 [gd_scene format=3 uid="uid://pxchev8or7h8"]
 
-[node name="ScoreUi" type="Control" unique_id=1570707165]
-layout_mode = 3
+[ext_resource type="Script" uid="uid://83wv1cjrw5jc" path="res://Scripts/ui/ScoreUI.cs" id="1_by788"]
+[ext_resource type="Texture2D" uid="uid://bgoa1dp5mnpew" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_01.png" id="2_6fpn8"]
+[ext_resource type="Texture2D" uid="uid://c2xai165v7p3g" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_06.png" id="3_5rq2j"]
+[ext_resource type="Texture2D" uid="uid://b0gbxj3js3ixk" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_11.png" id="4_7ghjf"]
+[ext_resource type="Texture2D" uid="uid://bophi13uqkooc" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_16.png" id="5_68naq"]
+
+[node name="ScoreUi" type="VBoxContainer" unique_id=771313580]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_by788")
+Avatar0 = ExtResource("2_6fpn8")
+Avatar1 = ExtResource("3_5rq2j")
+Avatar2 = ExtResource("4_7ghjf")
+Avatar3 = ExtResource("5_68naq")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1685280792]
-layout_mode = 0
-offset_right = 309.0
-offset_bottom = 229.0
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=686514425]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=686514425]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=1643526437]
+[node name="Label" type="Label" parent="." unique_id=1643526437]
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1

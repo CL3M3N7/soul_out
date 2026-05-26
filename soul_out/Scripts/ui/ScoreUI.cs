@@ -10,7 +10,7 @@ public partial class ScoreUI : VBoxContainer
 	
 	public void SetAvatarAndScore(int avatar, int score)
 	{
-		TextureRect avatarTexture = GetChild(0);
+		if(!(GetChild(0) is TextureRect avatarTexture)) return;
 		if(avatar == 0)
 		{
 			avatarTexture.Texture = Avatar0;
@@ -32,6 +32,7 @@ public partial class ScoreUI : VBoxContainer
 			GD.PrintErr("This texture does not exist !");
 		}
 		
-		
+		if(!(GetChild(1) is Label scoreLabel)) return;
+		scoreLabel.Text = score.ToString();
 	}
 }

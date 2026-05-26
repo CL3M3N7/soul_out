@@ -13,6 +13,7 @@ public partial class SceneManager : Node
 
 	public Array<PackedScene> BattleScenes;
 	public Array<PackedScene> TrialScenes;
+	public Array<PackedScene> ScoringScenes;
 
 	public enum SceneType
 	{
@@ -57,6 +58,13 @@ public partial class SceneManager : Node
 			GD.PrintErr("[SceneManager] No trial scenes loaded.");
 			throw new ArgumentException("No trial scenes loaded.");
 		}
+		
+		ScoringScenes = listScene.ScoringScenes;
+		if (ScoringScenes.Count == 0)
+		{
+			GD.PrintErr("[SceneManager] No scoring scenes loaded.");
+			throw new ArgumentException("No scoring scenes loaded.");
+		}
 	}
 
 	public void StartGame()
@@ -90,6 +98,12 @@ public partial class SceneManager : Node
 		LoadScene(nextScene);
 	}
 
+	private void LoadScoringScene()
+	{
+		PackedScene nextScene = ScoringScenes.PickRandom();
+		LoadScene(nextScene);
+	}
+
 	public void ChangeScene()
 	{
 		_currentScene = FoundNextSceneType();
@@ -111,7 +125,7 @@ public partial class SceneManager : Node
 			case SceneType.TrialScene:
 				// Inutile d'afficher le score s'il s'agit du dernier mini-jeu
 				// TODO: implémenter scène de transition
-				// return GameManager.Instance.IsLastGame() ? SceneType.ResultScene : SceneType.ScoringScene;
+				//return GameManager.Instance.IsLastGame() ? SceneType.ResultScene : SceneType.ScoringScene;
 				return GameManager.Instance.IsLastGame() ? SceneType.ResultScene : SceneType.BattleScene;
 			case SceneType.ScoringScene:
 				return SceneType.BattleScene;
@@ -137,8 +151,10 @@ public partial class SceneManager : Node
 				LoadTrialScene();
 				break;
 			case SceneType.ScoringScene:
-				GD.PrintErr("[SceneManager] ScoringScene not implemented.");
-				throw new ArgumentException("ScoringScene not implemented.");
+				LoadScoringScene();
+				break;
+				//GD.PrintErr("[SceneManager] ScoringScene not implemented.");
+				//throw new ArgumentException("ScoringScene not implemented.");
 			default:
 				GD.PrintErr("[SceneManager] Unknown scene type.");
 				throw new ArgumentException("Unknown scene type.");
