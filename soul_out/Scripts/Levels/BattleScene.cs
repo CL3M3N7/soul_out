@@ -7,11 +7,14 @@ namespace SoulOut.Scripts.Levels;
 
 public partial class BattleScene : SONodeScene
 {
+	// Todo: mettre la logique du timer dans les scène jouables
 	[Export] public PlayerSpawner PlayerSpawner;
 	[Export] public BattleManager BattleManager;
+	[Export] public int DurationInSeconds = 30;
 	[Export] public Timer Timer;
+	[Export] public Label TimerLabel;
 
-	[Signal] public delegate void OnEndSceneEventHandler();
+	private int _remainingTimeInSeconds;
 	
 	private bool _battleEnded = false;
 	
@@ -20,8 +23,30 @@ public partial class BattleScene : SONodeScene
 		PlayerSpawner.OnSpawnPlayer += BattleManager.SubscribeToPlayer;
 		BattleManager.OnEndBattle += PostEndScene;
 		PlayerSpawner.SpawnPlayers();
-		Timer.Timeout += BattleManager.RegisterRemainingSurvivors;
+		_remainingTimeInSeconds = DurationInSeconds;
+		UpdateTimerLabel();
+		Timer.Timeout += OnTimeOutTimerSeconds;
 		Timer.Start();
+	}
+
+	public void OnTimeOutTimerSeconds()
+	{
+		_remainingTimeInSeconds--;
+		if (_remainingTimeInSeconds <= 0)
+		{
+			Timer.Timeout -= OnTimeOutTimerSeconds;
+			BattleManager.RegisterRemainingSurvivors();
+		}
+		else
+		{
+			UpdateTimerLabel();
+			Timer.Start();
+		}
+	}
+
+	private void UpdateTimerLabel()
+	{
+		TimerLabel.Text = $"{_remainingTimeInSeconds}";
 	}
 	
 	public void PostEndScene(Array<int> leaderboard)
@@ -30,7 +55,7 @@ public partial class BattleScene : SONodeScene
 			return;
 		
 		_battleEnded = true;
-		Timer.Timeout -= BattleManager.RegisterRemainingSurvivors;
+		Timer.Timeout -= OnTimeOutTimerSeconds;
 		_ = EndScene(leaderboard);
 	}
 
