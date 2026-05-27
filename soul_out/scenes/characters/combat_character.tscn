@@ -37,7 +37,7 @@ LavaSplashScene = ExtResource("3_fgi0f")
 InvincibilityDuration = 1.5
 
 [node name="AttackArea" type="Area2D" parent="." index="2" unique_id=793582141]
-position = Vector2(40, 0)
+position = Vector2(41, 0)
 script = ExtResource("3_v25p3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0" unique_id=1750406133]
