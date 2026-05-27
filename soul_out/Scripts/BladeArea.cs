@@ -10,7 +10,7 @@ public partial class BladeArea : Area2D
 		if (area.Name == "DamageArea" && area.GetParent() is SOFightingCharacter joueur)
 		{
 			GD.Print($"Le joueur {joueur.PlayerController} a été touché !");
-			joueur.TakeDamage(); // On appellera cette fonction juste après
+			joueur.TakeDamage(1, this); // On appellera cette fonction juste après
 		}
 	}
 }

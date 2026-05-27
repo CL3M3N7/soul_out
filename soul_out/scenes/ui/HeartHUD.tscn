@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cq78egfeukra8"]
 
-[ext_resource type="Texture2D" uid="uid://dd2yv4vh7jhoq" path="res://assets/All 16x16 Health Heart Sets/hearts-splits/16x16 Heart Health Red_r1_c1.png" id="1_a1fpw"]
+[ext_resource type="Texture2D" uid="uid://br3x4cmkr0dj2" path="res://assets/All 16x16 Health Heart Sets/hearts-splits/16x16 Heart Health Red_r1_c1.png" id="1_a1fpw"]
 [ext_resource type="Script" uid="uid://dygvft6swnnsu" path="res://Scripts/ui/HeartHUD.cs" id="1_q1qgj"]
-[ext_resource type="Texture2D" uid="uid://djcjgdt68e43p" path="res://assets/All 16x16 Health Heart Sets/hearts-splits/16x16 Heart Health Red_r1_c3.png" id="3_12x3g"]
+[ext_resource type="Texture2D" uid="uid://blmd6etuonr4c" path="res://assets/All 16x16 Health Heart Sets/hearts-splits/16x16 Heart Health Red_r1_c3.png" id="3_12x3g"]
 
 [node name="HeartHud" type="HBoxContainer" unique_id=1504669464]
 anchors_preset = 15

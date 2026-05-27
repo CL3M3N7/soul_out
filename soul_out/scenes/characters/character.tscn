@@ -3,9 +3,13 @@
 [ext_resource type="Script" uid="uid://dts2wq1iugdym" path="res://Scripts/Characters/SOCharacter.cs" id="1_e22cc"]
 [ext_resource type="Script" uid="uid://onvgfkgpbcyw" path="res://Scripts/Characters/CharacterSprite.cs" id="2_1bdar"]
 [ext_resource type="SpriteFrames" uid="uid://cxxiw47qj82rk" path="res://resources/sprite_frames/player/blue/blue_warrior.tres" id="3_2qjml"]
+[ext_resource type="SpriteFrames" uid="uid://cbg2oqct7m32v" path="res://resources/sprite_frames/player/blue/blue_pickaxe_pawn.tres" id="4_8gmw8"]
 [ext_resource type="SpriteFrames" uid="uid://dnohfyoa6imls" path="res://resources/sprite_frames/player/red/red_warrior.tres" id="4_ma1fs"]
 [ext_resource type="SpriteFrames" uid="uid://587yms8wvxsb" path="res://resources/sprite_frames/player/yellow/yellow_warrior.tres" id="5_yscb1"]
+[ext_resource type="SpriteFrames" uid="uid://l6i1l86en0f1" path="res://resources/sprite_frames/player/red/red_pickaxe_pawn.tres" id="6_3mlnx"]
 [ext_resource type="SpriteFrames" uid="uid://qbh75gu1cjhl" path="res://resources/sprite_frames/player/purple/purple_warrior.tres" id="6_ysl2u"]
+[ext_resource type="SpriteFrames" uid="uid://devgc38uxi0re" path="res://resources/sprite_frames/player/yellow/yellow_pickaxe_pawn.tres" id="8_tx3ek"]
+[ext_resource type="SpriteFrames" uid="uid://bdr6gduhcp06v" path="res://resources/sprite_frames/player/purple/purple_pickaxe_pawn.tres" id="10_6pson"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x31xa"]
 size = Vector2(40, 66)
@@ -23,6 +27,10 @@ animation = &"idle"
 autoplay = "idle"
 script = ExtResource("2_1bdar")
 BlueWarrior = ExtResource("3_2qjml")
+BluePawn = ExtResource("4_8gmw8")
 RedWarrior = ExtResource("4_ma1fs")
+RedPawn = ExtResource("6_3mlnx")
 YellowWarrior = ExtResource("5_yscb1")
+YellowPawn = ExtResource("8_tx3ek")
 PurpleWarrior = ExtResource("6_ysl2u")
+PurplePawn = ExtResource("10_6pson")

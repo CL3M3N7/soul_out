@@ -25,6 +25,7 @@ public partial class SceneManager : Node
 	public Array<PackedScene> BattleScenes;
 	public PackedScene JudgementScene;
 	public Array<PackedScene> TrialScenes;
+	public PackedScene ScoringScenes;
 	
 	private SceneType _currentScene = SceneType.BattleScene;
 
@@ -65,6 +66,13 @@ public partial class SceneManager : Node
 		{
 			GD.PrintErr("[SceneManager] No trial scenes loaded.");
 			throw new ArgumentException("No trial scenes loaded.");
+		} 
+		
+		ScoringScenes = listScene.ScoringScenes;
+		if (ScoringScenes == null)
+		{
+			GD.PrintErr("[SceneManager] No scoring scenes loaded.");
+			throw new ArgumentException("No scoring scenes loaded.");
 		}
 	}
 
@@ -112,6 +120,13 @@ public partial class SceneManager : Node
 		LoadScene(instantiatedScene);
 	}
 
+	private void LoadScoringScene()
+	{
+		PackedScene nextScene = ScoringScenes;
+		SONodeScene instantiatedScene = nextScene.Instantiate<SONodeScene>();
+		LoadScene(instantiatedScene);
+	}
+
 	public void ChangeScene()
 	{
 		_currentScene = FoundNextSceneType();
@@ -130,9 +145,7 @@ public partial class SceneManager : Node
 				return SceneType.TrialScene;
 			case SceneType.TrialScene:
 				// Inutile d'afficher le score s'il s'agit du dernier mini-jeu
-				// TODO: implémenter scène de transition
-				// return GameManager.Instance.IsLastGame() ? SceneType.ResultScene : SceneType.ScoringScene;
-				return GameManager.Instance.IsLastGame() ? SceneType.ResultScene : SceneType.BattleScene;
+				 return GameManager.Instance.IsLastGame() ? SceneType.ResultScene : SceneType.ScoringScene;
 			case SceneType.ScoringScene:
 				return SceneType.BattleScene;
 			default:
@@ -157,8 +170,8 @@ public partial class SceneManager : Node
 				LoadTrialScene();
 				break;
 			case SceneType.ScoringScene:
-				GD.PrintErr("[SceneManager] ScoringScene not implemented.");
-				throw new ArgumentException("ScoringScene not implemented.");
+				LoadScoringScene();
+				break;
 			default:
 				GD.PrintErr("[SceneManager] Unknown scene type.");
 				throw new ArgumentException("Unknown scene type.");

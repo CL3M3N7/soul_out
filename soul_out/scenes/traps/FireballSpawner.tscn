@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ds77ss8ck1mlj"]
+
+[ext_resource type="Script" uid="uid://batbk3sct0i5b" path="res://Scripts/Traps/FireballSpawner.cs" id="1_pll70"]
+[ext_resource type="PackedScene" uid="uid://bqhadgw8d5rex" path="res://scenes/traps/Fireball.tscn" id="2_6b4y1"]
+
+[node name="FireballSpawner" type="Node2D" unique_id=114667432]
+z_index = 3
+script = ExtResource("1_pll70")
+FireballScene = ExtResource("2_6b4y1")
+FireAngleDegrees = 90.0
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=830586927]
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1191188708]

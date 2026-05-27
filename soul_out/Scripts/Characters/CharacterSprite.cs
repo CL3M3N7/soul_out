@@ -28,7 +28,8 @@ public partial class CharacterSprite : AnimatedSprite2D
 	public override void _Ready()
 	{
 		int playerController = GetParent<SOCharacter>().PlayerController;
-		ChangeSprite(playerController,TypeCharacter.Warrior);
+		TypeCharacter typeCharacter = GetParent<SOCharacter>().TypeCharacter;
+		ChangeSprite(playerController,typeCharacter);
 	}
 	
 	public override void _Process(double delta)
@@ -51,6 +52,33 @@ public partial class CharacterSprite : AnimatedSprite2D
 			case (3, TypeCharacter.Warrior):
 				this.SpriteFrames = PurpleWarrior;
 				break;
+			
+			case (0, TypeCharacter.Archer):
+				this.SpriteFrames = BlueArcher;
+				break;
+			case (1, TypeCharacter.Archer):
+				this.SpriteFrames = RedArcher;
+				break;
+			case (2, TypeCharacter.Archer):
+				this.SpriteFrames = YellowArcher;
+				break;
+			case (3, TypeCharacter.Archer):
+				this.SpriteFrames = PurpleArcher;
+				break;
+			
+			case (0, TypeCharacter.Pawn):
+				this.SpriteFrames = BluePawn;
+				break;
+			case (1, TypeCharacter.Pawn):
+				this.SpriteFrames = RedPawn;
+				break;
+			case (2, TypeCharacter.Pawn):
+				this.SpriteFrames = YellowPawn;
+				break;
+			case (3, TypeCharacter.Pawn):
+				this.SpriteFrames = PurplePawn;
+				break;
+			
 			default:
 				break;
 		}
