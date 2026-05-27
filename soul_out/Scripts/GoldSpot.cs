@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class GoldSpot : Node
+public partial class GoldSpot : Node2D
 {
 	public int GoldValue;
 	private Random valueGenerator = new Random();
@@ -35,6 +35,6 @@ public partial class GoldSpot : Node
 	}
 	public void Collected()
 	{
-		
+		QueueFree();
 	}
 }

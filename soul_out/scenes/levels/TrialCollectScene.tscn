@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cika6n581ngt8" path="res://Scripts/Manager/TrialCollectManager.cs" id="1_2nkv5"]
 [ext_resource type="Texture2D" uid="uid://eha6vvif87pu" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/freelavatileset-Sheet.png" id="1_fcqqe"]
+[ext_resource type="PackedScene" uid="uid://c40fuiqqheims" path="res://scenes/GoldSpot.tscn" id="2_2nkv5"]
 [ext_resource type="Texture2D" uid="uid://d26t5vcylurhx" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Land on Lava Tile/spritesheet-lavaland.png" id="2_cgvje"]
 [ext_resource type="Texture2D" uid="uid://dv0loen2sshrt" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 1/spritesheet-lavarock1.png" id="3_2nkv5"]
+[ext_resource type="PackedScene" uid="uid://d1ehcxp505kyn" path="res://scenes/characters/collect_character.tscn" id="3_y7f16"]
 [ext_resource type="Texture2D" uid="uid://df7fix6o0hcjp" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 2/spritesheet-lavarock2.png" id="4_y7f16"]
 [ext_resource type="Texture2D" uid="uid://bgoa1dp5mnpew" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_01.png" id="5_sjd57"]
 [ext_resource type="Texture2D" uid="uid://c2xai165v7p3g" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_06.png" id="6_cyfcu"]
@@ -445,8 +447,11 @@ texture = ExtResource("1_fcqqe")
 [sub_resource type="TileSet" id="TileSet_6gaw7"]
 sources/0 = SubResource("TileSetAtlasSource_akm3d")
 
-[node name="TrialCollectScene" type="Node2D" unique_id=1587010820]
+[node name="TrialCollectScene" type="Node2D" unique_id=1587010820 node_paths=PackedStringArray("_currentTimer")]
 script = ExtResource("1_2nkv5")
+GoldScene = ExtResource("2_2nkv5")
+_currentTimer = NodePath("Timer")
+PlayerScene = ExtResource("3_y7f16")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1718872139]
 zoom = Vector2(0.75, 0.75)
@@ -528,14 +533,18 @@ position = Vector2(-300, 200)
 position = Vector2(300, 200)
 
 [node name="Timer" type="Timer" parent="." unique_id=995036625]
+wait_time = 60.0
+one_shot = true
+autostart = true
 
-[node name="RemainingTime" parent="." unique_id=1887735079 instance=ExtResource("10_akm3d")]
+[node name="RemainingTime" parent="." unique_id=1887735079 node_paths=PackedStringArray("_mainTime") instance=ExtResource("10_akm3d")]
 z_index = 10
 offset_left = -38.0
 offset_top = -432.0
 offset_right = 38.0
 offset_bottom = -387.0
 text = "Time"
+_mainTime = NodePath("../Timer")
 
 [node name="Interface" type="CanvasLayer" parent="." unique_id=1507918370]
 offset = Vector2(-580, -280)
@@ -555,3 +564,11 @@ grow_vertical = 2
 theme_override_constants/h_separation = 950
 theme_override_constants/v_separation = 440
 columns = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=884616382]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1783348530]
+polygon = PackedVector2Array(-768, -448, -768, 447, -360, 448, -360, 319, -398, 318, -398, 286, -432, 288, -432, 253, -460, 255, -461, 224, -493, 224, -493, 193, -529, 191, -528, 160, -528, 160, -555, 160, -556, 129, -584, 131, -584, -99, -550, -102, -550, -132, -517, -134, -515, -168, -484, -168, -485, -199, -455, -200, -453, -234, -423, -234, -423, -267, -390, -267, -390, -291, -360, -292, -359, -323, 353, -323, 353, -448)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1179496390]
+polygon = PackedVector2Array(-361, 350, -360, 448, 768, 448, 768, -448, 353, -448, 356, -293, 390, -288, 392, -262, 422, -257, 423, -232, 452, -226, 456, -201, 484, -192, 488, -167, 515, -161, 521, -136, 548, -129, 552, -102, 582, -97, 586, 128, 550, 129, 550, 162, 518, 161, 519, 191, 487, 191, 486, 224, 455, 224, 453, 254, 422, 255, 422, 288, 390, 288, 389, 320, 356, 320, 356, 351)

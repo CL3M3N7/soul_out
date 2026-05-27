@@ -6,8 +6,8 @@ public partial class CollectCharacter : SOCharacter
 	// --- SIGNAUX POUR L'UI ET LE MANAGER ---
 	[Signal] public delegate void GoldChangedEventHandler(int newGold);
 
-	// --- VARIABLES DE COMBAT ---	
 	public int Gold { get; private set; } = 0;
+	public bool IsStunned { get; private set; } = false;
 	
 	public Vector2 SpawnPosition; // Rempli par le MapManager
 	
@@ -22,13 +22,17 @@ public partial class CollectCharacter : SOCharacter
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if(IsStunned) return;
+		base._PhysicsProcess(delta);
 		Vector2 temp = GetNode<Area2D>("CollectArea").GetPosition();
 		GetNode<Area2D>("CollectArea")
 			.SetPosition(new(CharacterSprite.IsFlippedH() ? -Math.Abs(temp.X) : Math.Abs(temp.X), 0));
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
-	{		
+	{
+		if(IsStunned) return;
+		base._UnhandledInput(@event);
 		// Ajout du '$' crucial pour l'interpolation de la variable PlayerController !
 		if (@event.IsActionPressed($"SOActionButton0_{PlayerController}"))
 		{
@@ -36,15 +40,20 @@ public partial class CollectCharacter : SOCharacter
 		}
 	}
 	
+	public void StunCharacter()
+	{
+		IsStunned = true;
+		Velocity = Vector2.Zero;
+	}
+	
 	public void Collect()
 	{
 		if (CharacterSprite != null)
 		{
-			//CharacterSprite.Play("attack");
-			//CharacterSprite.AnimationFinished += WakeUpCharacter;
-			//StunCharacter();
+			CharacterSprite.Play("collect");
+			CharacterSprite.AnimationFinished += WakeUpCharacter;
+			StunCharacter();
 			
-			// TODO : Activer le mask de l'Area2D de ton épée ici 
 			CollectArea.SetDeferred("monitoring", true);
 			CharacterSprite.AnimationFinished += EndCollect;
 		}
@@ -54,19 +63,20 @@ public partial class CollectCharacter : SOCharacter
 		}
 	}
 	
+	public void WakeUpCharacter()
+	{
+		IsStunned = false;
+		CharacterSprite.AnimationFinished -= WakeUpCharacter;
+	}
+	
 	public void EndCollect()
 	{
 		CollectArea.SetDeferred("monitoring", false);
 		CharacterSprite.AnimationFinished -= EndCollect;
 	}
-
-	public void WakeUpCharacter()
-	{
-		CharacterSprite.AnimationFinished -= WakeUpCharacter;
-	}
 	
-	public void GetGold(int NewGoldAmount)
+	public void CollectGold(int NewGoldAmount)
 	{
-		
+		Gold += NewGoldAmount;
 	}
 }
