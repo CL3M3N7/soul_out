@@ -4,8 +4,8 @@ using SoulOut.Scripts.Manager;
 
 public partial class TrialCollectManager : Node2D
 {
-	[Export]
-	public PackedScene GoldScene { get; set; }
+	[Export] public PackedScene GoldScene { get; set; }
+	[Export] public PackedScene GoldHUDScene;
 
 	// Configuration du temps (modifiables dans l'inspecteur)
 	[Export] private Timer _currentTimer;
@@ -27,7 +27,7 @@ public partial class TrialCollectManager : Node2D
 		{
 			_currentTimer = GetNode<Timer>("Timer");
 		}
-		_currentTimer.WaitTime = 90.0f;
+		_currentTimer.WaitTime = 60.0f;
 		_currentTimer.OneShot = true;
 		
 		if(SceneManager.Instance != null)
@@ -154,6 +154,11 @@ public partial class TrialCollectManager : Node2D
 			AddChild(newPlayer);
 			
 			GD.Print($"+++ Joueur {i} créé avec succès ! +++");
+			
+			GoldHUD playerHUD = GoldHUDScene.Instantiate<GoldHUD>();
+			hudContainer.AddChild(playerHUD);
+			
+			newPlayer.GoldChanged += playerHUD.OnPlayerGoldChanged;
 		}
 	}
 

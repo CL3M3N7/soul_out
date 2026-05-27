@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dhc5xr0sj2ena"]
+
+[ext_resource type="Script" uid="uid://cetxs265tqnh5" path="res://Scripts/ui/GoldHUD.cs" id="1_q1ldw"]
+
+[node name="GoldHud" type="Label" unique_id=894938135]
+script = ExtResource("1_q1ldw")

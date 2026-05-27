@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c40fuiqqheims" path="res://scenes/GoldSpot.tscn" id="2_2nkv5"]
 [ext_resource type="Texture2D" uid="uid://d26t5vcylurhx" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Land on Lava Tile/spritesheet-lavaland.png" id="2_cgvje"]
 [ext_resource type="Texture2D" uid="uid://dv0loen2sshrt" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 1/spritesheet-lavarock1.png" id="3_2nkv5"]
+[ext_resource type="PackedScene" uid="uid://dhc5xr0sj2ena" path="res://scenes/ui/GoldHUD.tscn" id="3_sjd57"]
 [ext_resource type="PackedScene" uid="uid://d1ehcxp505kyn" path="res://scenes/characters/collect_character.tscn" id="3_y7f16"]
 [ext_resource type="Texture2D" uid="uid://df7fix6o0hcjp" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 2/spritesheet-lavarock2.png" id="4_y7f16"]
 [ext_resource type="Texture2D" uid="uid://bgoa1dp5mnpew" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_01.png" id="5_sjd57"]
@@ -450,6 +451,7 @@ sources/0 = SubResource("TileSetAtlasSource_akm3d")
 [node name="TrialCollectScene" type="Node2D" unique_id=1587010820 node_paths=PackedStringArray("_currentTimer")]
 script = ExtResource("1_2nkv5")
 GoldScene = ExtResource("2_2nkv5")
+GoldHUDScene = ExtResource("3_sjd57")
 _currentTimer = NodePath("Timer")
 PlayerScene = ExtResource("3_y7f16")
 
@@ -533,9 +535,6 @@ position = Vector2(-300, 200)
 position = Vector2(300, 200)
 
 [node name="Timer" type="Timer" parent="." unique_id=995036625]
-wait_time = 60.0
-one_shot = true
-autostart = true
 
 [node name="RemainingTime" parent="." unique_id=1887735079 node_paths=PackedStringArray("_mainTime") instance=ExtResource("10_akm3d")]
 z_index = 10
@@ -552,18 +551,22 @@ transform = Transform2D(1, 0, 0, 1, -580, -280)
 follow_viewport_enabled = true
 
 [node name="GamerHUDs" type="GridContainer" parent="Interface" unique_id=1489287957]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -97.0
-offset_top = -2.0
-offset_right = 101.0
-offset_bottom = -2.0
+z_index = 10
+anchors_preset = -1
+anchor_left = -0.665
+anchor_top = -0.692
+anchor_right = 0.667
+anchor_bottom = 0.697
+offset_left = 91.0
+offset_top = 123.0
+offset_right = -93.0
+offset_bottom = -127.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 950
 theme_override_constants/v_separation = 440
 columns = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=884616382]
 

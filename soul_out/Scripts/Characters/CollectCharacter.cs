@@ -78,5 +78,6 @@ public partial class CollectCharacter : SOCharacter
 	public void CollectGold(int NewGoldAmount)
 	{
 		Gold += NewGoldAmount;
+		EmitSignal(SignalName.GoldChanged, Gold);
 	}
 }

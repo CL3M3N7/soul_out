@@ -33,8 +33,4 @@ public partial class GoldSpot : Node2D
 			}
 		}
 	}
-	public void Collected()
-	{
-		QueueFree();
-	}
 }
