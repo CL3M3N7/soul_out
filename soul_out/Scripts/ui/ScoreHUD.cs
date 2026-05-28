@@ -8,10 +8,11 @@ public partial class ScoreHUD : HBoxContainer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		for(int i = 0; i < 4; i++)
+		int[] scores = GameManager.Instance.GetAllPlayerScore();
+		for(int i = 0; i < scores.Length; i++)
 		{
 			ScoreUI playerScore = ScoreUiScene.Instantiate<ScoreUI>();
-			playerScore.SetAvatarAndScore(i, 0);
+			playerScore.SetAvatarAndScore(i, scores[i]);
 			AddChild(playerScore);
 		}
 		GD.Print("Sort de la boucle");
