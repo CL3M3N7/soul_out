@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://d4fxks3pqk07v"]
 
+[ext_resource type="Script" uid="uid://b03s5ktg33rhv" path="res://Scripts/Levels/ScoringScene.cs" id="1_5eot1"]
 [ext_resource type="Script" uid="uid://xmf24y436ui1" path="res://Scripts/ui/ScoreHUD.cs" id="1_jsilc"]
 [ext_resource type="PackedScene" uid="uid://pxchev8or7h8" path="res://scenes/ui/ScoreUI.tscn" id="2_t17pi"]
 
 [node name="ScoringScene" type="Node2D" unique_id=401253247]
+script = ExtResource("1_5eot1")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1713922566]
 anchors_preset = 8

@@ -178,9 +178,10 @@ public partial class SOFightingCharacter : SOCharacter
 		
 		if (Health > 0)
 		{
+			Position = SpawnPosition;
 			Scale = Vector2.One;
 			Rotation = 0;
-			IsStunned = false; 
+			IsStunned = false;
 			
 			BecomeTemporarilyInvincible(2.0f);
 		}

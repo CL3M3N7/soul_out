@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://tt773ogrei2k"]
 
 [ext_resource type="Script" uid="uid://dtc4ajg3v0sat" path="res://Scripts/Levels/JudgementScene.cs" id="1_hdtxl"]
-[ext_resource type="Texture2D" uid="uid://diiiy0sqe60r6" path="res://icon.svg" id="1_j6pvl"]
+[ext_resource type="Texture2D" uid="uid://bgoa1dp5mnpew" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_01.png" id="2_4tsfh"]
+[ext_resource type="Texture2D" uid="uid://c2xai165v7p3g" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_06.png" id="3_hhhv2"]
+[ext_resource type="Texture2D" uid="uid://b0gbxj3js3ixk" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_11.png" id="4_m4gvw"]
+[ext_resource type="Texture2D" uid="uid://bophi13uqkooc" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_16.png" id="5_oi6iv"]
 
 [node name="JudgementScene" type="Node2D" unique_id=1324247037 node_paths=PackedStringArray("firstPlayerLabel", "secondPlayerLabel", "thirdPlayerLabel", "fourthPlayerLabel")]
 script = ExtResource("1_hdtxl")
@@ -15,7 +18,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 50
+theme_override_constants/separation = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=2140006207]
 layout_mode = 2
@@ -24,7 +27,7 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer" unique_id=1663713949]
 layout_mode = 2
 size_flags_vertical = 10
-texture = ExtResource("1_j6pvl")
+texture = ExtResource("2_4tsfh")
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1271632602]
 layout_mode = 2
@@ -39,7 +42,7 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer2" unique_id=261394758]
 layout_mode = 2
 size_flags_vertical = 10
-texture = ExtResource("1_j6pvl")
+texture = ExtResource("3_hhhv2")
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=1872228936]
 layout_mode = 2
@@ -54,7 +57,7 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer3" unique_id=331429853]
 layout_mode = 2
 size_flags_vertical = 10
-texture = ExtResource("1_j6pvl")
+texture = ExtResource("4_m4gvw")
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer3" unique_id=959028510]
 layout_mode = 2
@@ -69,7 +72,7 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer4" unique_id=394556553]
 layout_mode = 2
 size_flags_vertical = 10
-texture = ExtResource("1_j6pvl")
+texture = ExtResource("5_oi6iv")
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer4" unique_id=189847599]
 layout_mode = 2

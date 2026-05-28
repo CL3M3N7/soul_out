@@ -116,8 +116,12 @@ public partial class SceneManager : Node
 	private void LoadTrialScene()
 	{
 		PackedScene nextScene = TrialScenes.PickRandom();
-		SONodeScene instantiatedScene = nextScene.Instantiate<SONodeScene>();
+		TrialScene instantiatedScene = nextScene.Instantiate<TrialScene>();
 		LoadScene(instantiatedScene);
+		Callable.From(() => {
+			instantiatedScene.OnEndTrial += GameManager.Instance.AddScoreWithLeaderboard;
+		}).CallDeferred();
+		
 	}
 
 	private void LoadScoringScene()

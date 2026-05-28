@@ -1,8 +1,14 @@
-using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Godot;
+using Godot.Collections;
+using SoulOut.Scripts.Characters;
 using SoulOut.Scripts.Manager;
 
-public partial class TrialCollectManager : Node2D
+namespace SoulOut.Scripts.Levels;
+
+public partial class TrialCollectManager : TrialScene
 {
 	[Export] public PackedScene GoldScene { get; set; }
 	[Export] public PackedScene GoldHUDScene;
@@ -27,12 +33,12 @@ public partial class TrialCollectManager : Node2D
 		{
 			_currentTimer = GetNode<Timer>("Timer");
 		}
-		_currentTimer.WaitTime = 60.0f;
+		_currentTimer.WaitTime = 30.0f;
 		_currentTimer.OneShot = true;
 		
 		if(SceneManager.Instance != null)
 		{
-			_currentTimer.Timeout += SceneManager.Instance.ChangeScene;
+			_currentTimer.Timeout += EndScene;
 			_currentTimer.Start();
 			RemainingTime label = GetNode<RemainingTime>("RemainingTime");
 			label.Start();
@@ -67,7 +73,7 @@ public partial class TrialCollectManager : Node2D
 
 		GoldSpot newSpot = GoldScene.Instantiate<GoldSpot>();
 
-		 newSpot.Position = new Vector2((float)_random.NextDouble() * 600 - 300,(float)_random.NextDouble() * 400 - 200);
+		newSpot.Position = new Vector2((float)_random.NextDouble() * 600 - 300,(float)_random.NextDouble() * 400 - 200);
 
 		// Ajout du spot à la scène principale
 		AddChild(newSpot);
@@ -137,9 +143,8 @@ public partial class TrialCollectManager : Node2D
 
 			GD.Print($"-> Instanciation du joueur {i}...");
 			Node rawPlayer = PlayerScene.Instantiate();
-			CollectCharacter newPlayer = rawPlayer as CollectCharacter;
-			
-			if (newPlayer == null)
+
+			if (rawPlayer is not CollectCharacter newPlayer)
 			{
 				GD.PrintErr($"ERREUR FATALE : La scène instanciée n'a pas de script 'CollectCharacter' à sa racine ! Elle a un script {rawPlayer.GetType()}.");
 				continue;
@@ -160,6 +165,19 @@ public partial class TrialCollectManager : Node2D
 			
 			newPlayer.GoldChanged += playerHUD.OnPlayerGoldChanged;
 		}
+	}
+
+	public void EndScene()
+	{
+		var leaderboardIds = GetChildren()
+			.OfType<CollectCharacter>()
+			.OrderByDescending(c => c.Gold)
+			.Select(c => c.PlayerController);
+		
+		Array<int> leaderboard = [.. leaderboardIds];
+		
+		EmitSignal(SignalName.OnEndTrial, leaderboard);
+		EmitSignal(SONodeScene.SignalName.OnEndScene);
 	}
 
 }

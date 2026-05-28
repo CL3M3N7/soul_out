@@ -31,6 +31,9 @@ public partial class BattleScene : SONodeScene
 
 	public void OnTimeOutTimerSeconds()
 	{
+		if (_battleEnded)
+			return;
+		
 		_remainingTimeInSeconds--;
 		if (_remainingTimeInSeconds <= 0)
 		{
@@ -55,7 +58,6 @@ public partial class BattleScene : SONodeScene
 			return;
 		
 		_battleEnded = true;
-		Timer.Timeout -= OnTimeOutTimerSeconds;
 		_ = EndScene(leaderboard);
 	}
 

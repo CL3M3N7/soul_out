@@ -1,5 +1,7 @@
-using Godot;
 using System;
+using Godot;
+
+namespace SoulOut.Scripts.Characters;
 
 public partial class CollectCharacter : SOCharacter
 {
@@ -33,7 +35,8 @@ public partial class CollectCharacter : SOCharacter
 	{
 		if(IsStunned) return;
 		base._UnhandledInput(@event);
-		// Ajout du '$' crucial pour l'interpolation de la variable PlayerController !
+		
+		
 		if (@event.IsActionPressed($"SOActionButton0_{PlayerController}"))
 		{
 			Collect();

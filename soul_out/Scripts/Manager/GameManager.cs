@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Godot.Collections;
 
 namespace SoulOut.Scripts.Manager;
 
@@ -54,5 +55,21 @@ public partial class GameManager : Node
     {
         _currentRound++;
         EmitSignal(nameof(ChangeRoundEventHandler), _currentRound);
+    }
+
+    public void AddScoreWithLeaderboard(Array<int> leaderboard)
+    {
+        GD.Print("call AddScoreWithLeaderboard");
+        switch (NumberOfPlayers)
+        {
+            case 4:
+                AddPlayerScore(leaderboard[0], 5);
+                AddPlayerScore(leaderboard[1], 3);
+                AddPlayerScore(leaderboard[2], 2);
+                break;
+            default:
+                GD.PrintErr($"[GameManager] AddScoreWithLeaderboard with {NumberOfPlayers} players not implemented.");
+                throw new ArgumentException($"AddScoreWithLeaderboard with {NumberOfPlayers} players not implemented.");
+        }
     }
 }

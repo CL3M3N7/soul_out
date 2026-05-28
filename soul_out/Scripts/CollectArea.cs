@@ -8,7 +8,7 @@ public partial class CollectArea : Area2D
 		// On vérifie si l'Area qui touche s'appelle bien "GoldArea"
 		if (area.Name == "GoldArea" && area.GetParent() is GoldSpot spot)
 		{
-			GetParentOrNull<CollectCharacter>().CollectGold(spot.GoldValue);
+			GetParentOrNull<SoulOut.Scripts.Characters.CollectCharacter>().CollectGold(spot.GoldValue);
 			spot.QueueFree();
 		}
 	}
