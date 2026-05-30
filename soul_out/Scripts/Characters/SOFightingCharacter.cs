@@ -21,6 +21,21 @@ public partial class SOFightingCharacter : SOCharacter
 	public bool IsKnockedBack { get; private set; } = false;
 	public bool IsInvincible { get; private set; } = false;
 	
+	// --- VARIABLES DE CAPACITES ---
+	public bool IsShielding { get; private set; } = false;
+	public bool IsDashing { get; private set; } = false;
+	private bool _canDash = true; // Pour le temps de recharge
+	
+	private CpuParticles2D _dashParticles;
+	
+	[ExportGroup("Dash Settings")]
+	[Export] public float DashSpeed = 1000f; // Vitesse de la ruée
+	[Export] public float DashDuration = 0.2f; // Durée de la ruée
+	[Export] public float DashCooldown = 1.0f; // Temps d'attente avant de pouvoir re-dash
+
+	[ExportGroup("Shield Settings")]
+	[Export] public float ShieldKnockbackForce = 350f;
+	
 	private Area2D AttackArea;
 	private Tween _invincibilityTween; // Pour gérer le clignotement d'invincibilité
 	
@@ -36,6 +51,8 @@ public partial class SOFightingCharacter : SOCharacter
 		AttackArea = GetNode<Area2D>("AttackArea");
 		AttackArea.SetDeferred("monitoring", false);
 		
+		_dashParticles = GetNode<CpuParticles2D>("DashParticles");
+		
 		_sfxAttack = GetNode<AudioStreamPlayer2D>("SfxAttack");
 		_sfxHurt = GetNode<AudioStreamPlayer2D>("SfxHurt");
 		_sfxLava = GetNode<AudioStreamPlayer2D>("SfxLava");
@@ -43,6 +60,7 @@ public partial class SOFightingCharacter : SOCharacter
 
 	public override void _PhysicsProcess(double delta)
 	{
+		
 		if (IsDead) return;
 		
 		if (IsKnockedBack)
@@ -53,18 +71,32 @@ public partial class SOFightingCharacter : SOCharacter
 			return; // On arrête la fonction ici pour bloquer les déplacements normaux du joueur !
 		}
 		
+		if (IsDashing)
+		{
+			GD.Print("Vitesse appliquée pendant le dash : ", Velocity);
+			MoveAndSlide(); // Maintient la vélocité définie au début du dash
+			return;
+		}
+		
 		if (IsStunned) return;
+		
+		if (IsShielding)
+		{
+			Velocity = Vector2.Zero; 
+			MoveAndSlide();
+			return;
+		}
 		
 		base._PhysicsProcess(delta);
 
-        Vector2 temp = GetNode<Area2D>("AttackArea").GetPosition();
-        GetNode<Area2D>("AttackArea")
-            .SetPosition(new(CharacterSprite.IsFlippedH() ? -Math.Abs(temp.X) : Math.Abs(temp.X), 0));
-    }
+		Vector2 temp = GetNode<Area2D>("AttackArea").GetPosition();
+		GetNode<Area2D>("AttackArea")
+			.SetPosition(new(CharacterSprite.IsFlippedH() ? -Math.Abs(temp.X) : Math.Abs(temp.X), 0));
+	}
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if (IsDead || IsStunned) return; // On bloque les inputs si le joueur est mort/tombe
+		if (IsDead || IsStunned || IsDashing || IsKnockedBack) return; // On bloque les inputs si le joueur est mort/tombe
 		base._UnhandledInput(@event);
 		
 		// Ajout du '$' crucial pour l'interpolation de la variable PlayerController !
@@ -72,6 +104,92 @@ public partial class SOFightingCharacter : SOCharacter
 		{
 			Attack();
 		}
+		
+		if (@event.IsActionPressed($"SOActionButton1_{PlayerController}") && !IsDashing)
+		{
+			IsShielding = true;
+			if (CharacterSprite != null)
+			{
+				CharacterSprite.Play("defend");
+			
+				//_sfxDefend?.Play();
+			}
+			else
+			{
+				GD.PrintErr("[CombatCharacter] No animated sprite attached!");
+			}
+		}
+		
+		if (@event.IsActionReleased($"SOActionButton1_{PlayerController}"))
+		{
+			IsShielding = false;
+			if (CharacterSprite != null)
+			{
+				CharacterSprite.Play("idle");
+			}
+		}
+		
+		// --- DASH (Action 2) ---
+		if (@event.IsActionPressed($"SOActionButton3_{PlayerController}"))
+		{
+			Dash();
+		}
+	}
+	
+	// --- NOUVELLE FONCTION : DASH MULTIDIRECTIONNEL ---
+	private async void Dash()
+	{
+		GD.Print("Bouton Dash pressé !");
+		if (!_canDash || IsShielding || IsDashing) return;
+
+		_canDash = false;
+		IsDashing = true;
+	
+		// 1. On lit la direction du joystick du joueur (REMPLACE PAR TES VRAIS NOMS D'INPUT)
+		// On ajoute l'interpolation $"{PlayerController}" si tes inputs sont séparés par joueur (ex: "move_left_0")
+		Vector2 inputDirection = Input.GetVector(
+			$"SOMoveLeft_{PlayerController}", 
+			$"SOMoveRight_{PlayerController}", 
+			$"SOMoveUp_{PlayerController}", 
+			$"SOMoveDown_{PlayerController}"
+		);
+	
+		Vector2 dashDirection;
+
+		// 2. Si le joueur incline le joystick, on dash dans cette direction
+		if (inputDirection != Vector2.Zero)
+		{
+			dashDirection = inputDirection.Normalized(); 
+			GD.Print("Bouton pressé validé !");
+		}
+		else
+		{
+			// 3. Fallback : S'il lâche le joystick (neutre), il dash droit devant lui par défaut
+			dashDirection = CharacterSprite.IsFlippedH() ? Vector2.Left : Vector2.Right;
+		}
+		
+		if (_dashParticles != null)
+		{
+			_dashParticles.Emitting = true;
+		}
+	
+		// Applique la grosse vitesse dans la direction choisie
+		Velocity = dashDirection * DashSpeed;
+	
+		// Optionnel : Ajouter un petit son ou un effet visuel ici
+
+		// 1. On attend la fin de la ruée
+		await ToSignal(GetTree().CreateTimer(DashDuration), SceneTreeTimer.SignalName.Timeout);
+		IsDashing = false;
+		
+		if (_dashParticles != null)
+		{
+			_dashParticles.Emitting = false;
+		}
+
+		// 2. On lance le temps de recharge (Cooldown)
+		await ToSignal(GetTree().CreateTimer(DashCooldown), SceneTreeTimer.SignalName.Timeout);
+		_canDash = true; // Le joueur peut dash à nouveau !
 	}
 	
 	public void Attack()
@@ -94,6 +212,7 @@ public partial class SOFightingCharacter : SOCharacter
 		}
 	}
 	
+	
 	public void EndAttack()
 	{
 		AttackArea.SetDeferred("monitoring", false);
@@ -115,6 +234,29 @@ public partial class SOFightingCharacter : SOCharacter
 	public void TakeDamage(int amount = 1, Node2D attacker = null)
 	{
 		if (IsDead || IsInvincible) return;
+
+		// --- GESTION DU BOUCLIER DIRECTIONNEL ---
+		if (IsShielding && attacker != null)
+		{
+			// 1. On calcule le vecteur de l'attaquant vers le joueur
+			// Si la valeur X est positive, l'attaquant est à droite. Si elle est négative, il est à gauche.
+			float directionToAttackerX = attacker.GlobalPosition.X - GlobalPosition.X;
+		
+			bool attackerIsOnRight = directionToAttackerX > 0;
+			bool playerIsFacingRight = !CharacterSprite.IsFlippedH(); // FlippedH = vrai signifie qu'il regarde à gauche
+
+			// 2. On vérifie si le joueur regarde dans la direction de l'attaquant
+			bool isBlockingCorrectly = (attackerIsOnRight && playerIsFacingRight) || (!attackerIsOnRight && !playerIsFacingRight);
+
+			if (isBlockingCorrectly)
+			{
+				// Le blocage est réussi ! Recul léger et pas de dégâts.
+				ApplyKnockback(attacker.GlobalPosition, ShieldKnockbackForce);
+				// Optionnel : _sfxShieldBlock?.Play();
+				return; 
+			}
+			// Si 'isBlockingCorrectly' est faux, le code continue et le joueur prend cher !
+		}
 		
 		Health = Mathf.Clamp(Health - amount, 0, _maxHealth);
 		
@@ -130,7 +272,7 @@ public partial class SOFightingCharacter : SOCharacter
 			if (attacker != null)
 			{
 				_sfxHurt?.Play();
-				ApplyKnockback(attacker.GlobalPosition);
+				ApplyKnockback(attacker.GlobalPosition, 800f);
 			}
 			
 			BecomeTemporarilyInvincible(InvincibilityDuration);
@@ -174,6 +316,7 @@ public partial class SOFightingCharacter : SOCharacter
 		
 		IsStunned = false;
 		
+		IsShielding = false;
 		TakeDamage(); 
 		
 		if (Health > 0)
@@ -246,7 +389,7 @@ public partial class SOFightingCharacter : SOCharacter
 	
 	}
 	
-	private async void ApplyKnockback(Vector2 attackerPos)
+	private async void ApplyKnockback(Vector2 attackerPos, float force)
 	{
 		IsKnockedBack = true;
 
@@ -254,10 +397,11 @@ public partial class SOFightingCharacter : SOCharacter
 		Vector2 direction = (GlobalPosition - attackerPos).Normalized();
 		
 		// 2. On applique une forte impulsion 
-		Velocity = direction * 800f; 
+		Velocity = direction * force; 
 
 		// 3. Petite vibration pour celui qui se prend le coup (moteur faible)
-		Input.StartJoyVibration(PlayerController, 0.6f, 0.0f, 0.15f);
+		float vibrationIntensity = (force > 500f) ? 0.6f : 0.2f;
+		Input.StartJoyVibration(PlayerController, vibrationIntensity, 0.0f, 0.15f);
 
 		// 4. On attend 0.2 secondes (le temps de glisser en arrière)
 		await ToSignal(GetTree().CreateTimer(0.2f), SceneTreeTimer.SignalName.Timeout);

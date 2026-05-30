@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://48qnc5bgim74" path="res://assets/Tiny Swords (Free Pack)/Units/Yellow Units/Warrior/Warrior_Idle.png" id="1_i0pfj"]
 [ext_resource type="Texture2D" uid="uid://cga4e7eyb2xo" path="res://assets/Tiny Swords (Free Pack)/Units/Yellow Units/Warrior/Warrior_Attack1.png" id="1_ia2ew"]
+[ext_resource type="Texture2D" uid="uid://dfhf1h0bm1pl7" path="res://assets/Tiny Swords (Free Pack)/Units/Yellow Units/Warrior/Warrior_Guard.png" id="2_a8t2k"]
 [ext_resource type="Texture2D" uid="uid://b7vtpgqy8fa5b" path="res://assets/Tiny Swords (Free Pack)/Units/Yellow Units/Warrior/Warrior_Run.png" id="2_ia2ew"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ixe8i"]
@@ -19,6 +20,30 @@ region = Rect2(384, 0, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4dnkk"]
 atlas = ExtResource("1_ia2ew")
 region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwurm"]
+atlas = ExtResource("2_a8t2k")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77gc8"]
+atlas = ExtResource("2_a8t2k")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38tub"]
+atlas = ExtResource("2_a8t2k")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fytb"]
+atlas = ExtResource("2_a8t2k")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyaaf"]
+atlas = ExtResource("2_a8t2k")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e6nj"]
+atlas = ExtResource("2_a8t2k")
+region = Rect2(960, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ysrgk"]
 atlas = ExtResource("1_i0pfj")
@@ -93,6 +118,29 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwurm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77gc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38tub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fytb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyaaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e6nj")
+}],
+"loop": true,
+"name": &"defend",
 "speed": 10.0
 }, {
 "frames": [{
