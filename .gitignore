@@ -21,6 +21,7 @@ obj/
 *.so
 *.dylib
 *.out
+*.dll
 
 # Exécutables finaux (à ne pas push, sauf si désiré)
 *.exe

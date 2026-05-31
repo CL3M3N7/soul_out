@@ -6,20 +6,14 @@ using Godot.Collections;
 
 namespace SoulOut.Scripts.Manager;
 
-[GlobalClass]
-public partial class BattleManager : Node
+public partial class BattleManager(int numberOfPlayers) : Node
 {
 	[Signal] public delegate void OnEndBattleEventHandler(Array<int> leaderboard);
 
 	public List<int> Leaderboard = new();
 	private System.Collections.Generic.Dictionary<int,SOFightingCharacter> _characters = new();
-	private int _remainingPlayer;
-
-	public override void _Ready()
-	{
-		_remainingPlayer = GameManager.Instance.NumberOfPlayers;
-	}
-
+	private int _remainingPlayer = numberOfPlayers;
+	
 	public void SubscribeToPlayer(SOCharacter character)
 	{
 		if (character is SOFightingCharacter fighter)

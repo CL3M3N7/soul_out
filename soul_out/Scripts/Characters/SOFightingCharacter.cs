@@ -13,8 +13,6 @@ public partial class SOFightingCharacter : SOCharacter
 	
 	[Export] public PackedScene LavaSplashScene;
 	[Export] public float InvincibilityDuration = 1.5f;
-	
-	public Vector2 SpawnPosition; // Rempli par le MapManager
 
 	public bool IsStunned { get; private set; } = false;
 	public bool IsDead { get; private set; } = false;

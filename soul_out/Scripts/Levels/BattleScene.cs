@@ -1,70 +1,48 @@
-using System.Threading.Tasks;
+using System;
 using Godot;
-using Godot.Collections;
 using SoulOut.Scripts.Manager;
 
 namespace SoulOut.Scripts.Levels;
 
-public partial class BattleScene : SONodeScene
+public partial class BattleScene : GameplayScene
 {
-	// Todo: mettre la logique du timer dans les scène jouables
-	[Export] public PlayerSpawner PlayerSpawner;
-	[Export] public BattleManager BattleManager;
-	[Export] public int DurationInSeconds = 30;
-	[Export] public Timer Timer;
-	[Export] public Label TimerLabel;
+	public BattleManager BattleManager;
 
-	private int _remainingTimeInSeconds;
-	
-	private bool _battleEnded = false;
-	
 	public override void _Ready()
 	{
+		base._Ready();
+		
+		BattleManager = new BattleManager(GameManager.Instance.NumberOfPlayers);
+		
 		PlayerSpawner.OnSpawnPlayer += BattleManager.SubscribeToPlayer;
+		PlayerSpawner.OnSpawnPlayer += SetHUD;
 		BattleManager.OnEndBattle += PostEndScene;
-		PlayerSpawner.SpawnPlayers();
-		_remainingTimeInSeconds = DurationInSeconds;
-		UpdateTimerLabel();
-		Timer.Timeout += OnTimeOutTimerSeconds;
-		Timer.Start();
+		OnTimeOut += BattleManager.RegisterRemainingSurvivors;
 	}
 
-	public void OnTimeOutTimerSeconds()
+	public override void SetHUD(SOCharacter character)
 	{
-		if (_battleEnded)
-			return;
-		
-		_remainingTimeInSeconds--;
-		if (_remainingTimeInSeconds <= 0)
+		HeartHUD playerHUD = HUDScene.Instantiate<HeartHUD>();
+		HUDContainer.AddChild(playerHUD);
+		switch (character.PlayerController)
 		{
-			Timer.Timeout -= OnTimeOutTimerSeconds;
-			BattleManager.RegisterRemainingSurvivors();
+			case 0:
+				playerHUD.Modulate = Colors.Blue;
+				break;
+			case 1:
+				playerHUD.Modulate = Colors.Red;
+				break;
+			case 2:
+				playerHUD.Modulate = Colors.Gold;
+				break;
+			case 3:
+				playerHUD.Modulate = Colors.Purple;
+				break;
+			default:
+				throw new ArgumentOutOfRangeException();
 		}
-		else
-		{
-			UpdateTimerLabel();
-			Timer.Start();
-		}
-	}
 
-	private void UpdateTimerLabel()
-	{
-		TimerLabel.Text = $"{_remainingTimeInSeconds}";
-	}
-	
-	public void PostEndScene(Array<int> leaderboard)
-	{
-		if (_battleEnded)
-			return;
-		
-		_battleEnded = true;
-		_ = EndScene(leaderboard);
-	}
-
-	public async Task EndScene(Array<int> leaderboard)
-	{
-		await ToSignal(CreateTween().TweenInterval(2.0), Tween.SignalName.Finished);
-		EmitSignal(SONodeScene.SignalName.OnEndScene);
-		GD.Print("end scene:" + leaderboard);
+		if (character is SOFightingCharacter fighter)
+			fighter.HealthChanged += playerHUD.OnPlayerHealthChanged;
 	}
 }

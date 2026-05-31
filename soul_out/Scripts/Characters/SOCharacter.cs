@@ -10,6 +10,8 @@ public partial class SOCharacter : CharacterBody2D
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 	public AnimatedSprite2D CharacterSprite = null;
+	
+	public Vector2 SpawnPosition = Vector2.Zero;
 
 	public override void _Ready()
 	{
