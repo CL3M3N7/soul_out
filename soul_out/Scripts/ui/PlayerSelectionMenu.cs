@@ -95,11 +95,8 @@ public partial class PlayerSelectionMenu : Control
 			GD.Print("[JOIN] Assez de joueurs ! Activation du bouton Start.");
 			_startButton.Disabled = false;
 			
-			if (playerIndex == 0) 
-			{
-				GD.Print("[JOIN] Focus donné au bouton Start pour le Joueur 1.");
-				_startButton.GrabFocus();
-			}
+			GD.Print("[JOIN] Focus forcé sur le bouton Start.");
+			_startButton.GrabFocus();
 		}
 	}
 
