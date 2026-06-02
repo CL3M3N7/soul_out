@@ -16,6 +16,8 @@ public partial class TrialCollectScene : TrialScene
 	[Export] public float IntervalleMin { get; set; } = 0.5f;        // Minimum de secondes entre deux apparitions
 	[Export] public float IntervalleMax { get; set; } = 2.0f;        // Maximum de secondes entre deux apparitions
 
+	public TrialCollectManager TrialCollectManager = new TrialCollectManager();
+	
 	private Timer _spawnTimer;
 	private Random _random = new Random();
 
@@ -24,11 +26,15 @@ public partial class TrialCollectScene : TrialScene
 		base._Ready();
 		
 		PlayerSpawner.OnSpawnPlayer += SetHUD;
+		PlayerSpawner.OnSpawnPlayer += TrialCollectManager.SubscribeToPlayer;
 		
 		_spawnTimer = new Timer();
 		_spawnTimer.OneShot = true; // On gère le côté aléatoire à chaque fin de cycle
 		_spawnTimer.Timeout += OnSpawnTimerTimeout;
 		AddChild(_spawnTimer);
+
+		TrialCollectManager.OnEndTrial += PostEndScene;
+		OnTimeOut += TrialCollectManager.SubmitEndBattle;
 		
 		ChooseTimeNextSpawn();
 	}
