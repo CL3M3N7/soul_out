@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://djsn21y0cgheg"]
+
+[ext_resource type="PackedScene" uid="uid://dgeqox0yuf4ef" path="res://scenes/characters/character.tscn" id="1_y51ki"]
+[ext_resource type="Script" uid="uid://cn8vnd5v8lgjo" path="res://Scripts/Characters/SpellCastCharacter.cs" id="2_4qttu"]
+[ext_resource type="SpriteFrames" uid="uid://craruaird70cs" path="res://resources/sprite_frames/spellcastlightning.tres" id="3_od26a"]
+
+[node name="Character" unique_id=251562452 node_paths=PackedStringArray("_spellsprite") instance=ExtResource("1_y51ki")]
+script = ExtResource("2_4qttu")
+_spellsprite = NodePath("SpellSprite")
+TypeCharacter = 3
+
+[node name="SpellSprite" type="AnimatedSprite2D" parent="." index="2" unique_id=2043968229]
+sprite_frames = ExtResource("3_od26a")
+animation = &"main"
+frame_progress = 0.038487732

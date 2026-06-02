@@ -2,7 +2,8 @@ namespace SoulOut.Scripts.Core;
 
 public enum TypeCharacter
 {
-        Warrior,
-        Archer,
-        Pawn,
+		Warrior,
+		Archer,
+		Pawn,
+		Monk,
 }
