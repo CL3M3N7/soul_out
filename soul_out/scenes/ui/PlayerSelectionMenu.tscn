@@ -1,0 +1,202 @@
+[gd_scene format=3 uid="uid://bcfarrgxegwdx"]
+
+[ext_resource type="Texture2D" uid="uid://bgoa1dp5mnpew" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_01.png" id="1_wt8je"]
+[ext_resource type="Script" uid="uid://cwi2b5txooeby" path="res://Scripts/ui/PlayerSelectionMenu.cs" id="1_xwnrh"]
+[ext_resource type="Texture2D" uid="uid://c2xai165v7p3g" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_06.png" id="2_xwnrh"]
+[ext_resource type="Texture2D" uid="uid://b0gbxj3js3ixk" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_11.png" id="3_o83ep"]
+[ext_resource type="Texture2D" uid="uid://bophi13uqkooc" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_16.png" id="4_0mwj0"]
+
+[node name="PlayerSelectionMenu" type="Control" unique_id=1628107703]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xwnrh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=417917404]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 11
+alignment = 1
+
+[node name="PlayerPanel0" type="Control" parent="HBoxContainer" unique_id=976197086]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot" type="Panel" parent="HBoxContainer/PlayerPanel0" unique_id=1765558071]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatusLabel" type="Label" parent="HBoxContainer/PlayerPanel0/Slot" unique_id=1550070196]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.75
+offset_top = -24.5
+offset_right = 82.75
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Appuyez sur Attaque pour rejoindre"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="PlayerSprite" type="TextureRect" parent="HBoxContainer/PlayerPanel0/Slot" unique_id=699570548]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wt8je")
+
+[node name="PlayerPanel1" type="Control" parent="HBoxContainer" unique_id=1680370849]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot" type="Panel" parent="HBoxContainer/PlayerPanel1" unique_id=917599966]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatusLabel" type="Label" parent="HBoxContainer/PlayerPanel1/Slot" unique_id=355590241]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.75
+offset_top = -24.5
+offset_right = 82.75
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Appuyez sur Attaque pour rejoindre"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="PlayerSprite" type="TextureRect" parent="HBoxContainer/PlayerPanel1/Slot" unique_id=1394818631]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xwnrh")
+
+[node name="PlayerPanel2" type="Control" parent="HBoxContainer" unique_id=678623244]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot" type="Panel" parent="HBoxContainer/PlayerPanel2" unique_id=1473186044]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatusLabel" type="Label" parent="HBoxContainer/PlayerPanel2/Slot" unique_id=697096455]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.75
+offset_top = -24.5
+offset_right = 82.75
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Appuyez sur Attaque pour rejoindre"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="PlayerSprite" type="TextureRect" parent="HBoxContainer/PlayerPanel2/Slot" unique_id=310724817]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_o83ep")
+
+[node name="PlayerPanel3" type="Control" parent="HBoxContainer" unique_id=1914760179]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot" type="Panel" parent="HBoxContainer/PlayerPanel3" unique_id=2117743899]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatusLabel" type="Label" parent="HBoxContainer/PlayerPanel3/Slot" unique_id=605732561]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.75
+offset_top = -24.5
+offset_right = 82.75
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Appuyez sur Attaque pour rejoindre"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="PlayerSprite" type="TextureRect" parent="HBoxContainer/PlayerPanel3/Slot" unique_id=1260493601]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0mwj0")
+
+[node name="StartButton" type="Button" parent="." unique_id=1965882854]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -148.5
+offset_top = -90.0
+offset_right = 148.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "START GAME"

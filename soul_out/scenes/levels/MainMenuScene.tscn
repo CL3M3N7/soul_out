@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://u0mqhmvdpqwt"]
+
+[ext_resource type="PackedScene" uid="uid://b15xll2dklnff" path="res://scenes/levels/MenuScene.tscn" id="1_k85ky"]
+[ext_resource type="PackedScene" uid="uid://bcfarrgxegwdx" path="res://scenes/ui/PlayerSelectionMenu.tscn" id="2_a2074"]
+
+[node name="MainMenuScene" type="Control" unique_id=507485014]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuScene" parent="." unique_id=662636925 node_paths=PackedStringArray("_mainMenuPanel", "_playerSelectionPanel") instance=ExtResource("1_k85ky")]
+layout_mode = 1
+_mainMenuPanel = NodePath(".")
+_playerSelectionPanel = NodePath("../PlayerSelectionMenu")
+
+[node name="PlayerSelectionMenu" parent="." unique_id=1628107703 instance=ExtResource("2_a2074")]
+visible = false
+layout_mode = 1
