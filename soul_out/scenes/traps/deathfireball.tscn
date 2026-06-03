@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cjwyq40yrmrtp"]
+
+[ext_resource type="PackedScene" uid="uid://bqhadgw8d5rex" path="res://scenes/traps/Fireball.tscn" id="1_n4p2w"]
+[ext_resource type="Texture2D" uid="uid://mxywydgvcw3f" path="res://assets/Fireballs by Weentermakesgames/FireballPixelart/PixelartFireBall-19.png" id="2_jbc6t"]
+[ext_resource type="Texture2D" uid="uid://ge7bt6d1230b" path="res://assets/Fireballs by Weentermakesgames/FireballPixelart/PixelartFireBall-20.png" id="3_x6s2a"]
+[ext_resource type="Texture2D" uid="uid://b1eu57m2hugr8" path="res://assets/Fireballs by Weentermakesgames/FireballPixelart/PixelartFireBall-21.png" id="4_50ryi"]
+[ext_resource type="Texture2D" uid="uid://bgn5tdvs6578w" path="res://assets/Fireballs by Weentermakesgames/FireballPixelart/PixelartFireBall-22.png" id="5_1ssuq"]
+[ext_resource type="Texture2D" uid="uid://r628vv2e07vy" path="res://assets/Fireballs by Weentermakesgames/FireballPixelart/PixelartFireBall-23.png" id="6_rdpiy"]
+[ext_resource type="Texture2D" uid="uid://dhqxd70bmmib1" path="res://assets/Fireballs by Weentermakesgames/FireballPixelart/PixelartFireBall-24.png" id="7_kld1m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bme2u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jbc6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x6s2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_50ryi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1ssuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rdpiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kld1m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Fireball" unique_id=1384823664 instance=ExtResource("1_n4p2w")]
+Speed = 100.0
+Damage = 3
+Lifetime = 45.0
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1836081520]
+visible = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." index="3" unique_id=48676504]
+sprite_frames = SubResource("SpriteFrames_bme2u")
