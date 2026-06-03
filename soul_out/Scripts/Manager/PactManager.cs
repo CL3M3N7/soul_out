@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using Godot.Collections;
+using SoulOut.Scripts.Characters.Modifiers;
+using SoulOut.Scripts.Core;
 
 namespace SoulOut.Scripts.Manager;
 
@@ -33,4 +35,31 @@ public partial class PactManager : Node
     {
         return BattleLeaderboard;
     }
+
+    public int GetPlayerWithBuff()
+    {
+        return BattleLeaderboard.First();
+    }
+
+    public int GetPlayerWithNerf()
+    {
+        return BattleLeaderboard.Last();
+    }
+    
+    public void AddBuff(SOCharacter character, TypeBuff buff)
+    {
+        character.ParticlesBuff.Emitting = true;
+        if (buff == TypeBuff.None) return;
+        Modifier buffNode = buff.CreateInstance();
+        if (buffNode != null) character.AddChild(buffNode);
+    }
+    
+    public void AddNerf(SOCharacter character, TypeNerf nerf)
+    {
+        character.ParticlesNerf.Emitting = true;
+        if (nerf == TypeNerf.None) return;
+        Modifier nerfNode = nerf.CreateInstance();
+        if (nerfNode != null) character.AddChild(nerfNode);
+    }
+
 }

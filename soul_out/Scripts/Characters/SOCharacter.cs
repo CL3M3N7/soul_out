@@ -3,11 +3,14 @@ using SoulOut.Scripts.Core;
 
 public partial class SOCharacter : CharacterBody2D
 {
-	[ExportGroup("SOCharacter Parameter")]
+	[ExportCategory("SOCharacter Parameter")]
 	[Export] public int PlayerController { get; set; } = 0;
 	[Export] public TypeCharacter TypeCharacter = TypeCharacter.Warrior;
 
-	public const float Speed = 300.0f;
+	[Export] public GpuParticles2D ParticlesBuff;
+	[Export] public GpuParticles2D ParticlesNerf;
+
+	public float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 	public AnimatedSprite2D CharacterSprite = null;
 	

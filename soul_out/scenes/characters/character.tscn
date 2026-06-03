@@ -3,20 +3,97 @@
 [ext_resource type="Script" uid="uid://dts2wq1iugdym" path="res://Scripts/Characters/SOCharacter.cs" id="1_e22cc"]
 [ext_resource type="Script" uid="uid://onvgfkgpbcyw" path="res://Scripts/Characters/CharacterSprite.cs" id="2_1bdar"]
 [ext_resource type="SpriteFrames" uid="uid://cxxiw47qj82rk" path="res://resources/sprite_frames/player/blue/blue_warrior.tres" id="3_2qjml"]
-[ext_resource type="SpriteFrames" uid="uid://cbg2oqct7m32v" path="res://resources/sprite_frames/player/blue/blue_pickaxe_pawn.tres" id="4_8gmw8"]
+[ext_resource type="SpriteFrames" uid="uid://be7a0wiqc5bp8" path="res://resources/sprite_frames/player/blue/blue_pickaxe_pawn.tres" id="4_8gmw8"]
 [ext_resource type="SpriteFrames" uid="uid://dnohfyoa6imls" path="res://resources/sprite_frames/player/red/red_warrior.tres" id="4_ma1fs"]
 [ext_resource type="SpriteFrames" uid="uid://587yms8wvxsb" path="res://resources/sprite_frames/player/yellow/yellow_warrior.tres" id="5_yscb1"]
-[ext_resource type="SpriteFrames" uid="uid://l6i1l86en0f1" path="res://resources/sprite_frames/player/red/red_pickaxe_pawn.tres" id="6_3mlnx"]
+[ext_resource type="SpriteFrames" uid="uid://bp2x5f6yj0mdq" path="res://resources/sprite_frames/player/red/red_pickaxe_pawn.tres" id="6_3mlnx"]
 [ext_resource type="SpriteFrames" uid="uid://qbh75gu1cjhl" path="res://resources/sprite_frames/player/purple/purple_warrior.tres" id="6_ysl2u"]
-[ext_resource type="SpriteFrames" uid="uid://devgc38uxi0re" path="res://resources/sprite_frames/player/yellow/yellow_pickaxe_pawn.tres" id="8_tx3ek"]
-[ext_resource type="SpriteFrames" uid="uid://bdr6gduhcp06v" path="res://resources/sprite_frames/player/purple/purple_pickaxe_pawn.tres" id="10_6pson"]
+[ext_resource type="SpriteFrames" uid="uid://c1ddwfa68tec0" path="res://resources/sprite_frames/player/yellow/yellow_pickaxe_pawn.tres" id="8_tx3ek"]
+[ext_resource type="SpriteFrames" uid="uid://7g63qbu7qu2f" path="res://resources/sprite_frames/player/purple/purple_pickaxe_pawn.tres" id="10_6pson"]
+[ext_resource type="Texture2D" uid="uid://drsvdnqtf60v0" path="res://assets/kenney_particle-pack/PNG (Transparent)/star_06.png" id="11_3mlnx"]
+[ext_resource type="Texture2D" uid="uid://b53lvv3y6q60e" path="res://assets/kenney_particle-pack/PNG (Transparent)/slash_01.png" id="12_tx3ek"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x31xa"]
 size = Vector2(40, 66)
 
-[node name="Character" type="CharacterBody2D" unique_id=251562452]
+[sub_resource type="Curve" id="Curve_437sl"]
+_data = [Vector2(0, 0.88103163), 0.0, 0.0, 0, 0, Vector2(0.27165353, 1), 0.0, 0.0, 0, 0, Vector2(0.7677165, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_1j4ge"]
+curve = SubResource("Curve_437sl")
+
+[sub_resource type="Curve" id="Curve_ohwx5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_437sl"]
+curve = SubResource("Curve_ohwx5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1j4ge"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(22, 20, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 25.0
+angular_velocity_min = -200.00002
+angular_velocity_max = 199.99998
+gravity = Vector3(0, 0, 0)
+scale_min = 0.02
+scale_max = 0.08
+scale_curve = SubResource("CurveTexture_437sl")
+color = Color(0, 1, 0, 1)
+alpha_curve = SubResource("CurveTexture_1j4ge")
+hue_variation_min = -0.20000002
+hue_variation_max = 0.19999997
+
+[sub_resource type="Curve" id="Curve_hm0uo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16535433, 1), 0.0, 0.0, 0, 0, Vector2(0.36220473, 1), 0.0, 0.0, 0, 0, Vector2(0.79527557, 0), 0.0, 0.0, 0, 0, Vector2(0.95275587, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_6mn2q"]
+curve = SubResource("Curve_hm0uo")
+
+[sub_resource type="Curve" id="Curve_tx3ek"]
+_data = [Vector2(0, 0.4), 0.0, 0.0, 0, 0, Vector2(1, 0.4), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_6pson"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_yh3tp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ohwx5"]
+curve_x = SubResource("Curve_tx3ek")
+curve_y = SubResource("Curve_6pson")
+curve_z = SubResource("Curve_yh3tp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8gmw8"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(25, 20, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.02
+scale_max = 0.08
+scale_curve = SubResource("CurveXYZTexture_ohwx5")
+color = Color(0.7176471, 0, 0.77254903, 1)
+alpha_curve = SubResource("CurveTexture_6mn2q")
+
+[node name="Character" type="CharacterBody2D" unique_id=251562452 node_paths=PackedStringArray("ParticlesBuff", "ParticlesNerf")]
 motion_mode = 1
 script = ExtResource("1_e22cc")
+ParticlesBuff = NodePath("ParticleBuff")
+ParticlesNerf = NodePath("ParticleNerf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1770202590]
 shape = SubResource("RectangleShape2D_x31xa")
@@ -34,3 +111,24 @@ YellowWarrior = ExtResource("5_yscb1")
 YellowPawn = ExtResource("8_tx3ek")
 PurpleWarrior = ExtResource("6_ysl2u")
 PurplePawn = ExtResource("10_6pson")
+
+[node name="ParticleBuff" type="GPUParticles2D" parent="." unique_id=1791068453]
+position = Vector2(0, 21)
+emitting = false
+amount = 20
+texture = ExtResource("11_3mlnx")
+lifetime = 3.0
+randomness = 1.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_1j4ge")
+
+[node name="ParticleNerf" type="GPUParticles2D" parent="." unique_id=925229923]
+position = Vector2(0, -10)
+emitting = false
+amount = 30
+texture = ExtResource("12_tx3ek")
+lifetime = 2.0
+explosiveness = 0.24
+randomness = 1.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_8gmw8")

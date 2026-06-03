@@ -139,9 +139,9 @@ public partial class SceneManager : Node
 		PackedScene nextScene = TrialScenes.PickRandom();
 		TrialScene instantiatedScene = nextScene.Instantiate<TrialScene>();
 		LoadScene(instantiatedScene);
-		Callable.From(() => {
-			instantiatedScene.OnEndTrial += GameManager.Instance.AddScoreWithLeaderboard;
-		}).CallDeferred();
+		instantiatedScene.OnAddBuff += PactManager.Instance.AddBuff;
+		instantiatedScene.OnAddNerf += PactManager.Instance.AddNerf;
+		instantiatedScene.OnEndTrial += GameManager.Instance.AddScoreWithLeaderboard;
 		
 	}
 

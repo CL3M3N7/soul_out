@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using Godot.Collections;
@@ -25,7 +24,6 @@ public partial class TrialCollectScene : TrialScene
 	{
 		base._Ready();
 		
-		PlayerSpawner.OnSpawnPlayer += SetHUD;
 		PlayerSpawner.OnSpawnPlayer += TrialCollectManager.SubscribeToPlayer;
 		
 		_spawnTimer = new Timer();
@@ -71,13 +69,6 @@ public partial class TrialCollectScene : TrialScene
 
 		// Ajout du spot à la scène principale
 		AddChild(newSpot);
-	}
-
-	private void OnDurationTimerTimeout()
-	{
-		GD.Print("Le temps est écoulé ! Le spawner s'arrête.");
-		_spawnTimer.Stop();
-		SceneManager.Instance.ChangeScene();
 	}
 
 	public void EndScene()

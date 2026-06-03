@@ -451,6 +451,8 @@ sources/0 = SubResource("TileSetAtlasSource_akm3d")
 [node name="TrialCollectScene" type="Node2D" unique_id=1587010820 node_paths=PackedStringArray("SpawnPoints", "PlayersNode", "TimerLabel", "HUDContainer")]
 script = ExtResource("1_m404y")
 GoldScene = ExtResource("2_2nkv5")
+Buff = 1
+Nerf = 1
 PlayerScene = ExtResource("3_y7f16")
 SpawnPoints = NodePath("SpawnPoints")
 PlayersNode = NodePath("PlayerNode")
