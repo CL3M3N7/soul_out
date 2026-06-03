@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c25owlhlnpp0c"]
+
+[ext_resource type="Script" uid="uid://r8o7ojaogscc" path="res://Scripts/Traps/Fireball.cs" id="1_nvcgu"]
+[ext_resource type="Texture2D" uid="uid://xy7mu0oistv2" path="res://assets/Fireballs by Weentermakesgames/FireballPixelart/PixelartFireBall-1.png" id="2_nvcgu"]
+[ext_resource type="Texture2D" uid="uid://by8cqn3uvrecn" path="res://assets/Fireballs by Weentermakesgames/FireballPixelart/PixelartFireBall-2.png" id="3_nphmh"]
+[ext_resource type="Texture2D" uid="uid://3lffjoeb7gmm" path="res://assets/Fireballs by Weentermakesgames/FireballPixelart/PixelartFireBall-3.png" id="4_3m2eb"]
+[ext_resource type="Texture2D" uid="uid://calagfj1gw3mg" path="res://assets/Fireballs by Weentermakesgames/FireballPixelart/PixelartFireBall-4.png" id="5_rstl6"]
+[ext_resource type="Texture2D" uid="uid://biocrlucgbkxx" path="res://assets/Fireballs by Weentermakesgames/FireballPixelart/PixelartFireBall-5.png" id="6_6gj8n"]
+[ext_resource type="Texture2D" uid="uid://b4xg1e43rvr52" path="res://assets/Fireballs by Weentermakesgames/FireballPixelart/PixelartFireBall-6.png" id="7_j5mrg"]
+[ext_resource type="AudioStream" uid="uid://c5u8numttvew2" path="res://Sounds/Traps/FireballExplosionSound.mp3" id="8_hmjbn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cjtpo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nvcgu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nphmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3m2eb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rstl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6gj8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j5mrg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_38oc7"]
+radius = 13.0
+
+[node name="Fireball" type="Area2D" unique_id=1384823664]
+z_index = 3
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_nvcgu")
+Speed = 700.0
+Lifetime = 15.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1836081520]
+sprite_frames = SubResource("SpriteFrames_cjtpo")
+autoplay = "default"
+frame = 1
+frame_progress = 0.4482784
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1944486785]
+position = Vector2(23, 0)
+shape = SubResource("CircleShape2D_38oc7")
+
+[node name="SfxExplosion" type="AudioStreamPlayer2D" parent="." unique_id=60719132]
+stream = ExtResource("8_hmjbn")
+volume_db = -10.0
+bus = &"SFX"

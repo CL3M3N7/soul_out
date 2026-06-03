@@ -8,7 +8,10 @@ public partial class PlayerSelectionMenu : Control
 	
 	private Control[] _slots = new Control[4];
 	private Label[] _statusLabels = new Label[4];
-	private TextureRect[] _playerSprites = new TextureRect[4]; 
+	private Label[] _numberPlayerLabels = new Label[4];
+	private TextureRect[] _playerSprites = new TextureRect[4];
+	private Panel[] _colorOverridePanels = new Panel[4];
+	private AnimatedSprite2D[] _playerCharacters = new AnimatedSprite2D[4];
 	
 	private bool[] _playerJoined = new bool[4];
 
@@ -36,17 +39,9 @@ public partial class PlayerSelectionMenu : Control
 
 			_statusLabels[i] = _slots[i].GetNode<Label>("StatusLabel");
 			_playerSprites[i] = _slots[i].GetNode<TextureRect>("PlayerSprite");
-			
-			if (_playerSprites[i] != null)
-			{
-				GD.Print($"[SELECTION] Tentative de cacher le sprite du Joueur {i+1}...");
-				_playerSprites[i].Hide(); 
-				GD.Print($"[SELECTION] Sprite du Joueur {i+1} est-il visible ? -> {_playerSprites[i].Visible}");
-			}
-			else
-			{
-				GD.PrintErr($"[SELECTION] ERREUR: PlayerSprite introuvable dans le slot {i} !");
-			}
+			_numberPlayerLabels[i] = _slots[i].GetNode<Label>("NumberPlayer");
+			_colorOverridePanels[i] = _slots[i].GetNode<Panel>("ColorOverride");
+			_playerCharacters[i] = _slots[i].GetNode<AnimatedSprite2D>("PlayerCharacter");
 
 			_playerJoined[i] = false;
 		}
@@ -82,13 +77,24 @@ public partial class PlayerSelectionMenu : Control
 		
 		_playerJoined[playerIndex] = true;
 		GameManager.Instance.NumberOfPlayers += 1;
-		GD.Print($"[JOIN] Nombre total de joueurs enregistrés : {GameManager.Instance.NumberOfPlayers}");
 
 		if (_statusLabels[playerIndex] != null)
 			_statusLabels[playerIndex].Text = $"Joueur {playerIndex + 1}\nPrêt !";
 			
 		if (_playerSprites[playerIndex] != null)
 			_playerSprites[playerIndex].Show();
+		
+		if (_numberPlayerLabels[playerIndex] != null)
+			_numberPlayerLabels[playerIndex].Show();
+		
+		if (_colorOverridePanels[playerIndex] != null)
+			_colorOverridePanels[playerIndex].Show();
+			
+		if (_playerCharacters[playerIndex] != null)
+		{
+			_playerCharacters[playerIndex].Show();
+			_playerCharacters[playerIndex].Play("idle");
+		}
 		
 		if (GameManager.Instance.NumberOfPlayers >= 2) 
 		{

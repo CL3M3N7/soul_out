@@ -2,9 +2,59 @@
 
 [ext_resource type="Texture2D" uid="uid://bgoa1dp5mnpew" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_01.png" id="1_wt8je"]
 [ext_resource type="Script" uid="uid://cwi2b5txooeby" path="res://Scripts/ui/PlayerSelectionMenu.cs" id="1_xwnrh"]
+[ext_resource type="Texture2D" uid="uid://1304q00njwkh" path="res://assets/UI/gradient-rouge.jpg" id="2_o83ep"]
 [ext_resource type="Texture2D" uid="uid://c2xai165v7p3g" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_06.png" id="2_xwnrh"]
+[ext_resource type="FontFile" uid="uid://vl7sehjk5uqu" path="res://assets/UI/Chunky Playful.otf" id="3_0mwj0"]
 [ext_resource type="Texture2D" uid="uid://b0gbxj3js3ixk" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_11.png" id="3_o83ep"]
 [ext_resource type="Texture2D" uid="uid://bophi13uqkooc" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_16.png" id="4_0mwj0"]
+[ext_resource type="SpriteFrames" uid="uid://cxxiw47qj82rk" path="res://resources/sprite_frames/player/blue/blue_warrior.tres" id="5_dlw2w"]
+[ext_resource type="SpriteFrames" uid="uid://dnohfyoa6imls" path="res://resources/sprite_frames/player/red/red_warrior.tres" id="7_ry32f"]
+[ext_resource type="SpriteFrames" uid="uid://587yms8wvxsb" path="res://resources/sprite_frames/player/yellow/yellow_warrior.tres" id="9_q1sy4"]
+[ext_resource type="SpriteFrames" uid="uid://qbh75gu1cjhl" path="res://resources/sprite_frames/player/purple/purple_warrior.tres" id="11_1rrkv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0mwj0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwnrh"]
+bg_color = Color(0.27450982, 0.27450982, 0.27450982, 0.78431374)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.51718444, 0.5171845, 0.5171842, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlw2w"]
+bg_color = Color(0.63529414, 0.8156863, 1, 0.78431374)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhsel"]
+bg_color = Color(0.9843137, 0.42745098, 0.39215687, 0.78431374)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3r7sc"]
+bg_color = Color(0.8784314, 0.72156864, 0, 0.78431374)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ry32f"]
+bg_color = Color(0.6392157, 0.078431375, 0.65882355, 0.78431374)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1sy4"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rrkv"]
+bg_color = Color(0.9920667, 0.50503594, 0.47115505, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7pt3"]
+bg_color = Color(0.7808791, 0.26249677, 0.24642608, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="PlayerSelectionMenu" type="Control" unique_id=1628107703]
 layout_mode = 3
@@ -15,11 +65,31 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xwnrh")
 
+[node name="Background" type="Panel" parent="." unique_id=472711687]
+material = SubResource("CanvasItemMaterial_0mwj0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=1934946504]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_o83ep")
+expand_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=417917404]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -98.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 11
@@ -36,6 +106,35 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xwnrh")
+
+[node name="ColorOverride" type="Panel" parent="HBoxContainer/PlayerPanel0/Slot" unique_id=1290262881]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dlw2w")
+
+[node name="NumberPlayer" type="Label" parent="HBoxContainer/PlayerPanel0/Slot" unique_id=608525345]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -107.5
+offset_top = 35.0
+offset_right = 107.5
+offset_bottom = 96.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_0mwj0")
+theme_override_font_sizes/font_size = 60
+text = "JOUEUR 1"
+horizontal_alignment = 1
 
 [node name="StatusLabel" type="Label" parent="HBoxContainer/PlayerPanel0/Slot" unique_id=1550070196]
 layout_mode = 1
@@ -44,10 +143,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -82.75
-offset_top = -24.5
-offset_right = 82.75
-offset_bottom = 24.5
+offset_left = -82.5
+offset_top = 177.0
+offset_right = 83.0
+offset_bottom = 226.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Appuyez sur Attaque pour rejoindre"
@@ -61,9 +160,17 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+offset_top = -194.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_wt8je")
+
+[node name="PlayerCharacter" type="AnimatedSprite2D" parent="HBoxContainer/PlayerPanel0/Slot" unique_id=999810045]
+visible = false
+position = Vector2(138, 376)
+sprite_frames = ExtResource("5_dlw2w")
+animation = &"idle"
 
 [node name="PlayerPanel1" type="Control" parent="HBoxContainer" unique_id=1680370849]
 layout_mode = 2
@@ -76,6 +183,35 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xwnrh")
+
+[node name="ColorOverride" type="Panel" parent="HBoxContainer/PlayerPanel1/Slot" unique_id=1139345522]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yhsel")
+
+[node name="NumberPlayer" type="Label" parent="HBoxContainer/PlayerPanel1/Slot" unique_id=1294237951]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 35.0
+offset_right = 107.0
+offset_bottom = 96.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0.611663, 0.12786794, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_0mwj0")
+theme_override_font_sizes/font_size = 60
+text = "JOUEUR 2"
+horizontal_alignment = 1
 
 [node name="StatusLabel" type="Label" parent="HBoxContainer/PlayerPanel1/Slot" unique_id=355590241]
 layout_mode = 1
@@ -84,10 +220,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -82.75
-offset_top = -24.5
-offset_right = 82.75
-offset_bottom = 24.5
+offset_left = -82.5
+offset_top = 177.0
+offset_right = 83.0
+offset_bottom = 226.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Appuyez sur Attaque pour rejoindre"
@@ -101,9 +237,17 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+offset_top = -194.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_xwnrh")
+
+[node name="PlayerCharacter" type="AnimatedSprite2D" parent="HBoxContainer/PlayerPanel1/Slot" unique_id=1668620852]
+visible = false
+position = Vector2(138, 376)
+sprite_frames = ExtResource("7_ry32f")
+animation = &"idle"
 
 [node name="PlayerPanel2" type="Control" parent="HBoxContainer" unique_id=678623244]
 layout_mode = 2
@@ -116,6 +260,35 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xwnrh")
+
+[node name="ColorOverride" type="Panel" parent="HBoxContainer/PlayerPanel2/Slot" unique_id=856080963]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3r7sc")
+
+[node name="NumberPlayer" type="Label" parent="HBoxContainer/PlayerPanel2/Slot" unique_id=1443364247]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -111.5
+offset_top = 35.0
+offset_right = 110.5
+offset_bottom = 96.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0.93333334, 0.49803922, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_0mwj0")
+theme_override_font_sizes/font_size = 60
+text = "JOUEUR 3"
+horizontal_alignment = 1
 
 [node name="StatusLabel" type="Label" parent="HBoxContainer/PlayerPanel2/Slot" unique_id=697096455]
 layout_mode = 1
@@ -124,10 +297,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -82.75
-offset_top = -24.5
-offset_right = 82.75
-offset_bottom = 24.5
+offset_left = -82.5
+offset_top = 177.0
+offset_right = 83.0
+offset_bottom = 226.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Appuyez sur Attaque pour rejoindre"
@@ -141,9 +314,17 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+offset_top = -194.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_o83ep")
+
+[node name="PlayerCharacter" type="AnimatedSprite2D" parent="HBoxContainer/PlayerPanel2/Slot" unique_id=1967774192]
+visible = false
+position = Vector2(138, 376)
+sprite_frames = ExtResource("9_q1sy4")
+animation = &"idle"
 
 [node name="PlayerPanel3" type="Control" parent="HBoxContainer" unique_id=1914760179]
 layout_mode = 2
@@ -156,6 +337,36 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xwnrh")
+
+[node name="ColorOverride" type="Panel" parent="HBoxContainer/PlayerPanel3/Slot" unique_id=1947605325]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ry32f")
+
+[node name="NumberPlayer" type="Label" parent="HBoxContainer/PlayerPanel3/Slot" unique_id=1301446432]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -111.5
+offset_top = 35.0
+offset_right = 111.5
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0.6791268, 0.00052876445, 0.71780264, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_0mwj0")
+theme_override_font_sizes/font_size = 60
+text = "JOUEUR 4
+"
+horizontal_alignment = 1
 
 [node name="StatusLabel" type="Label" parent="HBoxContainer/PlayerPanel3/Slot" unique_id=605732561]
 layout_mode = 1
@@ -164,10 +375,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -82.75
-offset_top = -24.5
-offset_right = 82.75
-offset_bottom = 24.5
+offset_left = -82.5
+offset_top = 177.0
+offset_right = 83.0
+offset_bottom = 226.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Appuyez sur Attaque pour rejoindre"
@@ -181,22 +392,44 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+offset_top = -194.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_0mwj0")
 
-[node name="StartButton" type="Button" parent="." unique_id=1965882854]
+[node name="PlayerCharacter" type="AnimatedSprite2D" parent="HBoxContainer/PlayerPanel3/Slot" unique_id=2075051227]
+visible = false
+position = Vector2(138, 376)
+sprite_frames = ExtResource("11_1rrkv")
+animation = &"idle"
+
+[node name="StartButton" type="Button" parent="." unique_id=28793111]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -148.5
-offset_top = -90.0
-offset_right = 148.5
+offset_left = -95.0
+offset_top = -83.0
+offset_right = 96.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 30
-disabled = true
-text = "START GAME"
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.99998754, 0.9120431, 0.89698654, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_0mwj0")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxFlat_q1sy4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1rrkv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k7pt3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_k7pt3")
+text = "START"

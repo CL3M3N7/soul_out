@@ -5,9 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://eha6vvif87pu" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/freelavatileset-Sheet.png" id="2_c721m"]
 [ext_resource type="Texture2D" uid="uid://d26t5vcylurhx" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Land on Lava Tile/spritesheet-lavaland.png" id="3_hvjjw"]
 [ext_resource type="Texture2D" uid="uid://dv0loen2sshrt" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 1/spritesheet-lavarock1.png" id="4_s2tmk"]
+[ext_resource type="PackedScene" uid="uid://bi5jiux6o401h" path="res://scenes/characters/fighting_character.tscn" id="5_n10o4"]
 [ext_resource type="Texture2D" uid="uid://df7fix6o0hcjp" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 2/spritesheet-lavarock2.png" id="5_v4l4a"]
 [ext_resource type="Texture2D" uid="uid://bgoa1dp5mnpew" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_01.png" id="6_dqdw3"]
 [ext_resource type="Texture2D" uid="uid://c2xai165v7p3g" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_06.png" id="7_g2ils"]
+[ext_resource type="PackedScene" uid="uid://cq78egfeukra8" path="res://scenes/ui/HeartHUD.tscn" id="7_sfvqs"]
 [ext_resource type="Texture2D" uid="uid://b0gbxj3js3ixk" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_11.png" id="8_bw3d2"]
 [ext_resource type="Texture2D" uid="uid://bophi13uqkooc" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_16.png" id="9_othdk"]
 [ext_resource type="Script" uid="uid://dxb15nia3xts8" path="res://Scripts/GlobalZoneLava.cs" id="10_68i3h"]
@@ -456,10 +458,15 @@ sources/0 = SubResource("TileSetAtlasSource_kb1bf")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frnjg"]
 size = Vector2(272, 134)
 
-[node name="BattleScene" type="Node2D" unique_id=413430074 node_paths=PackedStringArray("TimerLabel")]
+[node name="BattleScene" type="Node2D" unique_id=413430074 node_paths=PackedStringArray("SpawnPoints", "PlayersNode", "TimerLabel", "HUDContainer")]
 script = ExtResource("1_ktcge")
+PlayerScene = ExtResource("5_n10o4")
+SpawnPoints = NodePath("SpawnPoints")
+PlayersNode = NodePath("PlayersNode")
 DurationInSeconds = 45
 TimerLabel = NodePath("Camera2D/Control/RemainingTime")
+HUDScene = ExtResource("7_sfvqs")
+HUDContainer = NodePath("Interface/GamerHUDs")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2127423228]
 zoom = Vector2(0.75, 0.75)
