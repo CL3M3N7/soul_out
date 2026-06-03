@@ -35,7 +35,7 @@ animations = [{
 }]
 
 [node name="Fireball" unique_id=1384823664 instance=ExtResource("1_n4p2w")]
-Speed = 100.0
+Speed = 20.0
 Damage = 3
 Lifetime = 45.0
 
@@ -44,3 +44,4 @@ visible = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." index="3" unique_id=48676504]
 sprite_frames = SubResource("SpriteFrames_bme2u")
+autoplay = "default"
