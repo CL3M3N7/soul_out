@@ -15,8 +15,11 @@ public partial class TrialCollectManager : TrialScene
 
 	// Configuration du temps (modifiables dans l'inspecteur)
 	[Export] private Timer _currentTimer;
-	[Export] public float IntervalleMin { get; set; } = 0.5f;        // Minimum de secondes entre deux apparitions
-	[Export] public float IntervalleMax { get; set; } = 2.0f;        // Maximum de secondes entre deux apparitions
+	[Export] public float IntervalleMin { get; set; } = 0.2f;        // Minimum de secondes entre deux apparitions
+	[Export] public float IntervalleMax { get; set; } = 1.0f;        // Maximum de secondes entre deux apparitions
+
+	[Export] public Area2D _validArea;
+	private Array<CollisionShape2D> _validShapes = new();
 
 	private Timer _spawnTimer;
 	private Random _random = new Random();
@@ -44,6 +47,13 @@ public partial class TrialCollectManager : TrialScene
 			label.Start();
 		}
 		ChooseTimeNextSpawn();
+		foreach (Node child in _validArea.GetChildren())
+		{
+			if (child is CollisionShape2D shape && !shape.Disabled)
+			{
+				_validShapes.Add(shape);
+			}
+		}
 	}
 
 	private void ChooseTimeNextSpawn()
@@ -59,6 +69,8 @@ public partial class TrialCollectManager : TrialScene
 	private void OnSpawnTimerTimeout()
 	{
 		if (_currentTimer.IsStopped()) return;
+		
+		SpawnGold();
 		SpawnGold();
 		ChooseTimeNextSpawn();
 	}
@@ -73,10 +85,19 @@ public partial class TrialCollectManager : TrialScene
 
 		GoldSpot newSpot = GoldScene.Instantiate<GoldSpot>();
 
-		newSpot.Position = new Vector2((float)_random.NextDouble() * 600 - 300,(float)_random.NextDouble() * 400 - 200);
+		newSpot.Position = GetValidPosition();
 
 		// Ajout du spot à la scène principale
 		AddChild(newSpot);
+	}
+	
+	public Vector2 GetValidPosition()
+	{
+		int randidx = _random.Next(0,_validShapes.Count());
+		CollisionShape2D randshape = _validShapes[randidx];
+		Rect2 rect = randshape.Shape.GetRect();
+		Vector2 randpos = new Vector2((float)(_random.NextDouble()*(rect.End.X-rect.Position.X)+rect.Position.X),(float)(_random.NextDouble()*(rect.End.Y-rect.Position.Y)+rect.Position.Y));
+		return randshape.ToGlobal(randpos);
 	}
 
 	private void OnDurationTimerTimeout()
