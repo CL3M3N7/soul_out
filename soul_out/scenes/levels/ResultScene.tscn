@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dno8p307pjvir"]
+
+[ext_resource type="Texture2D" uid="uid://1304q00njwkh" path="res://assets/UI/gradient-rouge.jpg" id="1_mjbqi"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h4yvh"]
+
+[node name="ResultScene" type="Node2D" unique_id=61316861]
+
+[node name="Background" type="Panel" parent="." unique_id=218871130]
+material = SubResource("CanvasItemMaterial_h4yvh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=1989080644]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mjbqi")
+expand_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1261452888]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=239683918]
