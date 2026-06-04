@@ -1,16 +1,17 @@
-[gd_scene format=3 uid="uid://bod411rbkxvq6"]
+[gd_scene format=3 uid="uid://bi5jiux6o401h"]
 
 [ext_resource type="PackedScene" uid="uid://dgeqox0yuf4ef" path="res://scenes/characters/character.tscn" id="1_0vinn"]
 [ext_resource type="Script" uid="uid://dv2idwhf3a2qd" path="res://Scripts/Characters/SOFightingCharacter.cs" id="2_kkqiv"]
 [ext_resource type="PackedScene" uid="uid://8p2gb238bww5" path="res://scenes/particles/LavaSplash.tscn" id="3_fgi0f"]
 [ext_resource type="Script" uid="uid://ckhjsca5y507k" path="res://Scripts/BladeArea.cs" id="3_v25p3"]
-[ext_resource type="AudioStream" uid="uid://olwm4do4lnuh" path="res://Sounds/Characters/SwordSound.mp3" id="5_75ko5"]
-[ext_resource type="AudioStream" uid="uid://b0w46nm7wial1" path="res://Sounds/Characters/HurtSound1.mp3" id="5_qo72h"]
-[ext_resource type="AudioStream" uid="uid://i6xuyde40txx" path="res://Sounds/Characters/HurtSound2.mp3" id="6_e835g"]
-[ext_resource type="AudioStream" uid="uid://ldonmocsaoq" path="res://Sounds/Characters/LavaSplashSound.mp3" id="6_qo72h"]
-[ext_resource type="AudioStream" uid="uid://e7o5dy57jotj" path="res://Sounds/Characters/HurtSound3.mp3" id="7_4ldk6"]
-[ext_resource type="AudioStream" uid="uid://du6inkwjsdg2a" path="res://Sounds/Characters/HurtSound4.mp3" id="8_nyulx"]
-[ext_resource type="AudioStream" uid="uid://cpj2fcdxofh1c" path="res://Sounds/Characters/HurtSound5.mp3" id="9_6qwhf"]
+[ext_resource type="AudioStream" uid="uid://bo7yrbhuoxu0i" path="res://Sounds/Characters/SwordSound.mp3" id="5_75ko5"]
+[ext_resource type="AudioStream" uid="uid://biyejy46k72ik" path="res://Sounds/Characters/HurtSound1.mp3" id="5_qo72h"]
+[ext_resource type="AudioStream" uid="uid://d2hw1d8rpybkc" path="res://Sounds/Characters/HurtSound2.mp3" id="6_e835g"]
+[ext_resource type="AudioStream" uid="uid://0f01bfiibtg3" path="res://Sounds/Characters/LavaSplashSound.mp3" id="6_qo72h"]
+[ext_resource type="AudioStream" uid="uid://dj3fg7b0e3l42" path="res://Sounds/Characters/HurtSound3.mp3" id="7_4ldk6"]
+[ext_resource type="AudioStream" uid="uid://ck3gjj6tearye" path="res://Sounds/Characters/HurtSound4.mp3" id="8_nyulx"]
+[ext_resource type="AudioStream" uid="uid://cqtvepowk067c" path="res://Sounds/Characters/HurtSound5.mp3" id="9_6qwhf"]
+[ext_resource type="Texture2D" uid="uid://6vgh3p2sbcmc" path="res://assets/Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Run.png" id="12_67wbw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkqiv"]
 
@@ -30,11 +31,25 @@ stream_2/stream = ExtResource("7_4ldk6")
 stream_3/stream = ExtResource("8_nyulx")
 stream_4/stream = ExtResource("9_6qwhf")
 
+[sub_resource type="Curve" id="Curve_mboma"]
+_data = [Vector2(0, 0.75280905), 0.0, -0.784474, 0, 0, Vector2(1, 0), -0.04494381, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_mboma"]
+colors = PackedColorArray(0.58056563, 0.71801317, 1, 1, 1, 1, 1, 1)
+
 [node name="Character" unique_id=251562452 instance=ExtResource("1_0vinn")]
 z_index = 4
 script = ExtResource("2_kkqiv")
 LavaSplashScene = ExtResource("3_fgi0f")
 InvincibilityDuration = 1.5
+DashSpeed = 1000.0
+DashDuration = 0.2
+DashCooldown = 1.5
+ShieldKnockbackForce = 1000.0
+
+[node name="Sprite" parent="." index="1" unique_id=903840401]
+animation = &"defend"
 
 [node name="AttackArea" type="Area2D" parent="." index="2" unique_id=793582141]
 position = Vector2(41, 0)
@@ -68,5 +83,14 @@ bus = &"SFX"
 [node name="SfxLava" type="AudioStreamPlayer2D" parent="." index="7" unique_id=531636181]
 stream = ExtResource("6_qo72h")
 bus = &"SFX"
+
+[node name="DashParticles" type="CPUParticles2D" parent="." index="8" unique_id=926620180]
+emitting = false
+amount = 15
+texture = ExtResource("12_67wbw")
+lifetime = 0.3
+gravity = Vector2(0, 0)
+scale_amount_curve = SubResource("Curve_mboma")
+color_ramp = SubResource("Gradient_mboma")
 
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]

@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://c2xai165v7p3g" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_06.png" id="3_5rq2j"]
 [ext_resource type="Texture2D" uid="uid://b0gbxj3js3ixk" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_11.png" id="4_7ghjf"]
 [ext_resource type="Texture2D" uid="uid://bophi13uqkooc" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_16.png" id="5_68naq"]
+[ext_resource type="Texture2D" uid="uid://b5f67em0lrd4u" path="res://resources/Ribbons/BlueRibbons.png" id="6_h2xuw"]
+[ext_resource type="Texture2D" uid="uid://bftfokkb8n3jf" path="res://resources/Ribbons/RedRibbons.png" id="7_h5dg1"]
+[ext_resource type="Texture2D" uid="uid://f0jm1gwty17p" path="res://resources/Ribbons/YellowRibbons.png" id="8_8emef"]
+[ext_resource type="Texture2D" uid="uid://1p0hwpwyhs53" path="res://resources/Ribbons/PurpleRibbons.png" id="9_6dnk2"]
 
 [node name="ScoreUi" type="VBoxContainer" unique_id=771313580]
 anchors_preset = 15
@@ -17,8 +21,15 @@ Avatar0 = ExtResource("2_6fpn8")
 Avatar1 = ExtResource("3_5rq2j")
 Avatar2 = ExtResource("4_7ghjf")
 Avatar3 = ExtResource("5_68naq")
+Ribbon0 = ExtResource("6_h2xuw")
+Ribbon1 = ExtResource("7_h5dg1")
+Ribbon2 = ExtResource("8_8emef")
+Ribbon3 = ExtResource("9_6dnk2")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=686514425]
+[node name="Avatar" type="TextureRect" parent="." unique_id=686514425]
+layout_mode = 2
+
+[node name="Ribbon" type="TextureRect" parent="." unique_id=1758182230]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="." unique_id=1643526437]

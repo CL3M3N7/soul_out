@@ -22,12 +22,13 @@ public partial class SceneManager : Node
 	
 	private Node _gameNode;
 	
+	public PackedScene MainScene;
 	public Array<PackedScene> BattleScenes;
 	public PackedScene JudgementScene;
 	public Array<PackedScene> TrialScenes;
 	public PackedScene ScoringScenes;
 	
-	private SceneType _currentScene = SceneType.BattleScene;
+	private SceneType _currentScene = SceneType.MainScene;
 
 	public override void _Ready()
 	{
@@ -47,6 +48,14 @@ public partial class SceneManager : Node
 	public void FindScenes()
 	{
 		ListScene listScene = GD.Load<ListScene>("res://resources/list_scene.tres");
+		
+		MainScene = listScene.MainScene;
+		if (MainScene == null)
+		{
+			GD.PrintErr("[SceneManager] No main scene loaded.");
+			throw new ArgumentException("No main scene loaded.");
+		}
+		
 		BattleScenes = listScene.BattleScenes;
 		if (BattleScenes.Count == 0)
 		{
@@ -84,7 +93,19 @@ public partial class SceneManager : Node
 		_gameNode = new Node();
 		_gameNode.Name = "Game";
 		GetTree().Root.AddChild(_gameNode);
-		LoadBattleScene();
+		LoadMainScene();
+	}
+	
+	private void LoadMainScene()
+	{
+		if (MainScene == null) return;
+		
+		Node instantiatedScene = MainScene.Instantiate<Node>();
+		
+		foreach (var child in _gameNode.GetChildren())
+			child.QueueFree();
+			
+		_gameNode.AddChild(instantiatedScene);
 	}
 
 	public void LoadScene(SONodeScene instantiatedScene)
@@ -118,9 +139,9 @@ public partial class SceneManager : Node
 		PackedScene nextScene = TrialScenes.PickRandom();
 		TrialScene instantiatedScene = nextScene.Instantiate<TrialScene>();
 		LoadScene(instantiatedScene);
-		Callable.From(() => {
-			instantiatedScene.OnEndTrial += GameManager.Instance.AddScoreWithLeaderboard;
-		}).CallDeferred();
+		instantiatedScene.OnAddBuff += PactManager.Instance.AddBuff;
+		instantiatedScene.OnAddNerf += PactManager.Instance.AddNerf;
+		instantiatedScene.OnEndTrial += GameManager.Instance.AddScoreWithLeaderboard;
 		
 	}
 
@@ -162,8 +183,8 @@ public partial class SceneManager : Node
 		switch (_currentScene)
 		{
 			case SceneType.MainScene:
-				GD.PrintErr("[SceneManager] MainScene not implemented.");
-				throw new ArgumentException("MainScene not implemented.");
+				LoadMainScene();
+				break;
 			case SceneType.BattleScene:
 				LoadBattleScene();
 				break;

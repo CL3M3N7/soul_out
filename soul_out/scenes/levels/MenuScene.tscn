@@ -1,0 +1,259 @@
+[gd_scene format=3 uid="uid://b15xll2dklnff"]
+
+[ext_resource type="Script" uid="uid://5lwtxuckjcu2" path="res://Scripts/ui/MainMenu.cs" id="1_hckft"]
+[ext_resource type="Texture2D" uid="uid://1304q00njwkh" path="res://assets/UI/gradient-rouge.jpg" id="2_yrsml"]
+[ext_resource type="Texture2D" uid="uid://cngasq7tpkfg6" path="res://assets/UI/Soul Out-Picsart-BackgroundRemover.png" id="3_5o0g8"]
+[ext_resource type="FontFile" uid="uid://vl7sehjk5uqu" path="res://assets/UI/Chunky Playful.otf" id="4_x5cpt"]
+[ext_resource type="PackedScene" uid="uid://ds77ss8ck1mlj" path="res://scenes/traps/FireballSpawner.tscn" id="5_fdp5x"]
+[ext_resource type="PackedScene" uid="uid://c25owlhlnpp0c" path="res://scenes/traps/FastFireball.tscn" id="5_yqj2q"]
+[ext_resource type="PackedScene" uid="uid://cjwyq40yrmrtp" path="res://scenes/traps/deathfireball.tscn" id="6_yqj2q"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5o0g8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5o0g8"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5cpt"]
+bg_color = Color(0.9920667, 0.50503594, 0.47115505, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6asfp"]
+bg_color = Color(0.7808791, 0.26249677, 0.24642608, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="MenuScene" type="Control" unique_id=662636925]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hckft")
+
+[node name="Background" type="Panel" parent="." unique_id=159158871]
+material = SubResource("CanvasItemMaterial_5o0g8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=499926034]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_yrsml")
+expand_mode = 2
+
+[node name="FireballSpawner" parent="." unique_id=114667432 instance=ExtResource("5_fdp5x")]
+position = Vector2(-24, 312)
+SpawnInterval = 1.0
+FireAngleDegrees = -45.0
+
+[node name="FireballSpawner9" parent="." unique_id=1726376557 instance=ExtResource("5_fdp5x")]
+position = Vector2(-34, 439)
+SpawnInterval = 1.0
+FireAngleDegrees = -45.0
+
+[node name="FireballSpawner10" parent="." unique_id=1774725345 instance=ExtResource("5_fdp5x")]
+position = Vector2(328, 702)
+SpawnInterval = 1.6
+FireAngleDegrees = -45.0
+
+[node name="FireballSpawner11" parent="." unique_id=1322967833 instance=ExtResource("5_fdp5x")]
+position = Vector2(20, 683)
+SpawnInterval = 1.7
+FireAngleDegrees = -45.0
+InitialDelay = 0.8
+
+[node name="FireballSpawner2" parent="." unique_id=2001122303 instance=ExtResource("5_fdp5x")]
+position = Vector2(971, 684)
+SpawnInterval = 1.5
+FireAngleDegrees = -45.0
+InitialDelay = 0.5
+
+[node name="FireballSpawner5" parent="." unique_id=861949217 instance=ExtResource("5_fdp5x")]
+position = Vector2(227, 676)
+SpawnInterval = 1.4
+FireAngleDegrees = -45.0
+InitialDelay = 1.2
+
+[node name="FireballSpawner6" parent="." unique_id=462743374 instance=ExtResource("5_fdp5x")]
+position = Vector2(739, 698)
+SpawnInterval = 0.8
+FireAngleDegrees = -45.0
+InitialDelay = 0.5
+
+[node name="FireballSpawner3" parent="." unique_id=132081345 instance=ExtResource("5_fdp5x")]
+position = Vector2(499, 699)
+FireballScene = ExtResource("6_yqj2q")
+SpawnInterval = 10.0
+FireAngleDegrees = -45.0
+
+[node name="FireballSpawner12" parent="." unique_id=1360851083 instance=ExtResource("5_fdp5x")]
+position = Vector2(138, 681)
+FireballScene = ExtResource("6_yqj2q")
+SpawnInterval = 10.0
+FireAngleDegrees = -45.0
+
+[node name="FireballSpawner13" parent="." unique_id=115003383 instance=ExtResource("5_fdp5x")]
+position = Vector2(652, 700)
+FireballScene = ExtResource("6_yqj2q")
+SpawnInterval = 10.0
+FireAngleDegrees = -45.0
+
+[node name="FireballSpawner14" parent="." unique_id=1305055513 instance=ExtResource("5_fdp5x")]
+position = Vector2(855, 707)
+FireballScene = ExtResource("6_yqj2q")
+SpawnInterval = 10.0
+FireAngleDegrees = -45.0
+
+[node name="FireballSpawner7" parent="." unique_id=1703976722 instance=ExtResource("5_fdp5x")]
+position = Vector2(1061, 701)
+FireballScene = ExtResource("6_yqj2q")
+SpawnInterval = 10.0
+FireAngleDegrees = -45.0
+InitialDelay = 0.5
+
+[node name="FireballSpawner8" parent="." unique_id=1984313058 instance=ExtResource("5_fdp5x")]
+position = Vector2(-43, 173)
+FireballScene = ExtResource("6_yqj2q")
+SpawnInterval = 10.0
+FireAngleDegrees = -45.0
+InitialDelay = 0.2
+
+[node name="FireballSpawner4" parent="." unique_id=930886152 instance=ExtResource("5_fdp5x")]
+position = Vector2(-10, 538)
+FireballScene = ExtResource("6_yqj2q")
+SpawnInterval = 10.0
+FireAngleDegrees = -45.0
+InitialDelay = 1.0
+
+[node name="FireballSpawner15" parent="." unique_id=1805964373 instance=ExtResource("5_fdp5x")]
+position = Vector2(-50, 398)
+FireballScene = ExtResource("5_yqj2q")
+SpawnInterval = 2.5
+FireAngleDegrees = -45.0
+
+[node name="FireballSpawner18" parent="." unique_id=1492687312 instance=ExtResource("5_fdp5x")]
+position = Vector2(-57, 664)
+FireballScene = ExtResource("5_yqj2q")
+SpawnInterval = 2.9
+FireAngleDegrees = -45.0
+InitialDelay = 1.5
+
+[node name="FireballSpawner16" parent="." unique_id=1511719894 instance=ExtResource("5_fdp5x")]
+position = Vector2(342, 764)
+FireballScene = ExtResource("5_yqj2q")
+SpawnInterval = 4.0
+FireAngleDegrees = -45.0
+InitialDelay = 1.0
+
+[node name="FireballSpawner17" parent="." unique_id=144973816 instance=ExtResource("5_fdp5x")]
+position = Vector2(757, 759)
+FireballScene = ExtResource("5_yqj2q")
+SpawnInterval = 3.5
+FireAngleDegrees = -45.0
+InitialDelay = 1.0
+
+[node name="Logo" type="TextureRect" parent="." unique_id=1328713611]
+z_index = 6
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -195.625
+offset_right = 195.625
+offset_bottom = 251.0
+grow_horizontal = 2
+texture = ExtResource("3_5o0g8")
+expand_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1491678438]
+z_index = 6
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -39.0
+offset_right = 173.00037
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=865631685]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.99998754, 0.9120431, 0.89698654, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_x5cpt")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxFlat_5o0g8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x5cpt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6asfp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6asfp")
+text = "START"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=1145689719]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.99998754, 0.9120431, 0.89698654, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_x5cpt")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxFlat_5o0g8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x5cpt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6asfp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6asfp")
+text = "OPTIONS"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=926104926]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.99998754, 0.9120431, 0.89698654, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_x5cpt")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxFlat_5o0g8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x5cpt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6asfp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6asfp")
+text = "QUIT"
