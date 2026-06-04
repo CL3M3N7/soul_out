@@ -10,9 +10,17 @@ namespace SoulOut.Scripts.Levels;
 
 public partial class TrialSpellcastScene : TrialScene
 {
+	public override void _Ready()
+	{
+		base._Ready();
+		OnTimeOut += EndScene; // todo: urgent, revoir logic trialscene
+	}
+	
+	
 	public void EndScene()
 	{
-		var leaderboardIds = GetChildren()
+		var leaderboardIds = PlayersNode
+			.GetChildren()
 			.OfType<SpellCastCharacter>()
 			.OrderByDescending(c => c.SpellScore)
 			.Select(c => c.PlayerController);

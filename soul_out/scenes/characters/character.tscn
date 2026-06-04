@@ -5,13 +5,17 @@
 [ext_resource type="SpriteFrames" uid="uid://cxxiw47qj82rk" path="res://resources/sprite_frames/player/blue/blue_warrior.tres" id="3_2qjml"]
 [ext_resource type="SpriteFrames" uid="uid://be7a0wiqc5bp8" path="res://resources/sprite_frames/player/blue/blue_pickaxe_pawn.tres" id="4_8gmw8"]
 [ext_resource type="SpriteFrames" uid="uid://dnohfyoa6imls" path="res://resources/sprite_frames/player/red/red_warrior.tres" id="4_ma1fs"]
+[ext_resource type="SpriteFrames" uid="uid://dxe7jxjal3a2p" path="res://resources/sprite_frames/player/blue/blue_monk.tres" id="5_437sl"]
 [ext_resource type="SpriteFrames" uid="uid://587yms8wvxsb" path="res://resources/sprite_frames/player/yellow/yellow_warrior.tres" id="5_yscb1"]
 [ext_resource type="SpriteFrames" uid="uid://bp2x5f6yj0mdq" path="res://resources/sprite_frames/player/red/red_pickaxe_pawn.tres" id="6_3mlnx"]
 [ext_resource type="SpriteFrames" uid="uid://qbh75gu1cjhl" path="res://resources/sprite_frames/player/purple/purple_warrior.tres" id="6_ysl2u"]
+[ext_resource type="SpriteFrames" uid="uid://jg0du85ytyv3" path="res://resources/sprite_frames/player/red/red_monk.tres" id="8_1j4ge"]
 [ext_resource type="SpriteFrames" uid="uid://c1ddwfa68tec0" path="res://resources/sprite_frames/player/yellow/yellow_pickaxe_pawn.tres" id="8_tx3ek"]
 [ext_resource type="SpriteFrames" uid="uid://7g63qbu7qu2f" path="res://resources/sprite_frames/player/purple/purple_pickaxe_pawn.tres" id="10_6pson"]
 [ext_resource type="Texture2D" uid="uid://drsvdnqtf60v0" path="res://assets/kenney_particle-pack/PNG (Transparent)/star_06.png" id="11_3mlnx"]
+[ext_resource type="SpriteFrames" uid="uid://fof3snuilpdt" path="res://resources/sprite_frames/player/yellow/yellow_monk.tres" id="11_hm0uo"]
 [ext_resource type="Texture2D" uid="uid://b53lvv3y6q60e" path="res://assets/kenney_particle-pack/PNG (Transparent)/slash_01.png" id="12_tx3ek"]
+[ext_resource type="SpriteFrames" uid="uid://b602aonp7tdjx" path="res://resources/sprite_frames/player/purple/purple_monk.tres" id="14_6mn2q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x31xa"]
 size = Vector2(40, 66)
@@ -105,12 +109,16 @@ autoplay = "idle"
 script = ExtResource("2_1bdar")
 BlueWarrior = ExtResource("3_2qjml")
 BluePawn = ExtResource("4_8gmw8")
+BlueMonk = ExtResource("5_437sl")
 RedWarrior = ExtResource("4_ma1fs")
 RedPawn = ExtResource("6_3mlnx")
+RedMonk = ExtResource("8_1j4ge")
 YellowWarrior = ExtResource("5_yscb1")
 YellowPawn = ExtResource("8_tx3ek")
+YellowMonk = ExtResource("11_hm0uo")
 PurpleWarrior = ExtResource("6_ysl2u")
 PurplePawn = ExtResource("10_6pson")
+PurpleMonk = ExtResource("14_6mn2q")
 
 [node name="ParticleBuff" type="GPUParticles2D" parent="." unique_id=1791068453]
 position = Vector2(0, 21)

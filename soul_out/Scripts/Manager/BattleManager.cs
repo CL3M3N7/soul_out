@@ -76,6 +76,8 @@ public partial class BattleManager(int numberOfPlayers) : Node
 
 	public void SubmitEndBattle()
 	{
+		// Players were added by first death
+		Leaderboard.Reverse();
 		EmitSignal(SignalName.OnEndBattle,new Array<int>(Leaderboard));
 	}
 }

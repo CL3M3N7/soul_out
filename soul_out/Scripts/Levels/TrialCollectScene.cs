@@ -37,6 +37,8 @@ public partial class TrialCollectScene : TrialScene
 		TrialCollectManager.OnEndTrial += PostEndScene;
 		OnTimeOut += TrialCollectManager.SubmitEndBattle;
 		
+		OnTimeOut += EndScene; // TODO: Urgent, refacotr scene trial logic
+		
 		ChooseTimeNextSpawn();
 		foreach (Node child in _validArea.GetChildren())
 		{
@@ -92,7 +94,8 @@ public partial class TrialCollectScene : TrialScene
 	
 	public void EndScene()
 	{
-		var leaderboardIds = GetChildren()
+		var leaderboardIds = PlayersNode
+			.GetChildren()
 			.OfType<CollectCharacter>()
 			.OrderByDescending(c => c.Gold)
 			.Select(c => c.PlayerController);

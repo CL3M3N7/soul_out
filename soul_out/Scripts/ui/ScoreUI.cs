@@ -22,17 +22,17 @@ public partial class ScoreUI : VBoxContainer
 			avatarTexture.Texture = Avatar0;
 			ribbonTexture.Texture = Ribbon0;
 		}
-		if(avatar == 1)
+		else if(avatar == 1)
 		{
 			avatarTexture.Texture = Avatar1;
 			ribbonTexture.Texture = Ribbon1;
 		}
-		if(avatar == 2)
+		else if(avatar == 2)
 		{
 			avatarTexture.Texture = Avatar2;
 			ribbonTexture.Texture = Ribbon2;
 		}
-		if(avatar == 3)
+		else if(avatar == 3)
 		{
 			avatarTexture.Texture = Avatar3;
 			ribbonTexture.Texture = Ribbon3;

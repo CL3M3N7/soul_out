@@ -27,7 +27,7 @@ public partial class JudgementScene : SONodeScene
 		int numberOfPlayers = GameManager.Instance.NumberOfPlayers;
 		for (int i = 0; i < numberOfPlayers; i++)
 		{
-			labels[leaderboard[i]].Text = $"Position {numberOfPlayers - i}";
+			labels[leaderboard[i]].Text = $"Position {i+1}";
 		}
 	}
 	

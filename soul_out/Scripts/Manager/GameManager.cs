@@ -59,17 +59,31 @@ public partial class GameManager : Node
 
 	public void AddScoreWithLeaderboard(Array<int> leaderboard)
 	{
-		GD.Print("call AddScoreWithLeaderboard");
 		switch (NumberOfPlayers)
 		{
 			case 4:
+			{
 				AddPlayerScore(leaderboard[0], 5);
 				AddPlayerScore(leaderboard[1], 3);
 				AddPlayerScore(leaderboard[2], 2);
 				break;
+			}
+			case 3:
+			{
+				AddPlayerScore(leaderboard[0], 3);
+				AddPlayerScore(leaderboard[1], 1);
+				break;
+			}
+		case 2:
+			{
+				AddPlayerScore(leaderboard[0], 1);
+				break;
+			}
+	
 			default:
-				GD.PrintErr($"[GameManager] AddScoreWithLeaderboard with {NumberOfPlayers} players not implemented.");
-				throw new ArgumentException($"AddScoreWithLeaderboard with {NumberOfPlayers} players not implemented.");
+				//GD.PrintErr($"[GameManager] AddScoreWithLeaderboard with {NumberOfPlayers} players not implemented.");
+				//throw new ArgumentException($"AddScoreWithLeaderboard with {NumberOfPlayers} players not implemented.");
+				break;
 		}
 	}
 }

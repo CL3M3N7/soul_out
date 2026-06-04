@@ -469,7 +469,7 @@ size = Vector2(132, 95)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1v4ui"]
 size = Vector2(123, 237)
 
-[node name="TrialCollectScene" type="Node2D" unique_id=1587010820 node_paths=PackedStringArray("_validArea", "SpawnPoints", "PlayersNode", "TimerLabel", "HUDContainer")]
+[node name="TrialCollectScene" type="Node2D" unique_id=1587010820 node_paths=PackedStringArray("SpawnPoints", "PlayersNode", "TimerLabel", "HUDContainer")]
 script = ExtResource("1_m404y")
 GoldScene = ExtResource("2_2nkv5")
 _validArea = NodePath("GoldSpawnArea")
@@ -478,6 +478,7 @@ Nerf = 1
 PlayerScene = ExtResource("3_y7f16")
 SpawnPoints = NodePath("SpawnPoints")
 PlayersNode = NodePath("PlayersNode")
+DurationInSeconds = 30
 TimerLabel = NodePath("Camera2D/Control/RemainingTime")
 HUDScene = ExtResource("3_sjd57")
 HUDContainer = NodePath("Interface/GamerHUDs")
@@ -491,7 +492,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="RemainingTime" parent="Camera2D/Control" unique_id=1887735079 node_paths=PackedStringArray("_mainTime") instance=ExtResource("10_akm3d")]
+[node name="RemainingTime" parent="Camera2D/Control" unique_id=1887735079 instance=ExtResource("10_akm3d")]
 z_index = 10
 layout_mode = 0
 offset_left = -38.0
@@ -499,7 +500,6 @@ offset_top = -432.0
 offset_right = 38.0
 offset_bottom = -387.0
 text = "Time"
-_mainTime = NodePath("")
 
 [node name="PlayersNode" type="Node" parent="." unique_id=140823536]
 
