@@ -498,8 +498,6 @@ horizontal_alignment = 1
 
 [node name="PlayersNode" type="Node" parent="." unique_id=583617227]
 
-[node name="TimerManager" type="Node" parent="." unique_id=1363982616]
-
 [node name="Background" type="Node2D" parent="." unique_id=243216734]
 z_index = -10
 

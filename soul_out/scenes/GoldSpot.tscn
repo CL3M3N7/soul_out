@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://b3ots5gidvopq" path="res://Scripts/GoldSpot.cs" id="1_v3sxr"]
 [ext_resource type="Texture2D" uid="uid://c86f4llebc3hx" path="res://assets/Tiny Swords (Free Pack)/Terrain/Resources/Gold/Gold Stones/Gold Stone 1.png" id="2_d3de6"]
+[ext_resource type="Texture2D" uid="uid://bu26i432y2gy3" path="res://assets/Tiny Swords (Free Pack)/Terrain/Resources/Gold/Gold Stones/Gold Stone 2.png" id="3_j3lmk"]
+[ext_resource type="Texture2D" uid="uid://dv2ujeqmayito" path="res://assets/Tiny Swords (Free Pack)/Terrain/Resources/Gold/Gold Stones/Gold Stone 3.png" id="4_6i11p"]
+[ext_resource type="Texture2D" uid="uid://d0upnpfrllhl4" path="res://assets/Tiny Swords (Free Pack)/Terrain/Resources/Gold/Gold Stones/Gold Stone 4.png" id="5_v4aos"]
+[ext_resource type="Texture2D" uid="uid://c1ck5utw4utk2" path="res://assets/Tiny Swords (Free Pack)/Terrain/Resources/Gold/Gold Stones/Gold Stone 5.png" id="6_f6v8p"]
+[ext_resource type="Texture2D" uid="uid://cqi6uea6cm45u" path="res://assets/Tiny Swords (Free Pack)/Terrain/Resources/Gold/Gold Stones/Gold Stone 6.png" id="7_ba4m6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r7r3j"]
 radius = 44.72136
@@ -9,6 +14,7 @@ radius = 44.72136
 [node name="GoldSpot" type="Node2D" unique_id=1664520806]
 z_index = 3
 script = ExtResource("1_v3sxr")
+Sprites = Array[Texture2D]([ExtResource("2_d3de6"), ExtResource("3_j3lmk"), ExtResource("4_6i11p"), ExtResource("5_v4aos"), ExtResource("6_f6v8p"), ExtResource("7_ba4m6")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=249104266]
 texture = ExtResource("2_d3de6")

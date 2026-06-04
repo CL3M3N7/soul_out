@@ -7,7 +7,9 @@ public partial class CollectCharacter : SOCharacter
 {
 	// --- SIGNAUX POUR L'UI ET LE MANAGER ---
 	[Signal] public delegate void GoldChangedEventHandler(int newGold);
-
+	
+	[Export] public PackedScene FloatingTextScene { get; set; }
+	
 	public int Gold { get; private set; } = 0;
 	public bool IsStunned { get; private set; } = false;
 	
@@ -82,5 +84,26 @@ public partial class CollectCharacter : SOCharacter
 	{
 		Gold += NewGoldAmount;
 		EmitSignal(SignalName.GoldChanged, Gold);
+		FloatingText popup = FloatingTextScene.Instantiate<FloatingText>();
+		switch(PlayerController)
+		{
+			case 0:
+				popup.Modulate = Colors.Blue;
+				break;
+			case 1:
+				popup.Modulate = Colors.Red;
+				break;
+			case 2:
+				popup.Modulate = Colors.Yellow;
+				break;
+			case 3:
+				popup.Modulate = Colors.Purple;
+				break;
+			default:
+				break;
+		}
+		popup.SetText($"+{NewGoldAmount}");
+		popup.GlobalPosition = new Vector2(-20, -80);
+		AddChild(popup);
 	}
 }
