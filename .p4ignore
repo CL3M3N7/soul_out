@@ -1,0 +1,101 @@
+# Binaries générés (EXE, DLL, objets compilés)
+Binaries/
+**/Binaries/
+
+# Fichiers intermédiaires de compilation
+Intermediate/
+**/Intermediate/
+
+# Builds locaux et de test
+Saved/
+**/Saved/
+DerivedDataCache/
+**/DerivedDataCache/
+LocalBuilds/
+**/LocalBuilds/
+
+# Fichiers générés par Visual Studio
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+*.vscode/
+*.vs/
+
+# Fichiers temporaires de l’éditeur
+*.log
+*.tmp
+*.tmp.*
+*.obj
+*.pch
+*.pdb
+
+# Configurations locales et générées automatiquement
+*.user
+*.userprefs
+*.ncb
+*.suo
+*.sln.docstates
+*.suo
+
+# Mac/Unix
+.DS_Store
+Thumbs.db
+
+# Caches spécifiques Unreal
+*.pyc
+*.pyo
+*.iobj
+
+p4config.txt
+.idea/
+**/.idea/
+
+# --- Godot Metadata & Cache ---
+.godot/
+*.import
+*.tmp
+
+# --- Editor & System Files ---
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Build Outputs ---
+bin/
+build/
+dist/
+*.exe
+*.dll
+*.so
+*.dylib
+*.app
+*.ipa
+*.apk
+
+# --- C++ / GDExtension / Low-Level ---
+# Ignore compilation artifacts
+.sconsign.dblite
+*.out
+*.a
+*.lib
+*.o
+*.obj
+*.exp
+*.pdb
+*.ilk
+
+# --- IDEs & Project Tools ---
+.vscode/
+.idea/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.user
+.clang-format
+compile_commands.json
+
+# --- Version Control Misc ---
+.gitignore
