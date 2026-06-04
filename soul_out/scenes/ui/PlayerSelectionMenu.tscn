@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b0gbxj3js3ixk" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_11.png" id="3_o83ep"]
 [ext_resource type="Texture2D" uid="uid://bophi13uqkooc" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_16.png" id="4_0mwj0"]
 [ext_resource type="SpriteFrames" uid="uid://cxxiw47qj82rk" path="res://resources/sprite_frames/player/blue/blue_warrior.tres" id="5_dlw2w"]
+[ext_resource type="Texture2D" uid="uid://dt783w773as7c" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_21.png" id="6_q1sy4"]
 [ext_resource type="SpriteFrames" uid="uid://dnohfyoa6imls" path="res://resources/sprite_frames/player/red/red_warrior.tres" id="7_ry32f"]
 [ext_resource type="SpriteFrames" uid="uid://587yms8wvxsb" path="res://resources/sprite_frames/player/yellow/yellow_warrior.tres" id="9_q1sy4"]
 [ext_resource type="SpriteFrames" uid="uid://qbh75gu1cjhl" path="res://resources/sprite_frames/player/purple/purple_warrior.tres" id="11_1rrkv"]
@@ -172,6 +173,18 @@ position = Vector2(138, 376)
 sprite_frames = ExtResource("5_dlw2w")
 animation = &"idle"
 
+[node name="PlayerSpriteUnknown" type="TextureRect" parent="HBoxContainer/PlayerPanel0/Slot" unique_id=1251223551]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -194.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_q1sy4")
+
 [node name="PlayerPanel1" type="Control" parent="HBoxContainer" unique_id=1680370849]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -249,6 +262,18 @@ position = Vector2(138, 376)
 sprite_frames = ExtResource("7_ry32f")
 animation = &"idle"
 
+[node name="PlayerSpriteUnknown" type="TextureRect" parent="HBoxContainer/PlayerPanel1/Slot" unique_id=131883797]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -194.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_q1sy4")
+
 [node name="PlayerPanel2" type="Control" parent="HBoxContainer" unique_id=678623244]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -320,6 +345,18 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_o83ep")
 
+[node name="PlayerSpriteUnknown" type="TextureRect" parent="HBoxContainer/PlayerPanel2/Slot" unique_id=2107612051]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -194.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_q1sy4")
+
 [node name="PlayerCharacter" type="AnimatedSprite2D" parent="HBoxContainer/PlayerPanel2/Slot" unique_id=1967774192]
 visible = false
 position = Vector2(138, 376)
@@ -386,7 +423,6 @@ horizontal_alignment = 1
 autowrap_mode = 1
 
 [node name="PlayerSprite" type="TextureRect" parent="HBoxContainer/PlayerPanel3/Slot" unique_id=1260493601]
-visible = false
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -397,6 +433,18 @@ offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_0mwj0")
+
+[node name="PlayerSpriteUnknown" type="TextureRect" parent="HBoxContainer/PlayerPanel3/Slot" unique_id=1128609935]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -194.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_q1sy4")
 
 [node name="PlayerCharacter" type="AnimatedSprite2D" parent="HBoxContainer/PlayerPanel3/Slot" unique_id=2075051227]
 visible = false

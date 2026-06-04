@@ -10,8 +10,10 @@ public partial class PlayerSelectionMenu : Control
 	private Label[] _statusLabels = new Label[4];
 	private Label[] _numberPlayerLabels = new Label[4];
 	private TextureRect[] _playerSprites = new TextureRect[4];
+	private TextureRect[] _playerSpritesUnknowns = new TextureRect[4];
 	private Panel[] _colorOverridePanels = new Panel[4];
 	private AnimatedSprite2D[] _playerCharacters = new AnimatedSprite2D[4];
+	
 	
 	private bool[] _playerJoined = new bool[4];
 
@@ -39,6 +41,7 @@ public partial class PlayerSelectionMenu : Control
 
 			_statusLabels[i] = _slots[i].GetNode<Label>("StatusLabel");
 			_playerSprites[i] = _slots[i].GetNode<TextureRect>("PlayerSprite");
+			_playerSpritesUnknowns[i] = _slots[i].GetNode<TextureRect>("PlayerSpriteUnknown");
 			_numberPlayerLabels[i] = _slots[i].GetNode<Label>("NumberPlayer");
 			_colorOverridePanels[i] = _slots[i].GetNode<Panel>("ColorOverride");
 			_playerCharacters[i] = _slots[i].GetNode<AnimatedSprite2D>("PlayerCharacter");
@@ -80,6 +83,9 @@ public partial class PlayerSelectionMenu : Control
 
 		if (_statusLabels[playerIndex] != null)
 			_statusLabels[playerIndex].Text = $"Joueur {playerIndex + 1}\nPrêt !";
+			
+		if (_playerSpritesUnknowns[playerIndex] != null)
+			_playerSpritesUnknowns[playerIndex].Hide();
 			
 		if (_playerSprites[playerIndex] != null)
 			_playerSprites[playerIndex].Show();
