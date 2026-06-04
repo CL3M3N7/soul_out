@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bophi13uqkooc" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_16.png" id="9_othdk"]
 [ext_resource type="Script" uid="uid://dxb15nia3xts8" path="res://Scripts/GlobalZoneLava.cs" id="10_68i3h"]
 [ext_resource type="PackedScene" uid="uid://dq74vvvp5jq" path="res://scenes/remaining_time.tscn" id="11_tq3q8"]
+[ext_resource type="PackedScene" uid="uid://cjwyq40yrmrtp" path="res://scenes/traps/deathfireball.tscn" id="14_eggrj"]
 [ext_resource type="PackedScene" uid="uid://duk02yhu1m4r" path="res://scenes/traps/LavaGeyser.tscn" id="16_idfmm"]
 [ext_resource type="PackedScene" uid="uid://ds77ss8ck1mlj" path="res://scenes/traps/FireballSpawner.tscn" id="18_d1xcb"]
 [ext_resource type="AudioStream" uid="uid://ojbdurg5v576" path="res://Sounds/Main/DarkSYnthWave.mp3" id="20_46gea"]
@@ -497,8 +498,6 @@ horizontal_alignment = 1
 
 [node name="PlayersNode" type="Node" parent="." unique_id=583617227]
 
-[node name="TimerManager" type="Node" parent="." unique_id=1363982616]
-
 [node name="Background" type="Node2D" parent="." unique_id=243216734]
 z_index = -10
 
@@ -640,6 +639,380 @@ InitialDelay = 2.0
 position = Vector2(100, -500)
 SpawnInterval = 2.0
 InitialDelay = 1.0
+
+[node name="DeathFireballSpawners" type="Node2D" parent="Traps" unique_id=1219653579]
+
+[node name="FireballSpawner3" parent="Traps/DeathFireballSpawners" unique_id=619342583 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -300)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner4" parent="Traps/DeathFireballSpawners" unique_id=1460946159 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -280)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner5" parent="Traps/DeathFireballSpawners" unique_id=268913292 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -260)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner6" parent="Traps/DeathFireballSpawners" unique_id=2080276540 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -240)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner7" parent="Traps/DeathFireballSpawners" unique_id=849724654 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -220)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner8" parent="Traps/DeathFireballSpawners" unique_id=1257301505 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -200)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner9" parent="Traps/DeathFireballSpawners" unique_id=1836402684 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -180)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner10" parent="Traps/DeathFireballSpawners" unique_id=65621987 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -160)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner11" parent="Traps/DeathFireballSpawners" unique_id=991424338 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -140)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner12" parent="Traps/DeathFireballSpawners" unique_id=159849319 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -120)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner13" parent="Traps/DeathFireballSpawners" unique_id=518741480 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -100)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner14" parent="Traps/DeathFireballSpawners" unique_id=1605241559 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -80)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner15" parent="Traps/DeathFireballSpawners" unique_id=1820115907 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -60)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner16" parent="Traps/DeathFireballSpawners" unique_id=1048471039 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -40)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner17" parent="Traps/DeathFireballSpawners" unique_id=1366790597 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, -20)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner18" parent="Traps/DeathFireballSpawners" unique_id=1603461033 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 0)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner19" parent="Traps/DeathFireballSpawners" unique_id=871218896 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 20)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner20" parent="Traps/DeathFireballSpawners" unique_id=267268045 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 40)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner21" parent="Traps/DeathFireballSpawners" unique_id=2023149278 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 60)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner22" parent="Traps/DeathFireballSpawners" unique_id=135459363 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 80)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner23" parent="Traps/DeathFireballSpawners" unique_id=128803764 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 100)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner24" parent="Traps/DeathFireballSpawners" unique_id=353085916 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 120)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner25" parent="Traps/DeathFireballSpawners" unique_id=1279049802 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 140)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner26" parent="Traps/DeathFireballSpawners" unique_id=1727032040 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 160)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner27" parent="Traps/DeathFireballSpawners" unique_id=827356870 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 180)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner28" parent="Traps/DeathFireballSpawners" unique_id=181847445 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 200)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner29" parent="Traps/DeathFireballSpawners" unique_id=1026278981 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 220)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner30" parent="Traps/DeathFireballSpawners" unique_id=1725211334 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 240)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner31" parent="Traps/DeathFireballSpawners" unique_id=1866241325 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 260)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner32" parent="Traps/DeathFireballSpawners" unique_id=1095932901 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 280)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner33" parent="Traps/DeathFireballSpawners" unique_id=119703666 instance=ExtResource("18_d1xcb")]
+position = Vector2(820, 300)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 180.0
+
+[node name="FireballSpawner34" parent="Traps/DeathFireballSpawners" unique_id=1661054792 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -300)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner35" parent="Traps/DeathFireballSpawners" unique_id=1418100830 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -280)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner36" parent="Traps/DeathFireballSpawners" unique_id=687837807 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -260)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner37" parent="Traps/DeathFireballSpawners" unique_id=1222797568 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -240)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner38" parent="Traps/DeathFireballSpawners" unique_id=266480217 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -220)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner39" parent="Traps/DeathFireballSpawners" unique_id=1623237969 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -200)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner40" parent="Traps/DeathFireballSpawners" unique_id=779942446 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -180)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner41" parent="Traps/DeathFireballSpawners" unique_id=958566055 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -160)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner42" parent="Traps/DeathFireballSpawners" unique_id=1355298043 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -140)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner43" parent="Traps/DeathFireballSpawners" unique_id=1550215793 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -120)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner44" parent="Traps/DeathFireballSpawners" unique_id=55499983 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -100)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner45" parent="Traps/DeathFireballSpawners" unique_id=1051869506 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -80)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner46" parent="Traps/DeathFireballSpawners" unique_id=1755023951 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -60)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner47" parent="Traps/DeathFireballSpawners" unique_id=1697923392 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -40)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner48" parent="Traps/DeathFireballSpawners" unique_id=1685579897 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, -20)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner49" parent="Traps/DeathFireballSpawners" unique_id=1201457979 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 0)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner50" parent="Traps/DeathFireballSpawners" unique_id=945205311 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 20)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner51" parent="Traps/DeathFireballSpawners" unique_id=678734281 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 40)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner52" parent="Traps/DeathFireballSpawners" unique_id=753720734 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 60)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner53" parent="Traps/DeathFireballSpawners" unique_id=1887769369 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 80)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner54" parent="Traps/DeathFireballSpawners" unique_id=1286734992 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 100)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner55" parent="Traps/DeathFireballSpawners" unique_id=1771412108 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 120)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner56" parent="Traps/DeathFireballSpawners" unique_id=1113682189 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 140)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner57" parent="Traps/DeathFireballSpawners" unique_id=1415832768 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 160)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner58" parent="Traps/DeathFireballSpawners" unique_id=136415167 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 180)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner59" parent="Traps/DeathFireballSpawners" unique_id=1230073492 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 200)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner60" parent="Traps/DeathFireballSpawners" unique_id=1833620449 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 220)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner61" parent="Traps/DeathFireballSpawners" unique_id=282088427 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 240)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner62" parent="Traps/DeathFireballSpawners" unique_id=1700379431 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 260)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner63" parent="Traps/DeathFireballSpawners" unique_id=1615378476 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 280)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
+
+[node name="FireballSpawner64" parent="Traps/DeathFireballSpawners" unique_id=717819084 instance=ExtResource("18_d1xcb")]
+position = Vector2(-820, 300)
+FireballScene = ExtResource("14_eggrj")
+SpawnInterval = 5.0
+FireAngleDegrees = 0.0
 
 [node name="SpawnPoints" type="Node" parent="." unique_id=1652392050]
 

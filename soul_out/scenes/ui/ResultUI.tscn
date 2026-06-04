@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c7c8mr56myyco"]
+
+[ext_resource type="Script" uid="uid://xfnj8o0050qy" path="res://Scripts/ui/ResultUI.cs" id="1_xf65s"]
+[ext_resource type="Texture2D" uid="uid://bgoa1dp5mnpew" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_01.png" id="2_ug4is"]
+[ext_resource type="Texture2D" uid="uid://c2xai165v7p3g" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_06.png" id="3_bvk3d"]
+[ext_resource type="Texture2D" uid="uid://b0gbxj3js3ixk" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_11.png" id="4_co4ap"]
+[ext_resource type="Texture2D" uid="uid://bophi13uqkooc" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_16.png" id="5_quanb"]
+[ext_resource type="Texture2D" uid="uid://dl8ab7jk23iox" path="res://resources/cups/Cup1.png" id="6_neof7"]
+[ext_resource type="Texture2D" uid="uid://bt44pbgbt17jq" path="res://resources/cups/Cup2.png" id="7_blsfk"]
+[ext_resource type="Texture2D" uid="uid://dkxuiqmxscq2t" path="res://resources/cups/Cup3.png" id="8_tsc44"]
+
+[node name="ResultUi" type="VBoxContainer" unique_id=1519707037]
+script = ExtResource("1_xf65s")
+Avatar0 = ExtResource("2_ug4is")
+Avatar1 = ExtResource("3_bvk3d")
+Avatar2 = ExtResource("4_co4ap")
+Avatar3 = ExtResource("5_quanb")
+Cup0 = ExtResource("6_neof7")
+Cup1 = ExtResource("7_blsfk")
+Cup2 = ExtResource("8_tsc44")
+
+[node name="Cup" type="TextureRect" parent="." unique_id=1753028586]
+layout_mode = 2
+
+[node name="Avatar" type="TextureRect" parent="." unique_id=985802346]
+layout_mode = 2

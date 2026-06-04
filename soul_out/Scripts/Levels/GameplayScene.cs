@@ -86,7 +86,7 @@ public abstract partial class GameplayScene : SONodeScene
 	public async Task EndScene(Array<int> leaderboard)
 	{
 		await ToSignal(CreateTween().TweenInterval(2.0), Tween.SignalName.Finished);
-		EmitSignal(SignalName.OnEndScene);
+		EmitSignal(SONodeScene.SignalName.OnEndScene);
 		GD.Print("end scene:" + leaderboard);
 	}
 

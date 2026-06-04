@@ -35,7 +35,9 @@ public partial class PlayerSpawner(
 		
 		for (int i = 0; i < GameManager.Instance.NumberOfPlayers; i++)
 		{
-			Marker2D spawnPoint = (Marker2D)spawnPoints.PickRandom();
+			// Discuter de si on fait des spawn aléatoire ou pas
+			//Marker2D spawnPoint = (Marker2D) (random ? spawnPoints.PickRandom() : spawnPoints[0]);
+			Marker2D spawnPoint = (Marker2D)spawnPoints[0];
 			spawnPoints.Remove(spawnPoint);
 			
 			SOCharacter character = PlayerScene.Instantiate<SOCharacter>();

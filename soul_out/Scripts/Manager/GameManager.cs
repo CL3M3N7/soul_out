@@ -11,7 +11,7 @@ public partial class GameManager : Node
 	[Signal] public delegate void ScoreUpdateEventHandler(int playerSlot, int newScore);
 	[Signal] public delegate void ChangeRoundEventHandler(int round);
 
-	public int NumberOfPlayers { get; private set; } = 4; // On peut le changer depuis le menu principal
+	public int NumberOfPlayers { get; set; } = 2; // On peut le changer depuis le menu principal
 	private int[] _playerScore;
 
 	private int _currentRound = 0;

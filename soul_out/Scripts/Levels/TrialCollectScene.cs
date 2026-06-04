@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using Godot.Collections;
@@ -16,6 +15,11 @@ public partial class TrialCollectScene : TrialScene
 	[Export] public float IntervalleMin { get; set; } = 0.5f;        // Minimum de secondes entre deux apparitions
 	[Export] public float IntervalleMax { get; set; } = 2.0f;        // Maximum de secondes entre deux apparitions
 
+	[Export] public Area2D _validArea;
+	private Array<CollisionShape2D> _validShapes = new();
+	
+	public TrialCollectManager TrialCollectManager = new TrialCollectManager();
+	
 	private Timer _spawnTimer;
 	private Random _random = new Random();
 
@@ -23,14 +27,24 @@ public partial class TrialCollectScene : TrialScene
 	{
 		base._Ready();
 		
-		PlayerSpawner.OnSpawnPlayer += SetHUD;
+		PlayerSpawner.OnSpawnPlayer += TrialCollectManager.SubscribeToPlayer;
 		
 		_spawnTimer = new Timer();
 		_spawnTimer.OneShot = true; // On gère le côté aléatoire à chaque fin de cycle
 		_spawnTimer.Timeout += OnSpawnTimerTimeout;
 		AddChild(_spawnTimer);
+
+		TrialCollectManager.OnEndTrial += PostEndScene;
+		OnTimeOut += TrialCollectManager.SubmitEndBattle;
 		
 		ChooseTimeNextSpawn();
+		foreach (Node child in _validArea.GetChildren())
+		{
+			if (child is CollisionShape2D shape && !shape.Disabled)
+			{
+				_validShapes.Add(shape);
+			}
+		}
 	}
 
 	private void ChooseTimeNextSpawn()
@@ -61,19 +75,21 @@ public partial class TrialCollectScene : TrialScene
 
 		GoldSpot newSpot = GoldScene.Instantiate<GoldSpot>();
 
-		newSpot.Position = new Vector2((float)_random.NextDouble() * 600 - 300,(float)_random.NextDouble() * 400 - 200);
-
+		newSpot.Position = GetValidPosition();
+		
 		// Ajout du spot à la scène principale
 		AddChild(newSpot);
 	}
 
-	private void OnDurationTimerTimeout()
+	public Vector2 GetValidPosition()
 	{
-		GD.Print("Le temps est écoulé ! Le spawner s'arrête.");
-		_spawnTimer.Stop();
-		SceneManager.Instance.ChangeScene();
+		int randidx = _random.Next(0,_validShapes.Count());
+		CollisionShape2D randshape = _validShapes[randidx];
+		Rect2 rect = randshape.Shape.GetRect();
+		Vector2 randpos = new Vector2((float)(_random.NextDouble()*(rect.End.X-rect.Position.X)+rect.Position.X),(float)(_random.NextDouble()*(rect.End.Y-rect.Position.Y)+rect.Position.Y));
+		return randshape.ToGlobal(randpos);
 	}
-
+	
 	public void EndScene()
 	{
 		var leaderboardIds = GetChildren()

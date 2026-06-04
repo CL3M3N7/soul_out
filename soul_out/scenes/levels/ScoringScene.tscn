@@ -2,10 +2,31 @@
 
 [ext_resource type="Script" uid="uid://b03s5ktg33rhv" path="res://Scripts/Levels/ScoringScene.cs" id="1_5eot1"]
 [ext_resource type="Script" uid="uid://xmf24y436ui1" path="res://Scripts/ui/ScoreHUD.cs" id="1_jsilc"]
+[ext_resource type="Texture2D" uid="uid://1304q00njwkh" path="res://assets/UI/gradient-rouge.jpg" id="2_jybay"]
 [ext_resource type="PackedScene" uid="uid://pxchev8or7h8" path="res://scenes/ui/ScoreUI.tscn" id="2_t17pi"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3u7ms"]
 
 [node name="ScoringScene" type="Node2D" unique_id=401253247]
 script = ExtResource("1_5eot1")
+
+[node name="Background" type="Panel" parent="." unique_id=1295766422]
+material = SubResource("CanvasItemMaterial_3u7ms")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=437012863]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jybay")
+expand_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1713922566]
 anchors_preset = 8

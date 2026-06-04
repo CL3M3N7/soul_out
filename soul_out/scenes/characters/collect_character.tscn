@@ -3,12 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://dgeqox0yuf4ef" path="res://scenes/characters/character.tscn" id="1_e4oyx"]
 [ext_resource type="Script" uid="uid://ca77ao0q8c1s5" path="res://Scripts/Characters/CollectCharacter.cs" id="2_3ykm2"]
 [ext_resource type="Script" uid="uid://da61gak3mclaw" path="res://Scripts/CollectArea.cs" id="3_3ykm2"]
+[ext_resource type="PackedScene" uid="uid://cf00pj6yt1rmk" path="res://scenes/ui/FloatingText.tscn" id="3_4x6xw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4oyx"]
 
 [node name="Character" unique_id=251562452 instance=ExtResource("1_e4oyx")]
 z_index = 4
 script = ExtResource("2_3ykm2")
+FloatingTextScene = ExtResource("3_4x6xw")
 TypeCharacter = 2
 
 [node name="CollectArea" type="Area2D" parent="." index="2" unique_id=1424232050]
