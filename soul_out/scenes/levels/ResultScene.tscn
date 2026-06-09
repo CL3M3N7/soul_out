@@ -3,8 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://1304q00njwkh" path="res://assets/UI/gradient-rouge.jpg" id="1_mjbqi"]
 [ext_resource type="Script" uid="uid://b31xdvg7vf1u0" path="res://Scripts/Levels/ResultScene.cs" id="1_uf0x6"]
 [ext_resource type="AudioStream" uid="uid://duorkewstdeve" path="res://Sounds/Scenes/drum-hit.mp3" id="2_h4yvh"]
+[ext_resource type="Script" uid="uid://ddcuu708uw52d" path="res://Scripts/ui/ResultHUD.cs" id="3_s8afs"]
+[ext_resource type="PackedScene" uid="uid://c7c8mr56myyco" path="res://scenes/ui/ResultUI.tscn" id="4_ix8tm"]
+[ext_resource type="FontFile" uid="uid://bo0fge1a7yx10" path="res://assets/UI/Daydream DEMO.otf" id="6_mivpc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h4yvh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uj7ac"]
+font = ExtResource("6_mivpc")
+font_size = 70
 
 [node name="ResultScene" type="Node2D" unique_id=61316861]
 script = ExtResource("1_uf0x6")
@@ -45,9 +52,25 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
+script = ExtResource("3_s8afs")
+ResultUiScene = ExtResource("4_ix8tm")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=239683918]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1349316109]
 stream = ExtResource("2_h4yvh")
 autoplay = true
+
+[node name="Label" type="Label" parent="." unique_id=589549234]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -548.0
+offset_top = 100.0
+offset_right = 548.0
+offset_bottom = 214.0
+grow_horizontal = 2
+text = "Congratulation !"
+label_settings = SubResource("LabelSettings_uj7ac")
+horizontal_alignment = 1
+vertical_alignment = 1
