@@ -9,8 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://bftfokkb8n3jf" path="res://resources/Ribbons/RedRibbons.png" id="7_h5dg1"]
 [ext_resource type="Texture2D" uid="uid://f0jm1gwty17p" path="res://resources/Ribbons/YellowRibbons.png" id="8_8emef"]
 [ext_resource type="Texture2D" uid="uid://1p0hwpwyhs53" path="res://resources/Ribbons/PurpleRibbons.png" id="9_6dnk2"]
+[ext_resource type="FontFile" uid="uid://vl7sehjk5uqu" path="res://assets/UI/Chunky Playful.otf" id="10_h5dg1"]
 
-[node name="ScoreUi" type="VBoxContainer" unique_id=771313580]
+[sub_resource type="LabelSettings" id="LabelSettings_8emef"]
+font = ExtResource("10_h5dg1")
+font_size = 32
+
+[node name="ScoreUi" type="VBoxContainer" unique_id=771313580 node_paths=PackedStringArray("scoreLabel")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,14 +30,29 @@ Ribbon0 = ExtResource("6_h2xuw")
 Ribbon1 = ExtResource("7_h5dg1")
 Ribbon2 = ExtResource("8_8emef")
 Ribbon3 = ExtResource("9_6dnk2")
+scoreLabel = NodePath("Ribbon/Label")
 
 [node name="Avatar" type="TextureRect" parent="." unique_id=686514425]
 layout_mode = 2
 
 [node name="Ribbon" type="TextureRect" parent="." unique_id=1758182230]
 layout_mode = 2
+tooltip_text = "bite"
 
-[node name="Label" type="Label" parent="." unique_id=1643526437]
-layout_mode = 2
+[node name="Label" type="Label" parent="Ribbon" unique_id=1643526437]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -16.5
+offset_right = 50.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "0"
+label_settings = SubResource("LabelSettings_8emef")
 horizontal_alignment = 1
+vertical_alignment = 1

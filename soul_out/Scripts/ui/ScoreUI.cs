@@ -13,6 +13,8 @@ public partial class ScoreUI : VBoxContainer
 	[Export] public Texture2D Ribbon2;
 	[Export] public Texture2D Ribbon3;
 	
+	[Export] private Label scoreLabel;
+	
 	public void SetAvatarAndScore(int avatar, int score)
 	{
 		if(!(GetChild(0) is TextureRect avatarTexture)) return;
@@ -42,7 +44,6 @@ public partial class ScoreUI : VBoxContainer
 			GD.PrintErr("This texture does not exist !");
 		}
 		
-		if(!(GetChild(2) is Label scoreLabel)) return;
 		scoreLabel.Text = score.ToString();
 	}
 }
