@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using SoulOut.Scripts.Manager;
 
 public partial class MainMenu : Control
@@ -19,6 +20,17 @@ public partial class MainMenu : Control
 	
 	private Button _quitOptionsButton;
 	
+	private OptionButton _resolutionButton;
+
+	// Liste des résolutions que l'on veut proposer
+	private List<Vector2I> _resolutions = new List<Vector2I>()
+	{
+		new Vector2I(1920, 1080),
+		new Vector2I(1600, 900),
+		new Vector2I(1366, 768),
+		new Vector2I(1280, 720)
+	};
+	
 	// Optionnel : un panel qui contient tes options (à cacher/afficher)
 	private Panel _optionsMenu; 
 	private VBoxContainer _mainMenuButtons;
@@ -27,6 +39,8 @@ public partial class MainMenu : Control
 
 	public override void _Ready()
 	{
+		//DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed, 0);
+		
 		// 1. Récupération des index des bus
 		_masterBusIndex = AudioServer.GetBusIndex("Master");
 		_musicBusIndex = AudioServer.GetBusIndex("Music");
@@ -68,6 +82,23 @@ public partial class MainMenu : Control
 		{
 			_startButton.GrabFocus();
 		}
+		
+		_resolutionButton = GetNode<OptionButton>("OptionsPanel/ResolutionHBoxContainer/ResolutionButton");
+
+		// 1. On vide le bouton au cas où, puis on ajoute nos options textuelles
+		_resolutionButton.Clear();
+		foreach (var res in _resolutions)
+		{
+			_resolutionButton.AddItem($"{res.X} x {res.Y}");
+		}
+
+		// 2. On connecte le signal quand le joueur change de sélection
+		_resolutionButton.ItemSelected += OnResolutionSelected;
+		
+		// 3. Optionnel : Sélectionner par défaut la résolution actuelle de la fenêtre
+		Vector2I currentSize = DisplayServer.WindowGetSize();
+		int index = _resolutions.IndexOf(currentSize);
+		if (index != -1) _resolutionButton.Select(index);
 	}
 	
 	
@@ -111,17 +142,45 @@ public partial class MainMenu : Control
 		// On convertit la valeur du slider (0 à 1) en Décibels, puis on l'applique au bus
 		float dbValue = (float)Mathf.LinearToDb(value);
 		AudioServer.SetBusVolumeDb(_masterBusIndex, dbValue);
+		
+		_musicSlider.Value = value;
+		_sfxSlider.Value = value;
 	}
 
 	private void OnMusicSliderValueChanged(double value)
 	{
+		if (value > _masterSlider.Value)
+		{
+			_musicSlider.Value = _masterSlider.Value;
+			value = _musicSlider.Value; // On bride la valeur
+		}
+		
 		float dbValue = (float)Mathf.LinearToDb(value);
 		AudioServer.SetBusVolumeDb(_musicBusIndex, dbValue);
 	}
 
 	private void OnSfxSliderValueChanged(double value)
 	{
+		if (value > _masterSlider.Value)
+		{
+			_sfxSlider.Value = _masterSlider.Value;
+			value = _sfxSlider.Value; // On bride la valeur
+		}
+		
 		float dbValue = (float)Mathf.LinearToDb(value);
 		AudioServer.SetBusVolumeDb(_sfxBusIndex, dbValue);
+	}
+	
+	private void OnResolutionSelected(long index)
+	{
+		// On récupère le Vector2I correspondant à l'index choisi
+		Vector2I selectedRes = _resolutions[(int)index];
+		
+		// On applique la nouvelle taille à la fenêtre de jeu
+		DisplayServer.WindowSetSize(selectedRes);
+		
+		// Astuce : On recentre la fenêtre sur l'écran du joueur pour éviter qu'elle se décale
+		Vector2I screenSize = DisplayServer.ScreenGetSize();
+		DisplayServer.WindowSetPosition((screenSize - selectedRes) / 2);
 	}
 }

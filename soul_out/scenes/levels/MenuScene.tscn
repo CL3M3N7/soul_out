@@ -48,6 +48,25 @@ thickness = 17
 color = Color(0.9666744, 0.51256466, 0, 1)
 thickness = 18
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hyq0"]
+bg_color = Color(0.85150933, 0.49982625, 0.2232303, 1)
+border_width_left = 3
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg14n"]
+bg_color = Color(0.49111897, 0.17095572, 0.006846455, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_siljd"]
+bg_color = Color(0.8829374, 0.42816818, 0.19201234, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
 [node name="MenuScene" type="Control" unique_id=662636925]
 layout_mode = 3
 anchors_preset = 15
@@ -191,6 +210,7 @@ InitialDelay = 1.0
 
 [node name="Logo" type="TextureRect" parent="." unique_id=1328713611]
 z_index = 6
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -432,3 +452,28 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_x5cpt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6asfp")
 theme_override_styles/focus = SubResource("StyleBoxFlat_6asfp")
 text = "QUIT"
+
+[node name="ResolutionHBoxContainer" type="HBoxContainer" parent="OptionsPanel" unique_id=1753464065]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -88.0
+offset_right = 319.0
+offset_bottom = -48.0
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="OptionsPanel/ResolutionHBoxContainer" unique_id=532765826]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_x5cpt")
+theme_override_font_sizes/font_size = 35
+text = "RESOLUTION"
+
+[node name="ResolutionButton" type="OptionButton" parent="OptionsPanel/ResolutionHBoxContainer" unique_id=240923871]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_7hyq0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mg14n")
+theme_override_styles/focus = SubResource("StyleBoxFlat_siljd")
