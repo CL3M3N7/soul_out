@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://dno8p307pjvir"]
 
 [ext_resource type="Texture2D" uid="uid://1304q00njwkh" path="res://assets/UI/gradient-rouge.jpg" id="1_mjbqi"]
+[ext_resource type="Script" uid="uid://b31xdvg7vf1u0" path="res://Scripts/Levels/ResultScene.cs" id="1_uf0x6"]
+[ext_resource type="AudioStream" uid="uid://duorkewstdeve" path="res://Sounds/Scenes/drum-hit.mp3" id="2_h4yvh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h4yvh"]
 
 [node name="ResultScene" type="Node2D" unique_id=61316861]
+script = ExtResource("1_uf0x6")
 
 [node name="Background" type="Panel" parent="." unique_id=218871130]
 material = SubResource("CanvasItemMaterial_h4yvh")
@@ -44,3 +47,7 @@ grow_vertical = 0
 alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=239683918]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1349316109]
+stream = ExtResource("2_h4yvh")
+autoplay = true

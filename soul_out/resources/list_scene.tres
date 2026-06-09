@@ -3,8 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dwceod2agi28" path="res://scenes/levels/battle_scene/battle_scene.tscn" id="1_inaoh"]
 [ext_resource type="Script" uid="uid://dunrrd878khlx" path="res://Scripts/Resource/ListScene.cs" id="1_trhq7"]
 [ext_resource type="PackedScene" uid="uid://tt773ogrei2k" path="res://scenes/levels/judgement_scene.tscn" id="2_0gfkp"]
-[ext_resource type="PackedScene" uid="uid://u0mqhmvdpqwt" path="res://scenes/levels/MainMenuScene.tscn" id="3_ia0ei"]
+[ext_resource type="PackedScene" path="res://scenes/levels/MainMenuScene.tscn" id="3_ia0ei"]
 [ext_resource type="PackedScene" uid="uid://d4fxks3pqk07v" path="res://scenes/levels/ScoringScene.tscn" id="3_inaoh"]
+[ext_resource type="PackedScene" uid="uid://dno8p307pjvir" path="res://scenes/levels/ResultScene.tscn" id="4_3dueb"]
 [ext_resource type="PackedScene" uid="uid://cswu468elur66" path="res://scenes/levels/trial_scene/TrialCollectScene.tscn" id="4_ia0ei"]
 
 [resource]
@@ -14,4 +15,5 @@ BattleScenes = Array[PackedScene]([ExtResource("1_inaoh")])
 JudgementScene = ExtResource("2_0gfkp")
 TrialScenes = Array[PackedScene]([ExtResource("4_ia0ei")])
 ScoringScenes = ExtResource("3_inaoh")
+ResultScene = ExtResource("4_3dueb")
 metadata/_custom_type_script = "uid://dunrrd878khlx"

@@ -27,6 +27,7 @@ public partial class SceneManager : Node
 	public PackedScene JudgementScene;
 	public Array<PackedScene> TrialScenes;
 	public PackedScene ScoringScenes;
+	public PackedScene ResultScene;
 	
 	private SceneType _currentScene = SceneType.MainScene;
 
@@ -82,6 +83,13 @@ public partial class SceneManager : Node
 		{
 			GD.PrintErr("[SceneManager] No scoring scenes loaded.");
 			throw new ArgumentException("No scoring scenes loaded.");
+		}
+		
+		ResultScene = listScene.ResultScene;
+		if (ResultScene == null)
+		{
+			GD.PrintErr("[SceneManager] No result scenes loaded.");
+			throw new ArgumentException("No result scenes loaded.");
 		}
 	}
 
@@ -152,6 +160,13 @@ public partial class SceneManager : Node
 		LoadScene(instantiatedScene);
 	}
 
+	private void LoadResultScene()
+	{
+		PackedScene nextScene = ResultScene;
+		SONodeScene instantiatedScene = nextScene.Instantiate<SONodeScene>();
+		LoadScene(instantiatedScene);
+	}
+
 	public void ChangeScene()
 	{
 		_currentScene = FoundNextSceneType();
@@ -196,6 +211,9 @@ public partial class SceneManager : Node
 				break;
 			case SceneType.ScoringScene:
 				LoadScoringScene();
+				break;
+			case SceneType.ResultScene:
+				LoadResultScene();
 				break;
 			default:
 				GD.PrintErr("[SceneManager] Unknown scene type.");

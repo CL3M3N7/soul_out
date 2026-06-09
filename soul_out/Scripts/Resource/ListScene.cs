@@ -12,4 +12,5 @@ public partial class ListScene : Godot.Resource
 	[Export] public PackedScene JudgementScene;
 	[Export] public Array<PackedScene> TrialScenes;
 	[Export] public PackedScene ScoringScenes;
+	[Export] public PackedScene ResultScene;
 }
