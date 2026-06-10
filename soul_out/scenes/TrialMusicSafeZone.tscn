@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bdbv1qwrgc1bs"]
+
+[ext_resource type="Script" uid="uid://cvnc8he34faxk" path="res://Scripts/TrialMusicSafeZone.cs" id="1_u8b0w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klyiw"]
+
+[node name="TrialMusicSafeZone" type="Area2D" unique_id=1175607323]
+script = ExtResource("1_u8b0w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=232739337]
+shape = SubResource("RectangleShape2D_klyiw")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=525235789]
+color = Color(0, 0.5647059, 0, 1)
+polygon = PackedVector2Array(10, 10, 10, -10, -10, -10, -10, 10)
+
+[connection signal="body_entered" from="." to="." method="onBodyEntered"]
+[connection signal="body_exited" from="." to="." method="onBodyExited"]
