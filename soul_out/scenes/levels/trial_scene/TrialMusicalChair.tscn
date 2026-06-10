@@ -453,10 +453,12 @@ size = Vector2(125, 688)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc3lo"]
 size = Vector2(308, 142)
 
-[node name="TrialMusicalChair" type="Node2D" unique_id=167935840 node_paths=PackedStringArray("SafeZoneNode", "_validSpawnArea", "_spawnTimer", "_spawnLabel", "_eliminationTimer", "_eliminationLabel", "SpawnPoints", "PlayersNode")]
+[node name="TrialMusicalChair" type="Node2D" unique_id=167935840 node_paths=PackedStringArray("SafeZoneNode", "_validSpawnArea", "_spawnTimer", "_spawnLabel", "_eliminationTimer", "_eliminationLabel", "SpawnPoints", "PlayersNode", "TimerLabel")]
 script = ExtResource("1_bo1og")
 _safeArea = ExtResource("2_jmgdr")
 SafeZoneNode = NodePath("SafeZoneNode")
+SpawnTime = 5.0
+EliminationTimer = 10.0
 _validSpawnArea = NodePath("ChairSpawnZone")
 _spawnTimer = NodePath("SpawnTimer")
 _spawnLabel = NodePath("Camera2D/Control/spawntime")
@@ -468,6 +470,7 @@ PlayerScene = ExtResource("3_y4byd")
 SpawnPoints = NodePath("SpawnPoints")
 PlayersNode = NodePath("PlayersNode")
 DurationInSeconds = 1000
+TimerLabel = NodePath("Camera2D/Control/RemainingTime")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=992272945]
 zoom = Vector2(0.75, 0.75)
@@ -498,13 +501,25 @@ grow_horizontal = 2
 text = "Time"
 horizontal_alignment = 1
 
-[node name="eliminationtime" parent="Camera2D/Control" unique_id=108178410 instance=ExtResource("2_bo1og")]
+[node name="eliminationtime" parent="Camera2D/Control" unique_id=108178410 node_paths=PackedStringArray("_mainTime") instance=ExtResource("2_bo1og")]
 visible = false
 layout_mode = 0
+offset_left = 660.0
+offset_right = 876.0
+offset_bottom = 45.0
+text = "Elimination"
+horizontal_alignment = 1
+_mainTime = NodePath("../../../EliminationTimer")
 
-[node name="spawntime" parent="Camera2D/Control" unique_id=1004190780 instance=ExtResource("2_bo1og")]
+[node name="spawntime" parent="Camera2D/Control" unique_id=1004190780 node_paths=PackedStringArray("_mainTime") instance=ExtResource("2_bo1og")]
 visible = false
 layout_mode = 0
+offset_left = 660.0
+offset_right = 876.0
+offset_bottom = 45.0
+text = "Spawn"
+horizontal_alignment = 1
+_mainTime = NodePath("../../../SpawnTimer")
 
 [node name="PlayersNode" type="Node" parent="." unique_id=2020922313]
 
@@ -588,3 +603,39 @@ shape = SubResource("RectangleShape2D_gc3lo")
 [node name="EliminationTimer" type="Timer" parent="." unique_id=342841513]
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1483289504]
+
+[node name="Bloquant" type="Node2D" parent="." unique_id=1325023964]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bloquant" unique_id=174446914]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bloquant/StaticBody2D" unique_id=561480556]
+polygon = PackedVector2Array(-71, -68, -68, -254, -186, -253, -187, -217, -249, -218, -249, -185, -310, -186, -312, -156, -377, -156, -378, -123, -443, -122, -443, -90, -505, -90, -505, -72)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Bloquant" unique_id=1911854235]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bloquant/StaticBody2D2" unique_id=1429065752]
+position = Vector2(1, -1)
+rotation = -3.1415927
+polygon = PackedVector2Array(-71, -68, -68, -254, -186, -253, -187, -217, -249, -218, -249, -185, -310, -186, -312, -156, -377, -156, -378, -123, -443, -122, -443, -90, -505, -90, -505, -72)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Bloquant" unique_id=81295809]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bloquant/StaticBody2D3" unique_id=923545005]
+polygon = PackedVector2Array(68, -68, 69, -253, 186, -254, 187, -222, 250, -221, 253, -191, 312, -190, 316, -158, 377, -158, 381, -129, 439, -127, 442, -96, 508, -94, 509, -65)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Bloquant" unique_id=472910182]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bloquant/StaticBody2D4" unique_id=852100937]
+position = Vector2(1, 0)
+rotation = 3.1415927
+polygon = PackedVector2Array(68, -68, 69, -253, 186, -254, 187, -222, 250, -221, 253, -191, 312, -190, 316, -158, 377, -158, 381, -129, 439, -127, 442, -96, 508, -94, 509, -65)
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Bloquant" unique_id=1133495436]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bloquant/StaticBody2D5" unique_id=954424922]
+polygon = PackedVector2Array(-677, 290, -643, 290, -642, 322, -610, 323, -610, 349, 610, 352, 611, 322, 644, 321, 648, 288, 679, 290, 679, -319, 647, -322, 645, -352, 616, -352, 616, -449, 768, -448, 768, 447, -677, 431)
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Bloquant" unique_id=601995423]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bloquant/StaticBody2D6" unique_id=2136990387]
+polygon = PackedVector2Array(-678, 431, -769, 431, -766, -447, 615, -448, 616, -354, -613, -357, -614, -328, -646, -328, -648, -297, -679, -297)

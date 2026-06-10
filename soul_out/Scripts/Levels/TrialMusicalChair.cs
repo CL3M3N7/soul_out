@@ -49,8 +49,9 @@ public partial class TrialMusicalChair : TrialScene
 				_validShapes.Add(shape);
 			}
 		}
-		_spawnTimer.Start();
-		_spawnLabel.Visible = true;
+		//_spawnLabel.Visible = true;
+		_spawnTimer.Start(SpawnTime);
+		
 	}
 
 	private void SpawnSafeArea()
@@ -79,18 +80,18 @@ public partial class TrialMusicalChair : TrialScene
 
 	private void OnSpawnTimerTimeout()
 	{
-		_spawnLabel.Visible = false;
-		for(int i = 0; i < _currentPlayerNumber; i++)
+		//_spawnLabel.Visible = false;
+		for(int i = 0; i < _currentPlayerNumber-1; i++)
 		{
 			SpawnSafeArea();
 		}
-		_eliminationLabel.Visible = true;
+		//_eliminationLabel.Visible = true;
 		_eliminationTimer.Start();
 	}
 
 	private void OnEliminationTimerTimeout()
 	{
-		_eliminationLabel.Visible = false;
+		//_eliminationLabel.Visible = false;
 		foreach (Node child in PlayersNode.GetChildren())
 		{
 			if (child is MusicChairCharacter character)
@@ -115,7 +116,7 @@ public partial class TrialMusicalChair : TrialScene
 		{
 			
 			_spawnTimer.Start();
-			_spawnLabel.Visible = true;
+			//_spawnLabel.Visible = true;
 		}
 		else
 		{

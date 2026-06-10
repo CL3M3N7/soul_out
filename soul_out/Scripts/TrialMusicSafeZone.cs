@@ -11,6 +11,7 @@ public partial class TrialMusicSafeZone : Area2D
 		{
 			if (body is MusicChairCharacter character)
 			{
+				GD.Print($"Tu es safe {character}");
 				character.isSafe = true;
 				_isOccupied = true;
 			}
@@ -23,6 +24,7 @@ public partial class TrialMusicSafeZone : Area2D
 		{
 			if (body is MusicChairCharacter character)
 			{
+				GD.Print($"Tu n'es plus safe {character}");
 				character.isSafe = false;
 				_isOccupied = false;
 			}
