@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dy5nfcy5khe1l"]
+
+[ext_resource type="Script" uid="uid://cms5fyk5kx5ik" path="res://Scripts/Entities/Sheep.cs" id="1_80ofh"]
+[ext_resource type="SpriteFrames" uid="uid://ch8gagt3o8d3q" path="res://resources/sprite_frames/entities/sheep.tres" id="1_pnpr1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pnpr1"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_80ofh"]
+radius = 150.0
+
+[node name="Sheep" type="CharacterBody2D" unique_id=2073511276 node_paths=PackedStringArray("Sprite", "PlayerDetectorArea")]
+collision_layer = 3
+script = ExtResource("1_80ofh")
+Sprite = NodePath("CharacterBody2D")
+PlayerDetectorArea = NodePath("PlayerDetectorArea")
+
+[node name="CharacterBody2D" type="AnimatedSprite2D" parent="." unique_id=1047388004]
+sprite_frames = ExtResource("1_pnpr1")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.8189054
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=892859649]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_pnpr1")
+
+[node name="PlayerDetectorArea" type="Area2D" parent="." unique_id=613917313]
+
+[node name="PlayerDetection" type="CollisionShape2D" parent="PlayerDetectorArea" unique_id=1029386170]
+shape = SubResource("CircleShape2D_80ofh")
+
+[connection signal="area_entered" from="PlayerDetectorArea" to="." method="OnPlayerDetectorAreaEnter"]
+[connection signal="area_exited" from="PlayerDetectorArea" to="." method="OnPlayerDetectorAreaExit"]

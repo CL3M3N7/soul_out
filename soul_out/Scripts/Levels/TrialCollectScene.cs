@@ -92,7 +92,7 @@ public partial class TrialCollectScene : TrialScene
 		return randshape.ToGlobal(randpos);
 	}
 	
-	public void EndScene()
+	public new void EndScene()
 	{
 		var leaderboardIds = PlayersNode
 			.GetChildren()
