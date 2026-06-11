@@ -120,6 +120,7 @@ public partial class TrialMusicalChair : TrialScene
 		}
 		else
 		{
+			Leaderboard.Reverse();
 			EmitSignal(TrialScene.SignalName.OnEndTrial, Leaderboard);
 			EmitSignal(SONodeScene.SignalName.OnEndScene);
 		}
