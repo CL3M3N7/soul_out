@@ -6,16 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://u0mqhmvdpqwt" path="res://scenes/levels/MainMenuScene.tscn" id="3_ia0ei"]
 [ext_resource type="PackedScene" uid="uid://d4fxks3pqk07v" path="res://scenes/levels/ScoringScene.tscn" id="3_inaoh"]
 [ext_resource type="PackedScene" uid="uid://dno8p307pjvir" path="res://scenes/levels/ResultScene.tscn" id="4_3dueb"]
-[ext_resource type="PackedScene" uid="uid://cifawwvk25w7r" path="res://scenes/levels/trial_scene/trial_sheep.tscn" id="6_lcvow"]
+[ext_resource type="PackedScene" uid="uid://dhjmb5jegtdb" path="res://scenes/levels/trial_scene/trial_sheep.tscn" id="6_lcvow"]
 [ext_resource type="PackedScene" uid="uid://cswu468elur66" path="res://scenes/levels/trial_scene/TrialCollectScene.tscn" id="7_lcvow"]
 [ext_resource type="PackedScene" uid="uid://bfh2shws1dkeg" path="res://scenes/levels/trial_scene/TrialSpellcastScene.tscn" id="8_lb0fj"]
+[ext_resource type="PackedScene" path="res://scenes/levels/trial_scene/TrialMusicalChair.tscn" id="9_lb0fj"]
 
 [resource]
 script = ExtResource("1_trhq7")
 MainScene = ExtResource("3_ia0ei")
 BattleScenes = Array[PackedScene]([ExtResource("1_inaoh")])
 JudgementScene = ExtResource("2_0gfkp")
-TrialScenes = Array[PackedScene]([ExtResource("6_lcvow"), ExtResource("8_lb0fj"), ExtResource("7_lcvow")])
+TrialScenes = Array[PackedScene]([ExtResource("6_lcvow"), ExtResource("8_lb0fj"), ExtResource("7_lcvow"), ExtResource("9_lb0fj")])
 ScoringScenes = ExtResource("3_inaoh")
 ResultScene = ExtResource("4_3dueb")
 metadata/_custom_type_script = "uid://dunrrd878khlx"
