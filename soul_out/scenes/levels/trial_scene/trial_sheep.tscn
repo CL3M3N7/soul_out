@@ -1,7 +1,7 @@
-[gd_scene format=4 uid="uid://cifawwvk25w7r"]
+[gd_scene format=4 uid="uid://dhjmb5jegtdb"]
 
 [ext_resource type="Script" uid="uid://5qvpgh0sv2av" path="res://Scripts/Levels/TrialSceneSheep.cs" id="1_vrhxm"]
-[ext_resource type="PackedScene" uid="uid://cyoxshrbc3e3g" path="res://scenes/characters/trial_character.tscn" id="2_60fqk"]
+[ext_resource type="PackedScene" path="res://scenes/characters/trial_character.tscn" id="2_60fqk"]
 [ext_resource type="PackedScene" uid="uid://dq74vvvp5jq" path="res://scenes/remaining_time.tscn" id="3_33qps"]
 [ext_resource type="Texture2D" uid="uid://eha6vvif87pu" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/freelavatileset-Sheet.png" id="4_8n3nt"]
 [ext_resource type="Texture2D" uid="uid://dv0loen2sshrt" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 1/spritesheet-lavarock1.png" id="5_sn2ux"]
@@ -415,6 +415,8 @@ radius = 128.09763
 
 [node name="TrialCollectScene" type="Node2D" unique_id=1587010820 node_paths=PackedStringArray("SpawnPoints", "PlayersNode", "TimerLabel")]
 script = ExtResource("1_vrhxm")
+Buff = 1
+Nerf = 1
 PlayerScene = ExtResource("2_60fqk")
 SpawnPoints = NodePath("SpawnPoints")
 PlayersNode = NodePath("PlayerNode")
