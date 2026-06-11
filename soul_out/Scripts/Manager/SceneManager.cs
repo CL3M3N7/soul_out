@@ -155,6 +155,7 @@ public partial class SceneManager : Node
 
 	private void LoadScoringScene()
 	{
+		GameManager.Instance.NextRound();
 		PackedScene nextScene = ScoringScenes;
 		SONodeScene instantiatedScene = nextScene.Instantiate<SONodeScene>();
 		LoadScene(instantiatedScene);
