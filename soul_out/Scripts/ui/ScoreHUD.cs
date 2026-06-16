@@ -11,7 +11,7 @@ public partial class ScoreHUD : HBoxContainer
 	{
 		int[] scores = GameManager.Instance.GetAllPlayerScore();
 		int[] order = OrderScore(scores);
-		for(int i = 0; i < scores.Length; i++)
+		for(int i = 0; i < GameManager.Instance.NumberOfPlayers; i++)
 		{
 			ScoreUI playerScore = ScoreUiScene.Instantiate<ScoreUI>();
 			playerScore.SetAvatarAndScore(order[i], scores[order[i]]);

@@ -11,7 +11,7 @@ public partial class ResultHUD : HBoxContainer
 	{
 		int[] scores = GameManager.Instance.GetAllPlayerScore();
 		int[] order = OrderScore(scores);
-		for(int i = 0; i < scores.Length; i++)
+		for(int i = 0; i < GameManager.Instance.NumberOfPlayers; i++)
 		{
 			ResultUI playerScore = ResultUiScene.Instantiate<ResultUI>();
 			playerScore.SetAvatarAndScore(order[i], i);

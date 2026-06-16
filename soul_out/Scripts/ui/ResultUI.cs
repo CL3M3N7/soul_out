@@ -19,15 +19,15 @@ public partial class ResultUI : VBoxContainer
 		{
 			avatarTexture.Texture = Avatar0;
 		}
-		if(avatar == 1)
+		else if(avatar == 1)
 		{
 			avatarTexture.Texture = Avatar1;
 		}
-		if(avatar == 2)
+		else if(avatar == 2)
 		{
 			avatarTexture.Texture = Avatar2;
 		}
-		if(avatar == 3)
+		else if(avatar == 3)
 		{
 			avatarTexture.Texture = Avatar3;
 		}
@@ -41,11 +41,11 @@ public partial class ResultUI : VBoxContainer
 		{
 			cupTexture.Texture = Cup0;
 		}
-		if(rank == 1)
+		else if(rank == 1)
 		{
 			cupTexture.Texture = Cup1;
 		}
-		if(rank == 2)
+		else if(rank == 2)
 		{
 			cupTexture.Texture = Cup2;
 		}
