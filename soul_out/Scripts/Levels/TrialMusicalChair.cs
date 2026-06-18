@@ -25,6 +25,9 @@ public partial class TrialMusicalChair : TrialScene
 	[Export] public Timer _eliminationTimer;
 	[Export] public Label _eliminationLabel;
 	
+	[Export] public AudioStreamPlayer2D _music;
+	private float _musicTime;
+	
 	private Random _random = new Random();
 
 	private int _currentPlayerNumber = GameManager.Instance.NumberOfPlayers;
@@ -50,6 +53,7 @@ public partial class TrialMusicalChair : TrialScene
 			}
 		}
 		//_spawnLabel.Visible = true;
+		_music.Play();
 		_spawnTimer.Start(SpawnTime);
 		
 	}
@@ -81,6 +85,8 @@ public partial class TrialMusicalChair : TrialScene
 	private void OnSpawnTimerTimeout()
 	{
 		//_spawnLabel.Visible = false;
+		_musicTime = _music.GetPlaybackPosition();
+		_music.Stop();
 		for(int i = 0; i < _currentPlayerNumber-1; i++)
 		{
 			SpawnSafeArea();
@@ -116,6 +122,7 @@ public partial class TrialMusicalChair : TrialScene
 		{
 			
 			_spawnTimer.Start();
+			_music.Play(_musicTime);
 			//_spawnLabel.Visible = true;
 		}
 		else

@@ -1,9 +1,88 @@
 [gd_scene format=3 uid="uid://bdbv1qwrgc1bs"]
 
 [ext_resource type="Script" uid="uid://cvnc8he34faxk" path="res://Scripts/TrialMusicSafeZone.cs" id="1_u8b0w"]
+[ext_resource type="Texture2D" uid="uid://bajtwvth431tg" path="res://assets/SafeZoneSpritesheet.png" id="2_glcce"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klyiw"]
 size = Vector2(60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pleol"]
+atlas = ExtResource("2_glcce")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d508w"]
+atlas = ExtResource("2_glcce")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m58j1"]
+atlas = ExtResource("2_glcce")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4kj1"]
+atlas = ExtResource("2_glcce")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2imhr"]
+atlas = ExtResource("2_glcce")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucm8o"]
+atlas = ExtResource("2_glcce")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxvvh"]
+atlas = ExtResource("2_glcce")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vive"]
+atlas = ExtResource("2_glcce")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33dlm"]
+atlas = ExtResource("2_glcce")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpb1q"]
+atlas = ExtResource("2_glcce")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rbelh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pleol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d508w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m58j1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4kj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2imhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucm8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxvvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vive")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33dlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpb1q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
 
 [node name="TrialMusicSafeZone" type="Area2D" unique_id=1175607323]
 script = ExtResource("1_u8b0w")
@@ -11,9 +90,9 @@ script = ExtResource("1_u8b0w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=232739337]
 shape = SubResource("RectangleShape2D_klyiw")
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=525235789]
-color = Color(0, 0.5647059, 0, 1)
-polygon = PackedVector2Array(30, 30, 30, -30, -30, -30, -30, 30)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1751406780]
+sprite_frames = SubResource("SpriteFrames_rbelh")
+frame_progress = 0.68845826
 
 [connection signal="body_entered" from="." to="." method="onBodyEntered"]
 [connection signal="body_exited" from="." to="." method="onBodyExited"]

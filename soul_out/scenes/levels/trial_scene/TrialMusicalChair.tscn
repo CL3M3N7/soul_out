@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d26t5vcylurhx" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Land on Lava Tile/spritesheet-lavaland.png" id="4_jmgdr"]
 [ext_resource type="Texture2D" uid="uid://dv0loen2sshrt" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 1/spritesheet-lavarock1.png" id="5_y4byd"]
 [ext_resource type="Texture2D" uid="uid://df7fix6o0hcjp" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 2/spritesheet-lavarock2.png" id="6_cs80m"]
+[ext_resource type="AudioStream" uid="uid://ojbdurg5v576" path="res://Sounds/Main/DarkSYnthWave.mp3" id="10_y4byd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1qov"]
 texture = ExtResource("3_gc3lo")
@@ -453,7 +454,7 @@ size = Vector2(125, 688)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc3lo"]
 size = Vector2(308, 142)
 
-[node name="TrialMusicalChair" type="Node2D" unique_id=167935840 node_paths=PackedStringArray("SafeZoneNode", "_validSpawnArea", "_spawnTimer", "_spawnLabel", "_eliminationTimer", "_eliminationLabel", "SpawnPoints", "PlayersNode", "TimerLabel")]
+[node name="TrialMusicalChair" type="Node2D" unique_id=167935840 node_paths=PackedStringArray("SafeZoneNode", "_validSpawnArea", "_spawnTimer", "_spawnLabel", "_eliminationTimer", "_eliminationLabel", "_music", "SpawnPoints", "PlayersNode", "TimerLabel")]
 script = ExtResource("1_bo1og")
 _safeArea = ExtResource("2_jmgdr")
 SafeZoneNode = NodePath("SafeZoneNode")
@@ -464,6 +465,7 @@ _spawnTimer = NodePath("SpawnTimer")
 _spawnLabel = NodePath("Camera2D/Control/spawntime")
 _eliminationTimer = NodePath("EliminationTimer")
 _eliminationLabel = NodePath("Camera2D/Control/eliminationtime")
+_music = NodePath("Music")
 Buff = 1
 Nerf = 1
 PlayerScene = ExtResource("3_y4byd")
@@ -639,3 +641,6 @@ polygon = PackedVector2Array(-677, 290, -643, 290, -642, 322, -610, 323, -610, 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bloquant/StaticBody2D6" unique_id=2136990387]
 polygon = PackedVector2Array(-678, 431, -769, 431, -766, -447, 615, -448, 616, -354, -613, -357, -614, -328, -646, -328, -648, -297, -679, -297)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=480135114]
+stream = ExtResource("10_y4byd")
