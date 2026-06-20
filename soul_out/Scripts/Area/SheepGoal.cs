@@ -3,11 +3,14 @@ using System;
 using Godot.Collections;
 using SoulOut.Scripts.Characters;
 using SoulOut.scripts.Entities;
+using SoulOut.Scripts.Manager;
 
 public partial class SheepGoal : Area2D
 {
 	[Export] public int IndexPlayer;
 	[Export] public Node PlayerNode;
+	
+	[Export] public PackedScene FloatingTextScene { get; set; }
 
 	public override void _Ready()
 	{
@@ -21,6 +24,9 @@ public partial class SheepGoal : Area2D
 		// 3. On vérifie les masques de collision (c'est souvent là que l'éditeur Godot nous ment)
 		GD.Print($"Masque de collision de l'Area2D : {CollisionMask}");
 
+
+		GetNode<Sprite2D>("House").Visible = GameManager.Instance.NumberOfPlayers > IndexPlayer;
+		
 		BodyEntered += OnAreaEnter;
 	}
 	
@@ -41,6 +47,29 @@ public partial class SheepGoal : Area2D
 				if (child is SOTrialCharacter character && character.PlayerController == IndexPlayer)
 				{
 					character.Score += 1;
+					
+					FloatingText popup = FloatingTextScene.Instantiate<FloatingText>();
+					switch(IndexPlayer)
+					{
+						case 0:
+							popup.Modulate = Colors.Blue;
+							break;
+						case 1:
+							popup.Modulate = Colors.Red;
+							break;
+						case 2:
+							popup.Modulate = Colors.Yellow;
+							break;
+						case 3:
+							popup.Modulate = Colors.Purple;
+							break;
+						default:
+							break;
+					}
+					popup.SetText($"+1");
+					popup.GlobalPosition = new Vector2(-20, -80);
+					AddChild(popup);
+					
 					sheep.QueueFree();
 				}
 			}

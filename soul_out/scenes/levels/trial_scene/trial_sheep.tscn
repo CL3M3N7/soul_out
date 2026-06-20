@@ -11,8 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://b0gbxj3js3ixk" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_11.png" id="9_f7vor"]
 [ext_resource type="Texture2D" uid="uid://bophi13uqkooc" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_16.png" id="10_605p1"]
 [ext_resource type="Script" uid="uid://dt7kfup0j3aax" path="res://Scripts/Area/SheepGoal.cs" id="11_wt75e"]
+[ext_resource type="PackedScene" uid="uid://cf00pj6yt1rmk" path="res://scenes/ui/FloatingText.tscn" id="12_4f0sc"]
+[ext_resource type="Texture2D" uid="uid://dn3jfm8lek03r" path="res://assets/Tiny Swords (Free Pack)/Buildings/Blue Buildings/House2.png" id="12_33qps"]
 [ext_resource type="Script" uid="uid://ewttvksullw7" path="res://Scripts/Spawner/EntitySpawner.cs" id="12_bmdfk"]
+[ext_resource type="Texture2D" uid="uid://n40l68eqc8dc" path="res://assets/Tiny Swords (Free Pack)/Buildings/Red Buildings/House2.png" id="13_8n3nt"]
 [ext_resource type="PackedScene" uid="uid://dy5nfcy5khe1l" path="res://scenes/entities/sheep.tscn" id="13_hrmsb"]
+[ext_resource type="Texture2D" uid="uid://bsvcef56f7xlp" path="res://assets/Tiny Swords (Free Pack)/Buildings/Yellow Buildings/House2.png" id="14_sn2ux"]
+[ext_resource type="Texture2D" uid="uid://xnaurx6q8u42" path="res://assets/Tiny Swords (Free Pack)/Buildings/Purple Buildings/House2.png" id="15_4f0sc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7f16"]
 texture = ExtResource("4_8n3nt")
@@ -550,10 +555,15 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("11_wt75e")
 PlayerNode = NodePath("../../PlayerNode")
+FloatingTextScene = ExtResource("12_4f0sc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/SheepGoal0" unique_id=1039716979]
 z_index = 32
 shape = SubResource("RectangleShape2D_i6nyg")
+
+[node name="House" type="Sprite2D" parent="Node/SheepGoal0" unique_id=425093172]
+scale = Vector2(0.765625, 0.765625)
+texture = ExtResource("12_33qps")
 
 [node name="SheepGoal1" type="Area2D" parent="Node" unique_id=1015860820 node_paths=PackedStringArray("PlayerNode")]
 position = Vector2(300, -200)
@@ -562,10 +572,16 @@ collision_mask = 2
 script = ExtResource("11_wt75e")
 IndexPlayer = 1
 PlayerNode = NodePath("../../PlayerNode")
+FloatingTextScene = ExtResource("12_4f0sc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/SheepGoal1" unique_id=1725850112]
 z_index = 32
 shape = SubResource("RectangleShape2D_i6nyg")
+
+[node name="House" type="Sprite2D" parent="Node/SheepGoal1" unique_id=956732565]
+scale = Vector2(0.766, 0.766)
+texture = ExtResource("13_8n3nt")
+flip_h = true
 
 [node name="SheepGoal2" type="Area2D" parent="Node" unique_id=1790618182 node_paths=PackedStringArray("PlayerNode")]
 position = Vector2(-300, 200)
@@ -574,10 +590,16 @@ collision_mask = 2
 script = ExtResource("11_wt75e")
 IndexPlayer = 2
 PlayerNode = NodePath("../../PlayerNode")
+FloatingTextScene = ExtResource("12_4f0sc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/SheepGoal2" unique_id=2086801595]
 z_index = 32
 shape = SubResource("RectangleShape2D_i6nyg")
+
+[node name="House" type="Sprite2D" parent="Node/SheepGoal2" unique_id=243687031]
+scale = Vector2(0.766, 0.766)
+texture = ExtResource("14_sn2ux")
+flip_h = true
 
 [node name="SheepGoal3" type="Area2D" parent="Node" unique_id=401904560 node_paths=PackedStringArray("PlayerNode")]
 position = Vector2(300, 200)
@@ -586,10 +608,15 @@ collision_mask = 2
 script = ExtResource("11_wt75e")
 IndexPlayer = 3
 PlayerNode = NodePath("../../PlayerNode")
+FloatingTextScene = ExtResource("12_4f0sc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/SheepGoal3" unique_id=1485202914]
 z_index = 32
 shape = SubResource("RectangleShape2D_i6nyg")
+
+[node name="House" type="Sprite2D" parent="Node/SheepGoal3" unique_id=692350001]
+scale = Vector2(0.766, 0.766)
+texture = ExtResource("15_4f0sc")
 
 [node name="EntitySpawner" type="Node" parent="." unique_id=197329136]
 script = ExtResource("12_bmdfk")
