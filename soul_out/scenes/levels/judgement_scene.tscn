@@ -1,81 +1,62 @@
 [gd_scene format=3 uid="uid://tt773ogrei2k"]
 
 [ext_resource type="Script" uid="uid://dtc4ajg3v0sat" path="res://Scripts/Levels/JudgementScene.cs" id="1_hdtxl"]
-[ext_resource type="Texture2D" uid="uid://bgoa1dp5mnpew" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_01.png" id="2_4tsfh"]
-[ext_resource type="Texture2D" uid="uid://c2xai165v7p3g" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_06.png" id="3_hhhv2"]
-[ext_resource type="Texture2D" uid="uid://b0gbxj3js3ixk" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_11.png" id="4_m4gvw"]
-[ext_resource type="Texture2D" uid="uid://bophi13uqkooc" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_16.png" id="5_oi6iv"]
+[ext_resource type="Texture2D" uid="uid://1304q00njwkh" path="res://assets/UI/gradient-rouge.jpg" id="2_m4gvw"]
+[ext_resource type="Script" uid="uid://m6jevli7xc8y" path="res://Scripts/ui/JudgementHUD.cs" id="3_xtyi0"]
+[ext_resource type="PackedScene" uid="uid://pxchev8or7h8" path="res://scenes/ui/ScoreUI.tscn" id="4_4tsfh"]
+[ext_resource type="AudioStream" uid="uid://duorkewstdeve" path="res://Sounds/Scenes/drum-hit.mp3" id="7_oi6iv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gqlql"]
 
 [node name="JudgementScene" type="Node2D" unique_id=1324247037 node_paths=PackedStringArray("firstPlayerLabel", "secondPlayerLabel", "thirdPlayerLabel", "fourthPlayerLabel")]
 script = ExtResource("1_hdtxl")
-firstPlayerLabel = NodePath("HBoxContainer/VBoxContainer/Label")
-secondPlayerLabel = NodePath("HBoxContainer/VBoxContainer2/Label")
-thirdPlayerLabel = NodePath("HBoxContainer/VBoxContainer3/Label")
-fourthPlayerLabel = NodePath("HBoxContainer/VBoxContainer4/Label")
+firstPlayerLabel = NodePath("")
+secondPlayerLabel = NodePath("")
+thirdPlayerLabel = NodePath("")
+fourthPlayerLabel = NodePath("")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=552222807]
-offset_right = 1152.0
-offset_bottom = 648.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 40
+[node name="Background" type="Panel" parent="." unique_id=1814127501]
+material = SubResource("CanvasItemMaterial_gqlql")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=2140006207]
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=1901169190]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_m4gvw")
+expand_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer" unique_id=1663713949]
-layout_mode = 2
-size_flags_vertical = 10
-texture = ExtResource("2_4tsfh")
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1187065221]
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1271632602]
-layout_mode = 2
-size_flags_vertical = 2
-text = "1er"
-horizontal_alignment = 1
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1954458721]
+stream = ExtResource("7_oi6iv")
+autoplay = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1313404375]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer2" unique_id=261394758]
-layout_mode = 2
-size_flags_vertical = 10
-texture = ExtResource("3_hhhv2")
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=1872228936]
-layout_mode = 2
-size_flags_vertical = 2
-text = "1er"
-horizontal_alignment = 1
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer" unique_id=665798928]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer3" unique_id=331429853]
-layout_mode = 2
-size_flags_vertical = 10
-texture = ExtResource("4_m4gvw")
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer3" unique_id=959028510]
-layout_mode = 2
-size_flags_vertical = 2
-text = "1er"
-horizontal_alignment = 1
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer" unique_id=842637368]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer4" unique_id=394556553]
-layout_mode = 2
-size_flags_vertical = 10
-texture = ExtResource("5_oi6iv")
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer4" unique_id=189847599]
-layout_mode = 2
-size_flags_vertical = 2
-text = "1er"
-horizontal_alignment = 1
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=459777876]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("3_xtyi0")
+ScoreUiScene = ExtResource("4_4tsfh")

@@ -15,7 +15,7 @@ public partial class ScoreUI : VBoxContainer
 	
 	[Export] private Label scoreLabel;
 	
-	public void SetAvatarAndScore(int avatar, int score)
+	public void SetAvatarAndScore(int avatar, string score)
 	{
 		if(!(GetChild(0) is TextureRect avatarTexture)) return;
 		if(!(GetChild(1) is TextureRect ribbonTexture)) return;

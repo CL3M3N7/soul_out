@@ -1,33 +1,54 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using SoulOut.Scripts.Manager;
 
-public partial class ScoreHUD : HBoxContainer
+public partial class JudgementHUD : HBoxContainer
 {
 	[Export] public PackedScene ScoreUiScene { get; private set; }
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		int[] scores = GameManager.Instance.GetAllPlayerScore();
-		int[] order = OrderScore(scores);
+		List<int> scores = PactManager.Instance.GetBattleLeaderboard();
 		for(int i = 0; i < GameManager.Instance.NumberOfPlayers; i++)
 		{
+			string pos;
+			switch (i)
+			{
+				case 0:
+				{
+					pos = "1st";
+					break;
+				}
+				case 1:
+				{
+					pos = "2nd";
+					break;
+				}
+				case 2:
+				{
+					pos = "3rd";
+					break;
+				}
+				case 3:
+				{
+					pos = "4th";
+					break;
+				}
+				default:
+				{
+					pos = "Xth";
+					break;
+				}
+					
+			}
+			
 			ScoreUI playerScore = ScoreUiScene.Instantiate<ScoreUI>();
-			playerScore.SetAvatarAndScore(order[i], scores[order[i]].ToString());
+			playerScore.SetAvatarAndScore(scores[i], pos);
 			AddChild(playerScore);
 		}
 		Wait();
-	}
-	
-	private int[] OrderScore(int[] scores)
-	{
-		int[] order = scores
-			.Select((valeur, indice) => new { Indice = indice, Valeur = valeur })
-			.OrderByDescending(x => x.Valeur)
-			.Select(x => x.Indice)
-			.ToArray();
-		return order;
 	}
 	
 	private async void Wait()
