@@ -127,6 +127,12 @@ public partial class TrialMusicalChair : TrialScene
 		}
 		else
 		{
+			Node last_player = PlayersNode.GetChildren()[0];
+			if (last_player is MusicChairCharacter character)
+			{
+				Leaderboard.Add(character.PlayerController);
+			}
+			
 			Leaderboard.Reverse();
 			EmitSignal(TrialScene.SignalName.OnEndTrial, Leaderboard);
 			EmitSignal(SONodeScene.SignalName.OnEndScene);
