@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b0gbxj3js3ixk" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_11.png" id="7_qebvx"]
 [ext_resource type="Texture2D" uid="uid://bophi13uqkooc" path="res://assets/Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_16.png" id="8_22vgb"]
 [ext_resource type="PackedScene" uid="uid://dq74vvvp5jq" path="res://scenes/remaining_time.tscn" id="10_akm3d"]
+[ext_resource type="AudioStream" uid="uid://ojbdurg5v576" path="res://Sounds/Main/DarkSYnthWave.mp3" id="14_8ma12"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6h83u"]
 texture = ExtResource("1_fcqqe")
@@ -685,3 +686,6 @@ shape = SubResource("RectangleShape2D_1v4ui")
 [node name="CollisionShape2D13" type="CollisionShape2D" parent="GoldSpawnArea" unique_id=1307147179]
 position = Vector2(479, -4)
 shape = SubResource("RectangleShape2D_1v4ui")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=681847978]
+stream = ExtResource("14_8ma12")

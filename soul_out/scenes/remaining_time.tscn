@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://dq74vvvp5jq"]
 
+[ext_resource type="FontFile" uid="uid://bo0fge1a7yx10" path="res://assets/UI/Daydream DEMO.otf" id="1_h6yp4"]
 [ext_resource type="Script" uid="uid://6e3l848kxs8e" path="res://Scripts/RemainingTime.cs" id="1_tvuc0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tvuc0"]
+font = ExtResource("1_h6yp4")
 font_size = 32
 
 [node name="RemainingTime" type="Label" unique_id=1887735079]

@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dv0loen2sshrt" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 1/spritesheet-lavarock1.png" id="3_ddyph"]
 [ext_resource type="Texture2D" uid="uid://d26t5vcylurhx" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Land on Lava Tile/spritesheet-lavaland.png" id="3_qs8qh"]
 [ext_resource type="Texture2D" uid="uid://df7fix6o0hcjp" path="res://assets/Top Down Lava Tileset 16x16 Free/Top Down Lava Tileset 16x16 Free/FREE TILESET FILES/Environment ( With Animations )/Lava Rock 2/spritesheet-lavarock2.png" id="4_qs8qh"]
+[ext_resource type="AudioStream" uid="uid://ojbdurg5v576" path="res://Sounds/Main/DarkSYnthWave.mp3" id="8_e6l1t"]
+[ext_resource type="FontFile" uid="uid://bo0fge1a7yx10" path="res://assets/UI/Daydream DEMO.otf" id="9_ygfn8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sl3ak"]
 texture = ExtResource("2_2gj2k")
@@ -442,6 +444,10 @@ texture = ExtResource("2_2gj2k")
 [sub_resource type="TileSet" id="TileSet_iu6ae"]
 sources/0 = SubResource("TileSetAtlasSource_4l8cq")
 
+[sub_resource type="LabelSettings" id="LabelSettings_y7ruh"]
+font = ExtResource("9_ygfn8")
+font_size = 32
+
 [node name="TrialSpellcastScene" type="Node2D" unique_id=744357453 node_paths=PackedStringArray("SpawnPoints", "PlayersNode", "TimerLabel")]
 script = ExtResource("1_d1qja")
 PlayerScene = ExtResource("2_e6l1t")
@@ -513,3 +519,18 @@ position = Vector2(-300, 200)
 position = Vector2(300, 200)
 
 [node name="PlayerNode" type="Node" parent="." unique_id=150274141]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1092758792]
+stream = ExtResource("8_e6l1t")
+
+[node name="Label" type="Label" parent="." unique_id=983360349]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLUS VITE !"
+label_settings = SubResource("LabelSettings_y7ruh")
+horizontal_alignment = 1
+vertical_alignment = 1
